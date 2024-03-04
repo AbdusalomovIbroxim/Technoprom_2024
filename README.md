@@ -22,6 +22,15 @@ mv .env\(copy\) .env
 
 ## Шаг 3: Добавление данных в файл .env
 
+```text
+SECRET_KEY="SECRET_KEY"
+EMAIL_HOST_USER="EMAIL_HOST_USER"
+EMAIL_HOST_PASSWORD="EMAIL_HOST_PASSWORD"
+DEBUG="DEBUG"
+TOKEN="TOKEN"
+CHAT_ID="CHAT_ID"
+```
+
 Добавьте необходимые данные в файл .env, такие как настройки базы данных, секретный ключ и другие конфигурационные
 параметры.
 
