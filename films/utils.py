@@ -16,7 +16,7 @@ dp = Dispatcher(bot)
 
 async def send_message_to_channel(message, image=None):
     tags = message.get('tags', [])
-    subcategories = message.get('subcategory', [])
+    subcategories = message.get("subcategories", [])
     film_id = message['film_id']
     # Extract tag names as strings
     subcategory_names = [str(subcategory) for subcategory in subcategories]

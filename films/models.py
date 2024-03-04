@@ -51,6 +51,19 @@ class SubCategories(Model):
         verbose_name_plural = "Субкатегории"
 
 
+class Tag(Model):
+    name = CharField(max_length=255, unique=True)
+    category = ForeignKey(
+        Categories, on_delete=CASCADE, blank=True, null=True, related_name="tags"
+    )
+    subcategory = ForeignKey(
+        SubCategories, on_delete=CASCADE, blank=True, null=True, related_name="tags"
+    )
+
+    def __str__(self):
+        return self.name
+
+
 class Country(Model):
     slug = SlugField(unique=True)
     name = CharField("Страна", max_length=50)
@@ -82,19 +95,6 @@ class City(Model):
         verbose_name_plural = "Город"
 
 
-class Tag(Model):
-    name = CharField(max_length=255, unique=True)
-    category = ForeignKey(
-        Categories, on_delete=CASCADE, blank=True, null=True, related_name="tags"
-    )
-    subcategory = ForeignKey(
-        SubCategories, on_delete=CASCADE, blank=True, null=True, related_name="tags"
-    )
-
-    def __str__(self):
-        return self.name
-
-
 class Products(Model):  # Модель
     TYPE_CHOICES = [
         ("buy", "Buy"),
@@ -122,7 +122,7 @@ class Products(Model):  # Модель
     country = ForeignKey(Country, on_delete=CASCADE)
     city = ForeignKey(City, on_delete=CASCADE, blank=True, null=True)
     category = ForeignKey(Categories, CASCADE)
-    sub_category = ManyToManyField(SubCategories, blank=True, null=True)
+    subcategories = ManyToManyField(SubCategories, blank=True, null=True)
     tags = ManyToManyField(Tag, blank=True, null=True)
     is_active = BooleanField(default=False)
     type = CharField(max_length=50, choices=TYPE_CHOICES, default="buy")

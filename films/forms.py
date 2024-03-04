@@ -19,7 +19,7 @@ class FilmsForm(forms.ModelForm):
             "title",
             "description",
             "category",
-            "sub_category",
+            "subcategories",
             "tags",
             "telephone",
             "telegram",
@@ -272,3 +272,7 @@ class ServiceForm(forms.Form):
     service_name_3 = forms.CharField(label='Название услуги 3', max_length=100)
     service_price_3 = forms.DecimalField(label='Сумма услуги 3', max_digits=10, decimal_places=2)
     service_info_3 = forms.CharField(label='Информация об услуге 3', widget=forms.Textarea)
+
+    service_choice = forms.ChoiceField(
+        choices=[(1, 'Название услуги 1'), (2, 'Название услуги 2'), (3, 'Название услуги 3')],
+        widget=forms.RadioSelect())

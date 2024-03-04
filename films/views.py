@@ -84,7 +84,7 @@ class IndexView(ListView):
             except ValueError:
                 film.price = None
             film.save()
-            film.sub_category.set(selected_subcategories)
+            film.subcategories.set(selected_subcategories)
             film.tags.set(selected_tags)
             message["film_id"] = film.id
             asyncio.run(send_message_to_channel(message))
@@ -202,7 +202,7 @@ class ProductSaveView(CreateView):
             message[field_name] = field_value
 
         film.save()
-        film.sub_category.set(selected_subcategories)
+        film.subcategories.set(selected_subcategories)
         film.tags.set(selected_tags)
 
         message["film_id"] = film.id
@@ -223,7 +223,8 @@ class ProductSaveView(CreateView):
         messages.success(self.request, "Вы успешно отправили запрос !")
 
         if self.request.user.is_authenticated:
-            return render(self.request, "additional_services.html", {"product": film.pk})
+            self.request.session['product_pk'] = film.pk
+            return redirect("product_update_status")
         else:
             return redirect("index")
 
@@ -237,18 +238,19 @@ class ProductSaveView(CreateView):
         )
 
 
-class ProductUpdateStatus(View):
+class AdditionalServicesView(View):
     template_name = "additional_services.html"
     form_class = ServiceForm
 
     def get(self, request):
-        return render(request, self.template_name, {"form": self.form_class()})
+        product_pk = self.request.session.get("product_pk")
+        return render(request, self.template_name, {"form": self.form_class(), "product_pk": product_pk})
 
     def post(self, request):
         service = self.request.POST.get("service", None)
-        product_pk = self.request.POST.get("product", None)
+        product_pk = request.POST.get('product', None)
         if service is not None:
-            product = Products.objects.get(pk=product_pk)
+            product = Products.objects.get(author_id=product_pk)
             if str(service).endswith("1"):
                 product.is_top_film = True
                 product.top_duration = 1
@@ -563,6 +565,3 @@ def get_suggestions(request):
 
 def access_denied_page(request):
     return render(request, "access_denied_page.html")
-
-
-""""""
