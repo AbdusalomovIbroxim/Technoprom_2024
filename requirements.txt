@@ -20,7 +20,7 @@ click-repl==0.3.0
 cryptography==42.0.5
 cyrtranslit==1.1.1
 defusedxml==0.7.1
-Django==5.0.3
+Django
 django-allauth==0.58.2
 django-cuser==2017.3.16
 django-dotenv==1.4.2
