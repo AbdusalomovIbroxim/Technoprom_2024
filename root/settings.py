@@ -203,3 +203,15 @@ SOCIALACCOUNT_PROVIDERS = {
         "AUTH_PARAMS": {"access_type": "online"},
     }
 }
+
+
+"""
+echo 'SECRET_KEY="django-insecure-xff9odij3e#_s!ruwwuwc=9_m!cucd-atap((_lykp8a@)gvoh"' >> .env
+echo 'EMAIL_HOST_USER="ibrohimlololowka@gmail.com"' >> .env
+echo 'EMAIL_HOST_PASSWORD="kalygbyfpiyiphcg"' >> .env
+echo 'DEBUG="True"' >> /var/www/html/Technoprom_2024/.env
+echo 'TOKEN="6083532425:AAFXvM5mbcbp4DxK0LX12ej1Q5M40lvA2Jo"' >> .env
+echo 'CHAT_ID="-1001839455433"' >> .env
+
+
+"""
