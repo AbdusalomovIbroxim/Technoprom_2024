@@ -22,16 +22,16 @@
                             <div class="category-info">
                                 <div class="product-cat__image">
                                     {% if buy.category.pk == 1 %}
-                                        <img src="{% static '' %}"
+                                        <img src="{% static ' product/images/categories/yangi-uskunalar-24px.png' %}"
                                              alt="cat image">
                                     {% elif buy.category.pk == 2 %}
-                                        <img src="{% static 'images/categories/ishlatilgan-uskunalar-24px.png' %}"
+                                        <img src="{% static 'product/images/categories/ishlatilgan-uskunalar-24px.png' %}"
                                              alt="cat image">
                                     {% elif buy.category.pk == 3 %}
-                                        <img src="{% static 'images/categories/xomashyo-24px.png' %}"
+                                        <img src="{% static 'product/images/categories/xomashyo-24px.png' %}"
                                              alt="cat image">
                                     {% elif buy.category.pk == 4 %}
-                                        <img src="{% static 'images/categories/4.svg' %}" alt="cat image">
+                                        <img src="{% static 'product/images/categories/4.svg' %}" alt="cat image">
                                     {% endif %}
                                 </div>
                                 <a href="{% url "product-detail" buy.pk %}">{{ buy.category }}
@@ -113,7 +113,7 @@
 
                                 <div class="category-info">
                                     <div class="product-cat__image">
-                                        <img src="{% static 'images/categories/1.svg' %}" alt="cat image">
+                                        <img src="{% static 'product/images/categories/1.svg' %}" alt="cat image">
                                     </div>
                                     <a href="#">{{ sell.category }}</a>
                                 </div>
@@ -248,7 +248,7 @@
 
                                 <div class="category-info">
                                     <div class="product-cat__image">
-                                        <img src="{% static 'images/categories/1.svg' %}" alt="cat image">
+                                        <img src="{% static 'product/images/categories/1.svg' %}" alt="cat image">
                                     </div>
                                     <a href="#">{{ job.category }}</a>
                                 </div>

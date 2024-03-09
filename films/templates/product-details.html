@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
           integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="stylesheet" href="{% static "css/product/style.css" %}">
-    <link rel="stylesheet" href="{% static "css/product/main.css" %}">
-    <link rel="stylesheet" href="{% static "css/product/product-details.css" %}">
+    <link rel="stylesheet" href="{% static "product/css/product/style.css" %}">
+    <link rel="stylesheet" href="{% static "product/css/product/main.css" %}">
+    <link rel="stylesheet" href="{% static "product/css/product/product-details.css" %}">
     <title>Product Details</title>
     <!-- Добавьте это в раздел head вашего HTML-файла -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
@@ -89,7 +89,7 @@
                         <div class="author-info2">
 
                             <div class="author-foto">
-                                <img src="{% static "images/avatar.png" %}" alt="author avatar">
+                                <img src="{% static "product/images/avatar.png" %}" alt="author avatar">
                             </div>
 
                             <div class="author-data">
@@ -177,7 +177,7 @@
                             <p>{% translate "ПОЛЬЗОВАТЕЛЬ" %}</p>
                             <div class="author-row">
                                 <div class="author-foto">
-                                    <img src="{% static 'images/avatar.png' %}" alt="author avatar">
+                                    <img src="{% static 'product/images/avatar.png' %}" alt="author avatar">
                                 </div>
                                 <div class="author-data">
                                     <a href="{% url 'profile' product.author_id %}"
@@ -225,7 +225,7 @@
                                             <div class="product-data">
                                                 <div class="category-info">
                                                     <div class="product-cat__image">
-                                                        <img src="{% static 'images/categories/1.svg' %}"
+                                                        <img src="{% static 'product/images/categories/1.svg' %}"
                                                              alt="cat image">
                                                     </div>
                                                     <a href="#">{{ product.category }}</a>
@@ -261,7 +261,7 @@
                                         <div class="card__buy-content">
                                             <div class="category-info">
                                                 <div class="product-cat__image">
-                                                    <img src="{% static 'images/categories/1.svg' %}" alt="cat image">
+                                                    <img src="{% static 'product/images/categories/1.svg' %}" alt="cat image">
                                                 </div>
                                                 <a href="#">{{ product.category }}</a>
                                             </div>
@@ -327,7 +327,7 @@
                                             <div class="product-data">
                                                 <div class="category-info">
                                                     <div class="product-cat__image">
-                                                        <img src="{% static 'images/categories/1.svg' %}"
+                                                        <img src="{% static 'product/images/categories/1.svg' %}"
                                                              alt="cat image">
                                                     </div>
                                                     <a href="#">{{ product.category }}</a>
@@ -364,7 +364,7 @@
                                         <div class="card__buy-content">
                                             <div class="category-info">
                                                 <div class="product-cat__image">
-                                                    <img src="{% static 'images/categories/1.svg' %}" alt="cat image">
+                                                    <img src="{% static 'product/images/categories/1.svg' %}" alt="cat image">
                                                 </div>
                                                 <a href="#">{{ product.category }}</a>
                                             </div>
