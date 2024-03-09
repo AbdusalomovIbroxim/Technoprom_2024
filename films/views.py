@@ -1,21 +1,22 @@
 import asyncio
+
 import emoji
-from django.urls import reverse_lazy
-from django.views import View
-from fuzzywuzzy import fuzz
-from django.db.models import Q
-from django.utils import timezone
-from django.contrib import messages
-from django.http import JsonResponse
-from accounts.models import Message, User
 from cyrtranslit import to_cyrillic, to_latin
-from django.shortcuts import redirect, render
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .utils import send_message_to_channel
-from .models import Products, SubCategories, Favorite, Tag
-from .forms import FilmsForm, ProductFilterForm, SearchForm, ServiceForm
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Q
+from django.http import JsonResponse
+from django.shortcuts import redirect, render
+from django.utils import timezone
+from django.views import View
 from django.views.generic import ListView, CreateView, DetailView, UpdateView
+from fuzzywuzzy import fuzz
+
+from accounts.models import Message, User
+from .forms import FilmsForm, ProductFilterForm, SearchForm
+from .models import Products, SubCategories, Favorite, Tag
+from .utils import send_message_to_channel
 
 
 class IndexView(ListView):
@@ -240,11 +241,10 @@ class ProductSaveView(CreateView):
 
 class AdditionalServicesView(View):
     template_name = "additional_services.html"
-    form_class = ServiceForm
 
     def get(self, request):
         product_pk = self.request.session.get("product_pk")
-        return render(request, self.template_name, {"form": self.form_class(), "product_pk": product_pk})
+        return render(request, self.template_name, {"product_pk": product_pk})
 
     def post(self, request):
         service = self.request.POST.get("service", None)
