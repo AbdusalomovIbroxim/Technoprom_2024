@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='user',
             name='logo',
-            field=models.ImageField(default='static/default-logo.svg', upload_to='company_logos/'),
+            field=models.ImageField(default='_static/default-logo.svg', upload_to='company_logos/'),
         ),
         migrations.AddField(
             model_name='user',

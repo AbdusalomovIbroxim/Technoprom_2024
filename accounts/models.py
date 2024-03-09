@@ -27,7 +27,7 @@ class User(AbstractUser):
     email = EmailField(unique=True)
     trust = BooleanField(default=False)
     profile_photo = ImageField(
-        upload_to="profile_photos/", default="static/default-logo.svg"
+        upload_to="profile_photos/", default="_static/default-logo.svg"
     )
     company_name = CharField(max_length=100, blank=True, null=True)
     category = ForeignKey(

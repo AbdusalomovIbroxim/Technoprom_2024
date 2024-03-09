@@ -99,8 +99,7 @@ TELEGRAM_API_URL = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
 async def send_message(user_id, amount, photo):
     inline_kb = {
         "inline_keyboard": [
-            [{"text": "Добавить", "callback_data": "+"},
-             {"text": "Перейти", "url": f"https://tecnoprom-2024.onrender.com/users/profile/{user_id}"}]
+            [{"text": "Добавить", "callback_data": "+"}, {"text": "Перейти", "url": f"https://tecnoprom-2024.onrender.com/users/profile/{user_id}"}]
         ]
     }
 
