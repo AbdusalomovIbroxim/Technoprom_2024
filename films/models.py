@@ -113,7 +113,7 @@ class Products(Model):  # Модель
     telephone_view_count = PositiveBigIntegerField(
         "Количество просмотров номер телефона", default=0
     )
-    telegram = CharField("Телеграмм номер", max_length=30)
+    telegram = CharField("Телеграмм номер", max_length=30, blank=True)
     email = CharField("Емайл адрес", max_length=100)
     view_count = PositiveBigIntegerField("Количество просмотров", default=0)
     create_date = DateTimeField("Дата создания", auto_now_add=True)

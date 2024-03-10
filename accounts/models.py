@@ -37,7 +37,7 @@ class User(AbstractUser):
         SubCategories, SET_NULL, blank=True, null=True, related_name="user_sub_category"
     )
     tags = ManyToManyField(Tag, blank=True)
-    telegram = CharField(max_length=100, blank=True, null=True, default="")
+    telegram = CharField(max_length=100, blank=True, null=True)
     whatsapp = CharField(max_length=100, blank=True, null=True)
     website = CharField(max_length=500, blank=True, null=True)
     url_maps = CharField(max_length=500, blank=True, null=True)
