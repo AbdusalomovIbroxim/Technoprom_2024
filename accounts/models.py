@@ -45,7 +45,7 @@ class User(AbstractUser):
     logo = ImageField(upload_to="company_logos/", blank=True, null=True)
     description = CharField(max_length=1000, blank=True, null=True)
     country = ForeignKey(Country, SET_NULL, blank=True, null=True)
-    is_business_account = BooleanField(default=None, null=True)
+    is_business_account = BooleanField(default=None, blank=True, null=True)
     currency = DecimalField(max_digits=10, decimal_places=3, default=100.000)
     previous_currency = DecimalField(max_digits=10, decimal_places=2, default=0.00, editable=False)
 
