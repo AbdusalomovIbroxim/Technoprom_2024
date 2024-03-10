@@ -18,7 +18,7 @@ from .views import (
 urlpatterns = [
     path("", IndexView.as_view(), name="index"),
     path("product/<int:pk>/", ProductDetailView.as_view(), name="product-detail"),
-    path("add-film/", ProductSaveView.as_view(), name="add_film"),
+    path("request/", ProductSaveView.as_view(), name="add_film"),
     path("update-film/<int:pk>/", FilmsUpdateView.as_view(), name="update_film"),
     path("product-list/", FilmsListView.as_view(), name="product-list"),
     path("related_to_it/", related_to_it, name="related_to_it"),
