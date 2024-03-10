@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
           integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="stylesheet" href="{% static 'css/product/style.css' %}">
+    <link rel="stylesheet" href="{% static 'product/css/product/style.css' %}">
     <link rel="stylesheet" href="{% static 'user/css/authentication.css' %}">
 </head>
 <body>
@@ -23,7 +23,7 @@
 <section class="authentication login">
     <div class="main-header__logo">
         <a href="../..">
-            <img src="{% static 'images/TECNOPROM-LOGO.png' %}" alt="logo">
+            <img src="{% static 'product/images/TECNOPROM-LOGO.png' %}" alt="logo">
         </a>
     </div>
     <div class="form login">
@@ -68,18 +68,14 @@
     <div class="signup-banner">
         <div class="signup" id="for-singup-page">
             <div class="signup-content">
-                <img src="{% static 'images/banners/banner-ishlatilgan-uskuna.svg' %}" alt="logo" class="signup-logo">
+                <img src="{% static 'product/images/banners/banner-ishlatilgan-uskuna.svg' %}" alt="logo" class="signup-logo">
                 <div class="signup-text">
                     <p>{% translate "Don't have an account" %}?
                         <a href="{% url 'register' %}" id="toggleRegisterLink">{% translate "Signup" %}</a></p>
-
                 </div>
             </div>
-
         </div>
-
     </div>
-
 </section>
 
 <script>

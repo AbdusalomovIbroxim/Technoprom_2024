@@ -315,7 +315,8 @@
             categorySelect.dispatchEvent(new Event('change'));
 
             const imageName = button.getAttribute('data-image');
-            bannerImage.src = `../static/images/banners/${imageName}`;
+            {#bannerImage.src = `/public/product/images/banners/${imageName}`;#}
+            bannerImage.src = `/static/product/images/banners/${imageName}`;
 
         });
     });
