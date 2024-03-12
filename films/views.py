@@ -1,5 +1,5 @@
 import asyncio
-
+from django.shortcuts import get_object_or_404
 import emoji
 from cyrtranslit import to_cyrillic, to_latin
 from django.contrib import messages
@@ -17,6 +17,14 @@ from accounts.models import Message, User
 from .forms import FilmsForm, ProductFilterForm, SearchForm
 from .models import Products, SubCategories, Favorite, Tag
 from .utils import send_message_to_channel
+
+
+def get_product_with_subcategories(pk):
+    product = get_object_or_404(
+        Products.objects.select_related('category').prefetch_related('subcategories'),
+        pk=pk
+    )
+    return product
 
 
 class IndexView(ListView):
@@ -130,40 +138,47 @@ class ProductDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        user = self.request.user
+        user = None if self.request.user.is_anonymous else self.request.user
         film = self.object
-        product_author = Products.objects.get(pk=self.kwargs["pk"]).author
-        product_category = Products.objects.get(pk=self.kwargs["pk"]).category_id
-        product_sub_category = Products.objects.get(
-            pk=self.kwargs["pk"]
-        ).sub_category_id
+        product_author = film.author
+        film_pk = film.pk
+        product_category = film.category
+        product_subcategories = SubCategories.objects.filter(products=self.kwargs['pk'])
 
         if not self.request.user.is_anonymous:
             context["is_favorite"] = Favorite.objects.filter(
                 user=user, product_id=film
             ).exists()
         context["author_products"] = Products.objects.filter(
-            author_id=product_author
+            author=product_author
         ).order_by("-create_date")[:16]
+
         similar_products = Products.objects.filter(
-            category=product_category, sub_category=product_sub_category
-        ).order_by("-create_date")[:16]
+            category=product_category,
+            subcategories__in=product_subcategories
+        ).exclude(id=film_pk).order_by("-create_date")[:16]
 
         if len(similar_products) < 16:
             add = 16 - len(similar_products)
-            additional_products = Products.objects.filter(
-                category=product_category
-            ).exclude(id__in=[product.id for product in similar_products]).order_by("-create_date")[:add]
-            similar_products = list(similar_products) + list(additional_products)
-
-        if len(similar_products) < 16:
-            add = 16 - len(similar_products)
-            additional_products = Products.objects.filter(
-                sub_category=product_sub_category
-            ).exclude(id__in=[product.id for product in similar_products]).order_by("-create_date")[:add]
+            additional_products = Products.objects.exclude(
+                id__in=[product.id for product in similar_products]
+            ).order_by("-create_date")[:add]
             similar_products = list(similar_products) + list(additional_products)
 
         context["similar_products"] = similar_products
+
+        # similar_products = Products.objects.filter(
+        #     category__in=product_categories,
+        #     subcategories__in=product_subcategories
+        # ).exclude(id=film.id).order_by("-create_date")[:16]
+
+        # if len(similar_products) < 16:
+        #     add = 16 - len(similar_products)
+        #     additional_products = Products.objects.exclude(
+        #         id__in=[product.id for product in similar_products]).order_by("-create_date")[:add]
+        #     similar_products = list(similar_products) + list(additional_products)
+
+        # context["similar_products"] = similar_products
 
         return context
 
