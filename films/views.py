@@ -145,6 +145,8 @@ class ProductDetailView(DetailView):
         product_category = film.category
         product_subcategories = SubCategories.objects.filter(products=self.kwargs['pk'])
 
+        context["product_subcategories"] = product_subcategories.values_list()
+
         if not self.request.user.is_anonymous:
             context["is_favorite"] = Favorite.objects.filter(
                 user=user, product_id=film

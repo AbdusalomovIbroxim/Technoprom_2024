@@ -63,7 +63,11 @@
                             <a href="#">{{ product.country }}/</a>
                             <a href="#">{% if product.city %}{{ product.city }}/{% endif %}</a>
                             <a href="#">{{ product.category }}/</a>
-                            <a href="#">{{ product.sub_category }}/</a>
+                            {{ product_subcategories }}
+                            {#                            {% for product_subcategory in product_subcategories %}#}
+                            {#                                <a href="#">{{ product_sub_category }}/</a>#}
+                            {#                            {% endfor %}#}
+
                         </div>
                         <div class="product-tags">
                             {% for tag in product.tags.all %}
@@ -85,7 +89,6 @@
 
                     <div class="contact-the-seller">
 
-                        {#                        {% if product.author_id %}#}
                         <div class="author-info2">
 
                             <div class="author-foto">
@@ -93,8 +96,11 @@
                             </div>
 
                             <div class="author-data">
-                                <a href="{% url 'profile' product.author_id %}"
-                                   target="_blank">{{ product.author }}</a>
+                                {% if product.author_id %}
+
+                                    <a href="{% url 'profile' product.author_id %}"
+                                       target="_blank">{{ product.author }}</a>
+                                {% endif %}
                             </div>
 
                         </div>
@@ -261,7 +267,8 @@
                                         <div class="card__buy-content">
                                             <div class="category-info">
                                                 <div class="product-cat__image">
-                                                    <img src="{% static 'product/images/categories/1.svg' %}" alt="cat image">
+                                                    <img src="{% static 'product/images/categories/1.svg' %}"
+                                                         alt="cat image">
                                                 </div>
                                                 <a href="#">{{ product.category }}</a>
                                             </div>
@@ -364,7 +371,8 @@
                                         <div class="card__buy-content">
                                             <div class="category-info">
                                                 <div class="product-cat__image">
-                                                    <img src="{% static 'product/images/categories/1.svg' %}" alt="cat image">
+                                                    <img src="{% static 'product/images/categories/1.svg' %}"
+                                                         alt="cat image">
                                                 </div>
                                                 <a href="#">{{ product.category }}</a>
                                             </div>
