@@ -161,9 +161,13 @@ USE_TZ = True
 # settings.py
 
 STATIC_URL = "/static/"
+STATIC_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 MEDIA_URL = "/media/"
+MEDIA_DIRS = [os.path.join(BASE_DIR, "media"),
+              'home/ubuntu/website/Tecnoprom_2024/media/'
+              ]
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
