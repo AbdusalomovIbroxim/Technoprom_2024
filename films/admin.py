@@ -29,7 +29,7 @@ class CategoriesAdmin(admin.ModelAdmin):
 
 @admin.register(Products)
 class FilmsAdmin(admin.ModelAdmin):
-    list_display = ("title", "image", "create_date", "update_date", "is_published")
+    list_display = ("title", "create_date", "update_date", "is_published")
     list_filter = ("is_published",)
     search_fields = ("title",)
 

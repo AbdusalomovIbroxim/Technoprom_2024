@@ -238,16 +238,15 @@ class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
 
 class LogoutUserView(LogoutView):
     def get_next_page(self):
-        user = self.request.user
         messages.success(self.request, "Вы успешно вышли из аккаунта !")
         message = Message.objects.create(
-            sender=user,
-            message="Ваша учетная запись была успешно активирована.",
+            sender=self.request.user,
+            message="Вы успешно вышли из аккаунта !",
             created_at=timezone.now(),
         )
-
-        message.recipients.set([user])
-        return super().get_next_page()
+        message.recipients.set([self.request.user])
+        # return super().get_next_page()
+        return redirect('index')
 
 
 class MyAccountRedirectView(DetailView):

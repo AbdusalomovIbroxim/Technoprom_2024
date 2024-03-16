@@ -134,7 +134,7 @@ class FilmsForm(forms.ModelForm):
         )
 
     image = forms.ImageField(
-        widget=forms.FileInput(attrs={"class": "form-input", "accept": "image/*"}),
+        widget=forms.ClearableFileInput(attrs={"class": "form-input", "accept": "image/*", "multiple": True}),
         required=False,
         validators=[validate_image_size],
     )

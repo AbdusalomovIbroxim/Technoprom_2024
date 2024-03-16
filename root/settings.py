@@ -21,7 +21,7 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = os.getenv("DEBUG")
 # DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = ['*', "technoprom-jsqxx.ondigitalocean.app"]
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 SITE_ID = 2
@@ -170,6 +170,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_URL = "login"
 # LOGOUT_REDIRECT_URL = "/users/auth"
+LOGOUT_REDIRECT_URL = "/s"
 
 TOKEN = os.getenv("TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")

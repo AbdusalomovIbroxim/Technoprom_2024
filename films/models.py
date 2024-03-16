@@ -103,12 +103,12 @@ class Products(Model):  # Модель
 
     title = CharField("Наименование", max_length=100)
     description = CharField("Описание", max_length=900, null=True, blank=True)
-    image = ImageField(
-        upload_to="product-images/",
-        blank=True,
-        null=True,
-        default="product-images/image.png",
-    )
+    # image = ImageField(
+    #     upload_to="product-images/",
+    #     blank=True,
+    #     null=True,
+    #     default="product-images/image.png",
+    # )
     telephone = CharField("Номер телефона", max_length=30)
     telephone_view_count = PositiveBigIntegerField(
         "Количество просмотров номер телефона", default=0
@@ -150,6 +150,11 @@ class Products(Model):  # Модель
     class Meta:
         verbose_name = "Запрос"
         verbose_name_plural = "Запросы"
+
+
+class Image(Model):
+    image = ImageField(upload_to='product-images', default='product-images/default.jpg')
+    product = ForeignKey("films.Products", on_delete=CASCADE)
 
 
 class Favorite(Model):
