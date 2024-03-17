@@ -231,10 +231,10 @@ class ProductSaveView(CreateView):
         for image_obj in Image.objects.filter(product=film):
             image_paths.append(image_obj.image.url)
 
-        # if image_paths:
-        #     asyncio.run(send_message_to_channel(message, image_paths))
-        # else:
-        #     asyncio.run(send_message_to_channel(message))
+        if image_paths:
+            asyncio.run(send_message_to_channel(message, image_paths))
+        else:
+            asyncio.run(send_message_to_channel(message))
 
         user = self.request.user
         if not user.is_anonymous:

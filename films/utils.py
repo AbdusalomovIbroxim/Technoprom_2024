@@ -1,6 +1,6 @@
 import logging
 import os.path
-
+from root.settings import BASE_DIR
 import environ
 from aiogram import Bot, Dispatcher, types
 
@@ -54,13 +54,15 @@ async def send_message_to_channel(message, images=None):
         if isinstance(images, str):
             with open(images, "rb") as image_file:
                 await bot.send_photo(CHAT_ID, image_file, caption=formatted_message, reply_markup=inline_kb,
-                                         parse_mode="markdown")
+                                     parse_mode="markdown")
         # Если передан список изображений
         else:
+            media_group = []
             for image in images:
-                with open(image, "rb") as image_file:
-                    await bot.send_photo(CHAT_ID, image_file, caption=formatted_message, reply_markup=inline_kb,
-                                         parse_mode="markdown")
+                image_path = os.path.join(str(BASE_DIR), image)
+                with open(image_path, "rb") as image_file:
+                    media_group.append(types.InputMediaPhoto(media=image_file, caption=formatted_message))
+            await bot.send_media_group(chat_id=CHAT_ID, media=media_group)
     else:
         await bot.send_message(CHAT_ID, formatted_message, reply_markup=inline_kb, parse_mode="markdown")
 

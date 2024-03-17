@@ -236,18 +236,6 @@ class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
         return reverse_lazy("myaccount")
 
 
-# class LogoutUserView(LogoutView):
-#     get_success_url = reverse_lazy("index")
-
-# def get_next_page(self):
-#     messages.success(self.request, "Вы успешно вышли из аккаунта !")
-#     message = Message.objects.create(
-#         sender=self.request.user,
-#         message="Вы успешно вышли из аккаунта !",
-#         created_at=timezone.now(),
-#     )
-#     message.recipients.set([self.request.user])
-
 def logout_user(request):
     if request.method == 'GET' and request.user.is_authenticated:
         user = request.user
