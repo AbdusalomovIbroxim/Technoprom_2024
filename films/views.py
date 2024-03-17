@@ -15,7 +15,7 @@ from fuzzywuzzy import fuzz
 
 from accounts.models import Message, User
 from .forms import FilmsForm, ProductFilterForm, SearchForm
-from .models import Products, SubCategories, Favorite, Tag
+from .models import Products, SubCategories, Favorite, Tag, Image
 from .utils import send_message_to_channel
 
 
@@ -169,6 +169,9 @@ class ProductDetailView(DetailView):
 
         context["similar_products"] = similar_products
 
+        product_images = Image.objects.filter(product=self.kwargs['pk'])
+        context["product_images"] = product_images
+
         # similar_products = Products.objects.filter(
         #     category__in=product_categories,
         #     subcategories__in=product_subcategories
@@ -195,6 +198,7 @@ class ProductSaveView(CreateView):
         message = {}
         selected_tags = self.request.POST.getlist("tags")
         selected_subcategories = self.request.POST.getlist("subcategories")
+        images = self.request.FILES.getlist('images')
         if self.request.POST.get("form-name") == "sell":
             film.type = "sell"
             message["тип"] = "Продать"
@@ -210,27 +214,27 @@ class ProductSaveView(CreateView):
         if form.cleaned_data["is_price_negotiable"] or not form.cleaned_data["price"]:
             film.price = None
 
-        image = self.request.FILES.get("image")
-
-        if image:
-            film.image = image
-
         film.is_published = True
 
         for field_name, field_value in form.cleaned_data.items():
             message[field_name] = field_value
 
         film.save()
+        for image in images:
+            Image.objects.create(image=image, product=film)
+
         film.subcategories.set(selected_subcategories)
         film.tags.set(selected_tags)
 
         message["film_id"] = film.id
-        if image:
-            # asyncio.run(send_message_to_channel(message, film.image.path))
-            send_message_to_channel(message, film.image.path)
-        else:
-            # asyncio.run(send_message_to_channel(message))
-            send_message_to_channel(message)
+        image_paths = []
+        for image_obj in Image.objects.filter(product=film):
+            image_paths.append(image_obj.image.url)
+
+        # if image_paths:
+        #     asyncio.run(send_message_to_channel(message, image_paths))
+        # else:
+        #     asyncio.run(send_message_to_channel(message))
 
         user = self.request.user
         if not user.is_anonymous:

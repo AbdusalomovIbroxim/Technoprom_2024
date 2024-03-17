@@ -41,15 +41,21 @@
                     <div class="product-foto">
                         <div class="slider-container">
                             <div class="slider-track">
-                                {#                                {% for photo in product.photos.all %}#}
-                                <div class="slide">
-                                    <img src="{{ product.image.url }}" alt="Image {{ forloop.counter }}">
-                                </div>
+                                {#                                {{ product_images }}#}
+                                {#                                {% for photo in product_images %}#}
+                                {#                                    <div class="slide">#}
+                                {#                                        <img src="{{ photo.image.url }}" alt="Image {{ forloop.counter }}">#}
+                                {#                                    </div>#}
                                 {#                                {% endfor %}#}
+                                {% for photo in product.image_set.all %}
+                                    <div class="slide">
+                                        <img src="{{ photo.image.url }}" alt="Image {{ forloop.counter }}">
+                                    </div>
+                                {% endfor %}
                             </div>
                         </div>
 
-                        {% if product.photos.count > 1 %}
+                        {% if product_images.count > 1 %}
                             <div class="slider-controls">
                                 <button class="prev-button"><i class="fa-solid fa-angle-left"></i></button>
                                 <button class="next-button"><i class="fa-solid fa-angle-right"></i></button>

@@ -3,7 +3,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext as _
 
-from .models import Products, City, Country, Categories, SubCategories, Tag
+from .models import Products, City, Country, Categories, SubCategories, Tag, Image
 
 
 def validate_image_size(value):
@@ -25,7 +25,6 @@ class FilmsForm(forms.ModelForm):
             "telegram",
             "country",
             "city",
-            "image",
             "price",
             "is_price_negotiable",
         ]
@@ -133,12 +132,6 @@ class FilmsForm(forms.ModelForm):
             _("Неверный номер телефона или имя пользователя в Telegram")
         )
 
-    image = forms.ImageField(
-        widget=forms.ClearableFileInput(attrs={"class": "form-input", "accept": "image/*", "multiple": True}),
-        required=False,
-        validators=[validate_image_size],
-    )
-
     country = forms.ModelChoiceField(
         label="",
         queryset=Country.objects.all(),
@@ -167,6 +160,24 @@ class FilmsForm(forms.ModelForm):
         ),
         required=False,
     )
+
+    # image1 = forms.ImageField(
+    #     label="Фотография 1",
+    #     widget=forms.FileInput(attrs={"class": "form-input", "accept": "image/*"}),
+    #     required=False,
+    # )
+    #
+    # image2 = forms.ImageField(
+    #     label="Фотография 2",
+    #     widget=forms.FileInput(attrs={"class": "form-input", "accept": "image/*"}),
+    #     required=False,
+    # )
+    #
+    # image3 = forms.ImageField(
+    #     label="Фотография 3",
+    #     widget=forms.FileInput(attrs={"class": "form-input", "accept": "image/*"}),
+    #     required=False,
+    # )
 
 
 class ProductFilterForm(forms.ModelForm):
@@ -203,6 +214,12 @@ class ProductFilterForm(forms.ModelForm):
         queryset=Tag.objects.all(),
         widget=forms.CheckboxSelectMultiple,
     )
+
+    def clean_tags(self):
+        tags = self.cleaned_data.get('tags')
+        if not tags:
+            raise forms.ValidationError(_('Выберите хотя бы один тег.'))
+        return tags
 
     country = forms.ModelChoiceField(
         label="",

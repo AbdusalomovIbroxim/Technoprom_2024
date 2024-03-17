@@ -118,12 +118,22 @@
                         <label class="form-label">{% translate "Фотографии" %}</label>
                         <label class="form-label"
                                style="font-size: 16px; padding-left: 15px">{% translate " (Eng optimal product rasmini tanlang)" %}</label>
-                        {#                        <p class="form-label"></p>#}
                     </div>
-                    {#                    <input type="file" name="image" class="form-input" id="id_image">#}
                     <div class="image-form">
-                        {{ form.image }}
+                        <label for="images" class="custom-file-upload">Выберите фотографии</label>
+                        <input type="file" name="images" id="images" multiple>
                     </div>
+                    <br>
+                    <div class="image-form">
+                        <label for="images" class="custom-file-upload">Выберите фотографии</label>
+                        <input type="file" name="images" id="images" multiple>
+                    </div>
+                    <br>
+                    <div class="image-form">
+                        <label for="images" class="custom-file-upload">Выберите фотографии</label>
+                        <input type="file" name="images" id="images" multiple>
+                    </div>
+
                     {#                    <button type="button" id="reset-image" class="reset-image">Сбросить фото</button>#}
                 </div>
                 <div class="form-group" id="price-group">

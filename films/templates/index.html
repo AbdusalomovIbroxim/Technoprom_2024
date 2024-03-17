@@ -103,9 +103,11 @@
                     <div class="card__sell card-color">
                         <div class="card__buy-content">
                             <a class="dont-text-decoration" href="{% url 'product-detail' sell.pk %}">
-                                <div class="card__sell-image">
-                                    <img src="{{ sell.image.url }}" alt="Product Image">
-                                </div>
+                                {% if sell.image_set.first %}
+                                    <div class="card__sell-image">
+                                        <img src="{{ sell.image_set.first.image.url }}" alt="Product Image">
+                                    </div>
+                                {% endif %}
                                 <div class="title">{{ sell.title }}</div>
                             </a>
 
@@ -158,57 +160,6 @@
                             </div>
                         </div>
                     </div>
-
-                    {#                    <div class="card__sell card-color">#}
-                    {#                        <div class="card__buy-content">#}
-                    {#                            <a class="dont-text-decoration" href="{% url 'product-detail' sell.pk %}">#}
-                    {#                                <div class="card__sell-image">#}
-                    {#                                    <img src="{{ sell.image.url }}" alt="Product Image">#}
-                    {#                                </div>#}
-                    {#                                <div class="title">{{ sell.title }}</div>#}
-                    {#                            </a>#}
-                    {##}
-                    {#                            <div class="product-data">#}
-                    {#                                {% if sell.is_top_film %}#}
-                    {#                                    <span style="padding: 3px 10px; font-size: 12px; background-color: #4ac1f7; border-radius: 5px;">top</span>#}
-                    {#                                {% endif %}#}
-                    {#                                <div class="flags">#}
-                    {#                                    <a style="text-decoration: none; color: black;"#}
-                    {#                                       href="{% url 'product-detail' sell.pk %}">#}
-                    {#                                        <span class="country">{{ sell.country }}</span>#}
-                    {#                                    </a>#}
-                    {#                                </div>#}
-                    {#                                <div class="date">#}
-                    {#                                    <a style="text-decoration: none; color: black;"#}
-                    {#                                       href="{% url 'product-detail' sell.pk %}">#}
-                    {#                                        <span class="full-date">{{ sell.create_date }}</span>#}
-                    {#                                    </a>#}
-                    {#                                </div>#}
-                    {#                                <div class="like-and-more">#}
-                    {#                                    {% if sell.price %}#}
-                    {#                                        <a href="{% url 'product-detail' sell.pk %}">#}
-                    {#                                            {{ sell.price|floatformat:0|intcomma }}#}
-                    {#                                            сум#}
-                    {#                                        </a>#}
-                    {#                                    {% else %}#}
-                    {#                                        <a href="{% url 'product-detail' sell.pk %}">#}
-                    {#                                            Договорный#}
-                    {#                                        </a>#}
-                    {#                                    {% endif %}#}
-                    {##}
-                    {#                                    <div class="svg-icon-container">#}
-                    {#                                        {% if user.is_authenticated %}#}
-                    {#                                            <span class="add-to-favorites" data-product-id="{{ sell.pk }}"#}
-                    {#                                                  data-url="{% url 'add_to_favorites' sell.pk %}">#}
-                    {#                                                <i class="fa-{% if sell.pk in in_favorite %}solid{% else %}regular{% endif %} fa-heart"></i>#}
-                    {#                                            </span>#}
-                    {#                                        {% endif %}#}
-                    {#                                    </div>#}
-                    {#                                </div>#}
-                    {#                            </div>#}
-                    {#                        </div>#}
-                    {#                    </div>#}
-
                 {% endfor %}
 
             </div>
