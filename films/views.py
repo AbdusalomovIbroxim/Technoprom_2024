@@ -96,8 +96,8 @@ class IndexView(ListView):
             film.subcategories.set(selected_subcategories)
             film.tags.set(selected_tags)
             message["film_id"] = film.id
-            # asyncio.run(send_message_to_channel(message))
-            send_message_to_channel(message)
+            asyncio.run(send_message_to_channel(message))
+            # send_message_to_channel(message)
             messages.success(request, "Отправлено на модерацию")
             return redirect("index")
         else:
