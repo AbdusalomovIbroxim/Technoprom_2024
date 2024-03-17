@@ -21,7 +21,7 @@ from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
-from django.contrib.auth import login, get_user_model
+from django.contrib.auth import login, get_user_model, logout
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -236,17 +236,30 @@ class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
         return reverse_lazy("myaccount")
 
 
-class LogoutUserView(LogoutView):
-    def get_next_page(self):
-        messages.success(self.request, "Вы успешно вышли из аккаунта !")
+# class LogoutUserView(LogoutView):
+#     get_success_url = reverse_lazy("index")
+
+# def get_next_page(self):
+#     messages.success(self.request, "Вы успешно вышли из аккаунта !")
+#     message = Message.objects.create(
+#         sender=self.request.user,
+#         message="Вы успешно вышли из аккаунта !",
+#         created_at=timezone.now(),
+#     )
+#     message.recipients.set([self.request.user])
+
+def logout_user(request):
+    if request.method == 'GET' and request.user.is_authenticated:
+        user = request.user
+        logout(request)
         message = Message.objects.create(
-            sender=self.request.user,
+            sender=user,
             message="Вы успешно вышли из аккаунта !",
             created_at=timezone.now(),
         )
-        message.recipients.set([self.request.user])
-        # return super().get_next_page()
-        return redirect('index')
+        message.recipients.set([user])
+        messages.success(request, "Вы успешно вышли из аккаунта!")
+    return redirect('index')
 
 
 class MyAccountRedirectView(DetailView):

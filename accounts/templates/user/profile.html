@@ -38,11 +38,6 @@
                     <div class="user-profile__foto">
                         <img src="{{ profile.logo.url }}" alt="profile foto">
                     </div>
-                    <div class="logout-profile-btn">
-                        <a href="{% url 'logout' %}" class="dont-text-decoration">
-                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                        </a>
-                    </div>
                 </div>
                 <div class="profile-info">
                     <div class="block-1">
@@ -148,6 +143,11 @@
                     <div class="all_views-open-number">
                         <span>{% translate "like" %}: {{ count_all_view_telephone_product }}</span>
                     </div>
+                </div>
+                <div class="logout-profile-btn" style="display:flex; justify-content: flex-end;">
+                    <a href="{% url 'logout' %}" class="dont-text-decoration">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </a>
                 </div>
             </div>
         {% endif %}
