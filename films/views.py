@@ -96,8 +96,8 @@ class IndexView(ListView):
             film.subcategories.set(selected_subcategories)
             film.tags.set(selected_tags)
             message["film_id"] = film.id
-            asyncio.run(send_message_to_channel(message))
-            # send_message_to_channel(message)
+            # asyncio.run(send_message_to_channel(message))
+            send_message_to_channel(message)
             messages.success(request, "Отправлено на модерацию")
             return redirect("index")
         else:
@@ -232,9 +232,11 @@ class ProductSaveView(CreateView):
             image_paths.append(image_obj.image.url)
 
         if image_paths:
-            asyncio.run(send_message_to_channel(message, image_paths))
+            # asyncio.run(send_message_to_channel(message, image_paths))
+            send_message_to_channel(message, image_paths)
         else:
-            asyncio.run(send_message_to_channel(message))
+            # asyncio.run(send_message_to_channel(message))
+            send_message_to_channel(message)
 
         user = self.request.user
         if not user.is_anonymous:
