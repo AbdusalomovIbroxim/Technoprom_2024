@@ -1,9 +1,8 @@
 import phonenumbers
 from django import forms
 from django.core.exceptions import ValidationError
-from django.utils.translation import gettext as _
 
-from .models import Products, City, Country, Categories, SubCategories, Tag, Image
+from .models import Products, City, Country, Categories, SubCategories, Tag
 
 
 def validate_image_size(value):
@@ -49,7 +48,7 @@ class FilmsForm(forms.ModelForm):
         widget=forms.Textarea(
             attrs={
                 "class": "form-textarea",
-                "placeholder": _("Введите описание"),
+                "placeholder": "Введите описание",
                 "rows": "4",
             }
         ),
@@ -58,7 +57,7 @@ class FilmsForm(forms.ModelForm):
 
     category = forms.ModelChoiceField(
         label="",
-        queryset=Categories.objects.filter(is_linked=False),
+        queryset=Categories.objects.order_by("name_uz"),
         empty_label="Выберите категорию",
         to_field_name="id",
         widget=forms.Select(
@@ -84,7 +83,7 @@ class FilmsForm(forms.ModelForm):
 
     telephone = forms.CharField(
         widget=forms.TextInput(
-            attrs={"class": "form-input", "placeholder": _("+998 66 666 66 66")}
+            attrs={"class": "form-input", "placeholder": "+998 66 666 66 66"}
         ),
         required=False,
     )
@@ -94,23 +93,23 @@ class FilmsForm(forms.ModelForm):
         try:
             phone_number = phonenumbers.parse(telephone, None)
             if not phonenumbers.is_valid_number(phone_number):
-                raise ValidationError(_("Некорректный номер телефона"))
+                raise ValidationError("Некорректный номер телефона")
         except phonenumbers.NumberParseException:
-            raise ValidationError(_("Некорректный номер телефона"))
+            raise ValidationError("Некорректный номер телефона")
         return telephone
 
     telegram = forms.CharField(
         widget=forms.TextInput(
             attrs={
                 "class": "form-input",
-                "placeholder": _("+998666666666 или @имя пользователя"),
+                "placeholder": "+998666666666 или @имя пользователя",
             }
         ),
         error_messages={
-            "required": _("Это поле обязательно для заполнения."),
-            "invalid": _(
+            "required": "Это поле обязательно для заполнения.",
+            "invalid":
                 "Пожалуйста, введите правильный номер телефона или имя пользователя в Telegram."
-            ),
+            ,
         },
         required=False,
     )
@@ -129,7 +128,8 @@ class FilmsForm(forms.ModelForm):
             return telegram
 
         raise ValidationError(
-            _("Неверный номер телефона или имя пользователя в Telegram")
+            "Неверный номер телефона или имя пользователя в Telegram"
+
         )
 
     country = forms.ModelChoiceField(
@@ -151,12 +151,11 @@ class FilmsForm(forms.ModelForm):
         queryset=City.objects.all(),
         empty_label="Выберите город",
         to_field_name="id",
-        widget=forms.Select(
-            attrs={
-                "class": "form-select",
-                "id": "id_city",
-                "name": "city",
-            }
+        widget=forms.Select(attrs={
+            "class": "form-select",
+            "id": "id_city",
+            "name": "city",
+        }
         ),
         required=False,
     )
@@ -218,7 +217,7 @@ class ProductFilterForm(forms.ModelForm):
     def clean_tags(self):
         tags = self.cleaned_data.get('tags')
         if not tags:
-            raise forms.ValidationError(_('Выберите хотя бы один тег.'))
+            raise forms.ValidationError('Выберите хотя бы один тег.')
         return tags
 
     country = forms.ModelChoiceField(

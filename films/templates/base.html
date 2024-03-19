@@ -202,6 +202,9 @@
         const subcategoryCheckboxes = $('#subcategories-checkboxes');
         const tagsGroup = $('#tags-group');
         const tagsCheckboxes = $('#tags-checkboxes');
+        const pathParts = window.location.pathname.split('/');
+        const language = pathParts[1] ? pathParts[1] : 'ru';
+
 
         function loadSubcategories() {
             const selectedCategoryId = categorySelect.val();
@@ -212,7 +215,7 @@
                 subcategoryGroup.show();
 
                 $.ajax({
-                    url: `/related_to_it/?category_id=${selectedCategoryId}`,
+                    url: `/${language}/related_to_it/?category_id=${selectedCategoryId}`,
                     dataType: 'json',
                     success: function (data) {
                         console.log(data.subcategories);
@@ -235,6 +238,7 @@
                 });
             } else {
                 subcategoryGroup.hide();
+                tagsGroup.hide()
             }
         }
 
@@ -257,7 +261,7 @@
             if (selectedSubcategories.length > 0) {
                 selectedSubcategories.forEach(function (subcategoryId) {
                     $.ajax({
-                        url: `/related_to_it/?subcategory_id=${subcategoryId}`,
+                        url: `/${language}/related_to_it/?subcategory_id=${subcategoryId}`,
                         dataType: 'json',
                         success: function (data) {
                             console.log(`Tags for Subcategory ${subcategoryId}:`, data.tags);

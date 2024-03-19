@@ -8,22 +8,13 @@ class CountryAdmin(admin.ModelAdmin):
     list_display = ("name", "slug")
 
 
+admin.site.register(Categories)
+admin.site.register(SubCategories)
 admin.site.register(Tag)
 
 
 @admin.register(City)
 class CityAdmin(admin.ModelAdmin):
-    list_display = ("name", "slug")
-
-
-@admin.register(Categories)
-class CategoriesAdmin(admin.ModelAdmin):
-    list_display = ("name", "slug")
-
-
-#
-@admin.register(SubCategories)
-class CategoriesAdmin(admin.ModelAdmin):
     list_display = ("name", "slug")
 
 

@@ -9,6 +9,7 @@ from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.utils import timezone
+from django.utils.translation import get_language
 from django.views import View
 from django.views.generic import ListView, CreateView, DetailView, UpdateView
 from fuzzywuzzy import fuzz
@@ -487,20 +488,42 @@ def new_filter(
 
 
 def related_to_it(request):
+    preferred_language = get_language()
     category_id = request.GET.get("category_id", None)
     subcategory_id = request.GET.get("subcategory_id", None)
 
     sub_categories = {}
+    tags = {}
+
     if category_id:
         subcategories = SubCategories.objects.filter(category_id=category_id).all()
-        sub_categories = {
-            subcategory.id: subcategory.name for subcategory in subcategories
-        }
+        if preferred_language == 'en':
+            sub_categories = {
+                subcategory.id: subcategory.name_en for subcategory in subcategories
+            }
+        elif preferred_language == 'ru':
+            sub_categories = {
+                subcategory.id: subcategory.name_ru for subcategory in subcategories
+            }
+        elif preferred_language == 'uz':
+            sub_categories = {
+                subcategory.id: subcategory.name_uz for subcategory in subcategories
+            }
 
-    tags = {}
     if subcategory_id:
-        tags_query = Tag.objects.filter(subcategory=subcategory_id)
-        tags = {tag.id: tag.name for tag in tags_query}
+        tags_all = Tag.objects.filter(subcategory=subcategory_id).all()
+        if preferred_language == 'en':
+            tags = {
+                tag.id: tag.name_en for tag in tags_all
+            }
+        elif preferred_language == 'ru':
+            tags = {
+                tag.id: tag.name_ru for tag in tags_all
+            }
+        elif preferred_language == 'uz':
+            tags = {
+                tag.id: tag.name_uz for tag in tags_all
+            }
 
     return JsonResponse({"subcategories": sub_categories, "tags": tags})
 

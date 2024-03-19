@@ -1,6 +1,5 @@
 from django.contrib.auth import get_user_model
 
-# from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db.models import (
     Model,
     CharField,
@@ -21,38 +20,44 @@ from django.urls import reverse_lazy
 
 class Categories(Model):
     slug = SlugField(unique=True)
-    name = CharField("Категория", max_length=50)
+    name_en = CharField("Category (English)", max_length=50, default="")
+    name_ru = CharField("Категория (Русский)", max_length=50, default="")
+    name_uz = CharField("Kategoriya (O'zbek)", max_length=50, default="")
     is_linked = BooleanField(default=False)
 
     def __str__(self):
-        return self.name
+        return self.name_en
 
     def get_absolute_url(self):
         return reverse_lazy("category_detail", kwargs={"slug": self.slug})
 
     class Meta:
-        verbose_name = "Категория"
-        verbose_name_plural = "Категории"
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
 
 
 class SubCategories(Model):
     slug = SlugField(unique=True)
     category = ForeignKey(Categories, on_delete=CASCADE)
-    name = CharField("Субкатегория", max_length=100)
+    name_en = CharField("Subcategory (English)", max_length=100, default="")
+    name_ru = CharField("Подкатегория (Русский)", max_length=100, default="")
+    name_uz = CharField("Subkategoriya (O'zbek)", max_length=100, default="")
 
     def __str__(self):
-        return self.name
+        return self.name_en
 
     def get_absolute_url(self):
         return reverse_lazy("subcategory_detail", kwargs={"slug": self.slug})
 
     class Meta:
-        verbose_name = "Субкатегория"
-        verbose_name_plural = "Субкатегории"
+        verbose_name = "Subcategory"
+        verbose_name_plural = "Subcategories"
 
 
 class Tag(Model):
-    name = CharField(max_length=255, unique=True)
+    name_en = CharField("Tag Name (English)", max_length=255, unique=True, default="")
+    name_ru = CharField("Имя тега (Русский)", max_length=255, unique=True, default="")
+    name_uz = CharField("Tag nomi (O'zbek)", max_length=255, unique=True, default="")
     category = ForeignKey(
         Categories, on_delete=CASCADE, blank=True, null=True, related_name="tags"
     )
@@ -61,7 +66,7 @@ class Tag(Model):
     )
 
     def __str__(self):
-        return self.name
+        return self.name_en
 
 
 class Country(Model):

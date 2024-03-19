@@ -508,6 +508,7 @@ body {
 /*  Checkbox --------------------------------------------------*/
 
 
+#subcategories-checkboxes,
 #tags-checkboxes {
     display: flex;
     flex-wrap: wrap;
@@ -570,6 +571,7 @@ body {
 
 
 /* Стили для формы изображения */
+
 #image-group {
     margin-top: 10px; /* Расстояние сверху */
 }
