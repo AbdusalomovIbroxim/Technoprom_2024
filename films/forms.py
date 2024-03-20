@@ -102,7 +102,7 @@ class FilmsForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={
                 "class": "form-input",
-                "placeholder": "+998666666666 или @имя пользователя",
+                "placeholder": "t.me/+",
             }
         ),
         error_messages={
