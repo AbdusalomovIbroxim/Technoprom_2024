@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 import environ
 from django.utils.translation import gettext_lazy as _
-import dj_database_url
+# import dj_database_url
 
 # from django.utils.translation import gettext as _
 
