@@ -25,21 +25,22 @@
                 </a>
             </div>
             <div class="main-navigations">
-                {#                <nav class="main-navigation">#}
-                {#                    <a href="#" class="main-navigation__button">#}
-                {#                        {% translate "промышленность" %}#}
-                {#                        <img src="{% static 'images/at.png' %}" class="img__categories" alt="img for categories">#}
-                {#                    </a>#}
-                {##}
-                {#                    <ul class="main-navigation__items">#}
-                {#                        <li class="main-navigation__item"><a href="#">{% translate "Пластик" %}</a></li>#}
-                {#                        <li class="main-navigation__item"><a href="#">{% translate "Упаковка" %}</a></li>#}
-                {#                        <li class="main-navigation__item"><a href="#">{% translate "Текстиль" %}</a></li>#}
-                {#                        <li class="main-navigation__item"><a href="#">{% translate "Еда" %}</a></li>#}
-                {#                        <li class="main-navigation__item"><a href="#">{% translate "Агро" %}</a></li>#}
-                {#                        <li class="main-navigation__item"><a href="#">{% translate "Металл" %}</a></li>#}
-                {#                    </ul>#}
-                {#                </nav>#}
+                <nav class="main-navigation">
+                    <a href="#" class="main-navigation__button">
+                        {% translate "промышленность" %}
+                        <img src="{% static 'product/images/at.png' %}" class="img__categories"
+                             alt="img for categories">
+                    </a>
+
+                    <ul class="main-navigation__items">
+                        <li class="main-navigation__item"><a href="#">{% translate "Пластик" %}</a></li>
+                        <li class="main-navigation__item"><a href="#">{% translate "Упаковка" %}</a></li>
+                        <li class="main-navigation__item"><a href="#">{% translate "Текстиль" %}</a></li>
+                        <li class="main-navigation__item"><a href="#">{% translate "Еда" %}</a></li>
+                        <li class="main-navigation__item"><a href="#">{% translate "Агро" %}</a></li>
+                        <li class="main-navigation__item"><a href="#">{% translate "Металл" %}</a></li>
+                    </ul>
+                </nav>
 
 
                 <nav class="main-navigation">
@@ -56,7 +57,8 @@
                                 {#                            </p>#}
                             </li>
                             <li class="main-navigation__item">
-                                <img src="{% static 'product/images/categories/ishlatilgan-uskunalar-24px.png' %}" alt="">
+                                <img src="{% static 'product/images/categories/ishlatilgan-uskunalar-24px.png' %}"
+                                     alt="">
                                 <button name="category" value="2">
                                     {% translate "Б/у оборудование" %}
                                 </button>
