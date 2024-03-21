@@ -48,7 +48,7 @@ class FilmsForm(forms.ModelForm):
         widget=forms.Textarea(
             attrs={
                 "class": "form-textarea",
-                "placeholder": "Введите описание",
+                "placeholder": "",
                 "rows": "4",
             }
         ),
@@ -58,7 +58,7 @@ class FilmsForm(forms.ModelForm):
     category = forms.ModelChoiceField(
         label="",
         queryset=Categories.objects.all(),
-        empty_label="Выберите категорию",
+        empty_label="",
         to_field_name="id",
         widget=forms.Select(
             attrs={
