@@ -1,0 +1,14 @@
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <!-- Первый столбец -->
+    <circle cx="6" cy="6" r="2" fill="black" stroke-opacity="0" stroke-width="0"/>
+    <circle cx="6" cy="12" r="2" fill="black" stroke-opacity="0" stroke-width="0"/>
+    <circle cx="6" cy="18" r="2" fill="black" stroke-opacity="0" stroke-width="0"/>
+    <!-- Второй столбец -->
+    <circle cx="12" cy="6" r="2" fill="black" stroke-opacity="0" stroke-width="0"/>
+    <circle cx="12" cy="12" r="2" fill="black" stroke-opacity="0" stroke-width="0"/>
+    <circle cx="12" cy="18" r="2" fill="black" stroke-opacity="0" stroke-width="0"/>
+    <!-- Третий столбец -->
+    <circle cx="18" cy="6" r="2" fill="black" stroke-opacity="0" stroke-width="0"/>
+    <circle cx="18" cy="12" r="2" fill="black" stroke-opacity="0" stroke-width="0"/>
+    <circle cx="18" cy="18" r="2" fill="black" stroke-opacity="0" stroke-width="0"/>
+</svg>
