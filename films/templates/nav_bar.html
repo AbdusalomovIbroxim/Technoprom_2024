@@ -46,7 +46,10 @@
                 <nav class="main-navigation">
                     <form action="{% url "product-list" %}" method="post">
                         {% csrf_token %}
-                        <span class="main-navigation__button">{% translate "направления" %}</span>
+                        <span class="main-navigation__button">{% translate "направления" %}
+                        <img src="{% static 'product/images/directions.svg' %}" class="img__categories"
+                             alt="img for categories" style="top: 0; width: 18px;">
+                        </span>
                         <ul class="main-navigation__items">
                             <li class="main-navigation__item">
                                 {#                            <p>#}
