@@ -51,7 +51,13 @@ class SubCategories(Model):
     name_uz = CharField("Subkategoriya (O'zbek)", max_length=100, default="")
 
     def __str__(self):
-        return self.name_en
+        lang = get_language()
+        if lang == "uz":
+            return self.name_uz
+        if lang == "ru":
+            return self.name_ru
+        if lang == "en":
+            return self.name_en
 
     def get_absolute_url(self):
         return reverse_lazy("subcategory_detail", kwargs={"slug": self.slug})
@@ -73,7 +79,13 @@ class Tag(Model):
     )
 
     def __str__(self):
-        return self.name_en
+        lang = get_language()
+        if lang == "uz":
+            return self.name_uz
+        if lang == "ru":
+            return self.name_ru
+        if lang == "en":
+            return self.name_en
 
 
 class Country(Model):
@@ -125,7 +137,7 @@ class Products(Model):  # Модель
     telephone_view_count = PositiveBigIntegerField(
         "Количество просмотров номер телефона", default=0
     )
-    telegram = CharField("Телеграмм номер", max_length=30, blank=True)
+    telegram = CharField("Телеграмм номер", max_length=100, blank=True, null=True)
     email = CharField("Емайл адрес", max_length=100)
     view_count = PositiveBigIntegerField("Количество просмотров", default=0)
     create_date = DateTimeField("Дата создания", auto_now_add=True)

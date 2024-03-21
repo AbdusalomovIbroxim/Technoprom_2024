@@ -5,7 +5,6 @@ import django.utils.timezone
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('films', '0007_films_image'),
     ]
@@ -14,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='films',
             name='telegram',
-            field=models.CharField(default=django.utils.timezone.now, max_length=30, verbose_name='Телеграмм номер'),
+            field=models.CharField(default="", max_length=31, verbose_name='Телеграмм номер'),
             preserve_default=False,
         ),
     ]

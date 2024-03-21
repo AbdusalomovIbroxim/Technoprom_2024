@@ -1,4 +1,6 @@
+from django import forms
 from django.contrib import admin
+from django.contrib.admin.widgets import FilteredSelectMultiple
 
 from .models import Categories, Products, SubCategories, Country, City, Tag
 
@@ -10,7 +12,19 @@ class CountryAdmin(admin.ModelAdmin):
 
 admin.site.register(Categories)
 admin.site.register(SubCategories)
-admin.site.register(Tag)
+
+
+# admin.site.register(Tag)
+
+
+class TagAdminForm(forms.ModelForm):
+    class Meta:
+        model = Tag
+        fields = '__all__'
+        widgets = {
+            'category': FilteredSelectMultiple("Categories", is_stacked=False),
+            'subcategory': FilteredSelectMultiple("Subcategories", is_stacked=False),
+        }
 
 
 @admin.register(City)

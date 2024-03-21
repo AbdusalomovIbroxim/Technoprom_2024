@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 import environ
 from django.utils.translation import gettext_lazy as _
+
 # import dj_database_url
 
 # from django.utils.translation import gettext as _
@@ -138,7 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = "ru"
+LANGUAGE_CODE = "en"
 
 LANGUAGES = [
     ("en", _("English")),
@@ -170,7 +171,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_URL = "login"
 # LOGOUT_REDIRECT_URL = "/users/auth"
-LOGOUT_REDIRECT_URL = "/s"
+LOGOUT_REDIRECT_URL = "/"
 
 TOKEN = os.getenv("TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
