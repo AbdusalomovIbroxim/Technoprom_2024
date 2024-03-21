@@ -467,6 +467,12 @@
         const pathParts = window.location.pathname.split('/');
         const language = pathParts[1] ? pathParts[1] : 'ru';
 
+        const languageText = {
+            'ru': 'Выберите категорию',
+            'en': 'Select a category',
+            'uz': 'Ketegoriyani tanlang',
+        };
+        categorySelect.find('option[value=""]').text(languageText[language]);
 
         function loadSubcategories() {
             const selectedCategoryId = categorySelect.val();
