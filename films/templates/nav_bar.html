@@ -47,17 +47,15 @@
                     <form action="{% url "product-list" %}" method="post">
                         {% csrf_token %}
                         <span class="main-navigation__button">{% translate "направления" %}
-                        <img src="{% static 'product/images/directions.svg' %}" class="img__categories"
+                        <img src="{% static 'product/images/directions.png' %}" class="img__categories"
                              alt="img for categories" style="top: 0; width: 18px;">
                         </span>
                         <ul class="main-navigation__items">
                             <li class="main-navigation__item">
-                                {#                            <p>#}
                                 <img src="{% static 'product/images/categories/yangi-uskunalar-24px.png' %}" alt="">
                                 <button name="category" value="1">
                                     {% translate "Новое оборудование" %}
                                 </button>
-                                {#                            </p>#}
                             </li>
                             <li class="main-navigation__item">
                                 <img src="{% static 'product/images/categories/ishlatilgan-uskunalar-24px.png' %}"
