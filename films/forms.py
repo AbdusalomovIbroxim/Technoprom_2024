@@ -57,7 +57,7 @@ class FilmsForm(forms.ModelForm):
 
     category = forms.ModelChoiceField(
         label="",
-        queryset=Categories.objects.order_by("name_uz"),
+        queryset=Categories.objects.all(),
         empty_label="Выберите категорию",
         to_field_name="id",
         widget=forms.Select(

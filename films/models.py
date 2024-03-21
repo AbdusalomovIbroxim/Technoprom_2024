@@ -16,6 +16,7 @@ from django.db.models import (
     FloatField,
 )
 from django.urls import reverse_lazy
+from django.utils.translation.trans_real import get_language
 
 
 class Categories(Model):
@@ -26,7 +27,13 @@ class Categories(Model):
     is_linked = BooleanField(default=False)
 
     def __str__(self):
-        return self.name_en
+        lang = get_language()
+        if lang == "uz":
+            return self.name_uz
+        if lang == "ru":
+            return self.name_ru
+        if lang == "en":
+            return self.name_en
 
     def get_absolute_url(self):
         return reverse_lazy("category_detail", kwargs={"slug": self.slug})
