@@ -440,6 +440,31 @@
         const subcategoryCheckboxes = $('#subcategories-checkboxes');
         const tagsGroup = $('#tags-group');
         const tagsCheckboxes = $('#tags-checkboxes');
+        const pathParts = window.location.pathname.split('/');
+        const language = pathParts[1] ? pathParts[1] : 'ru';
+        const placeholderText = {
+            'ru': {
+                'title': "Я ищу термопластичную машину",
+                'description': "должен производить продукт по 150 гр.",
+            },
+            'en': {
+                'title': "I'm looking for a thermoplastic machine",
+                'description': 'Enter description',
+            },
+            "uz": {
+                'title': "Termoplastavtomat qidiryapman",
+                'description': "150 gr lik mahsulot chiqarishi kerak",
+            }
+        };
+        const languageText = {
+            'ru': 'Выберите категорию',
+            'en': 'Select a category',
+            'uz': 'Ketegoriyani tanlang',
+        };
+
+        $('#id_title').attr('placeholder', placeholderText[language]['title']);
+        $('#id_description').attr('placeholder', placeholderText[language]['description']);
+        categorySelect.find('option[value=""]').text(languageText[language]);
 
         function loadSubcategories() {
             const selectedCategoryId = categorySelect.val();
@@ -448,9 +473,9 @@
 
             if (selectedCategoryId) {
                 subcategoryGroup.show();
-
+                tagsGroup.hide()
                 $.ajax({
-                    url: `/related_to_it/?category_id=${selectedCategoryId}`,
+                    url: `/${language}/related_to_it/?category_id=${selectedCategoryId}`,
                     dataType: 'json',
                     success: function (data) {
                         console.log(data.subcategories);
@@ -473,6 +498,7 @@
                 });
             } else {
                 subcategoryGroup.hide();
+                tagsGroup.hide()
             }
         }
 
@@ -495,7 +521,7 @@
             if (selectedSubcategories.length > 0) {
                 selectedSubcategories.forEach(function (subcategoryId) {
                     $.ajax({
-                        url: `/related_to_it/?subcategory_id=${subcategoryId}`,
+                        url: `/${language}/related_to_it/?subcategory_id=${subcategoryId}`,
                         dataType: 'json',
                         success: function (data) {
                             console.log(`Tags for Subcategory ${subcategoryId}:`, data.tags);
