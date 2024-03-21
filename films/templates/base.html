@@ -475,7 +475,7 @@
 
             if (selectedCategoryId) {
                 subcategoryGroup.show();
-
+                tagsGroup.hide()
                 $.ajax({
                     url: `/${language}/related_to_it/?category_id=${selectedCategoryId}`,
                     dataType: 'json',
