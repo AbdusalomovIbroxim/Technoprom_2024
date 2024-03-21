@@ -2,11 +2,13 @@
     display: flex;
     align-items: flex-start;
     padding-top: 100px;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .price__form-form {
-    width: 50%
+    /*width: 50%*/
+    min-width: 50%;
+    margin-left: 0;
 }
 
 .form-group {
@@ -14,14 +16,14 @@
 }
 
 .price__image-form2 {
-    width: 50%;
+    max-width: 40%;
     flex: 1;
 }
 
-.price__image-form2 img {
-    max-width: 90%;
-    height: auto;
-}
+/*.price__image-form2 img {*/
+/*    max-width: 90%;*/
+/*    height: auto;*/
+/*}*/
 
 @media only screen and (max-width: 480px) {
 

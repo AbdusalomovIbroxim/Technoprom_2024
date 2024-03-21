@@ -119,13 +119,14 @@
     margin-left: 20px;
 }
 
-/* .custom-form {
-    margin: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 400px;
-    margin: 0 auto;
-} */
+.custom-form {
+    max-width: 530px;
+    /*margin: 20px;*/
+    /*padding: 20px;*/
+    /*border-radius: 10px;*/
+    /*max-width: 400px;*/
+    /*margin: 0 auto;*/
+}
 
 .form-group {
     position: relative;
@@ -158,7 +159,9 @@
 .form-input,
 .form-textarea,
 .form-select {
-    width: 95%;
+    box-sizing: border-box;
+    /*width: 95%;*/
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 12px;
@@ -182,6 +185,7 @@
 
 .form-select {
     cursor: pointer;
+    /*width: ;*/
 }
 
 
