@@ -490,29 +490,17 @@
                             </header>
                             <div id="selectedFiles"></div>
                             <p>Files Supported: Image (JPEG, JPG, PNG)</p>
-                            <input type="file" hidden accept=".png, .jpg, .jpeg" id="fileInput"
-                                   style="display:none;" multiple>
+                            {#                            {{ form.images }}#}
+                            <input type="file" hidden accept=".png, .jpg, .jpeg" id="fileInput1"
+                                   style="display:none;" name="images">
+                            <input type="file" hidden accept=".png, .jpg, .jpeg" id="fileInput2"
+                                   style="display:none;" name="images">
+                            <input type="file" hidden accept=".png, .jpg, .jpeg" id="fileInput3"
+                                   style="display:none;" name="images">
                             <button type="button" class="btn-choose-file">Choose Files</button>
-                            {#                            <div id="imagePreview"></div>#}
                         </div>
                     </div>
 
-                    {#                    <div class="image-form">#}
-                    {#                        <label for="images" class="custom-file-upload">Выберите фотографии</label>#}
-                    {#                        <input type="file" name="images" id="images" multiple>#}
-                    {#                    </div>#}
-                    {#                    <br>#}
-                    {#                    <div class="image-form">#}
-                    {#                        <label for="images" class="custom-file-upload">Выберите фотографии</label>#}
-                    {#                        <input type="file" name="images" id="images" multiple>#}
-                    {#                    </div>#}
-                    {#                    <br>#}
-                    {#                    <div class="image-form">#}
-                    {#                        <label for="images" class="custom-file-upload">Выберите фотографии</label>#}
-                    {#                        <input type="file" name="images" id="images" multiple>#}
-                    {#                    </div>#}
-
-                    {#                    <button type="button" id="reset-image" class="reset-image">Сбросить фото</button>#}
                 </div>
                 <div class="form-group" id="price-group">
                     <label class="form-label">{% translate "Цена" %}:</label>
@@ -536,38 +524,61 @@
 <script src="{% static "product/js/style.js" %}"></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
 
+
+<script>
     const dropArea = document.querySelector(".drop_box");
     const button = dropArea.querySelector(".btn-choose-file");
-    const input = dropArea.querySelector("#fileInput");
+    const fileInputs = [
+        dropArea.querySelector("#fileInput1"),
+        dropArea.querySelector("#fileInput2"),
+        dropArea.querySelector("#fileInput3")
+    ];
     const selectedFiles = document.querySelector("#selectedFiles");
 
-    button.onclick = () => {
-        input.click();
-    };
+    let currentInputIndex = 0;
 
-    input.addEventListener("change", function (e) {
-        const files = e.target.files;
-        Array.from(files).forEach(file => {
-            if (file.size <= 5 * 1024 * 1024) {
-                // Проверяем размер файла (в байтах)
-                const fileName = document.createElement("div");
-                fileName.textContent = file.name;
-                selectedFiles.appendChild(fileName);
-            } else {
-                alert("Файл '" + file.name + "' превышает максимальный размер 5 МБ и не будет добавлен.");
-            }
-        });
+    // Функция для отправки файла на сервер
+    function sendFile(file) {
+        // Здесь можно добавить логику отправки файла на сервер
+        // Например, с помощью AJAX запроса или использования Fetch API
+        console.log("Отправка файла:", file.name);
+    }
 
-        // Проверяем количество файлов в selectedFiles
-        if (selectedFiles.childElementCount > 2) {
-            button.style.display = "none"; // Скрываем кнопку выбора файла
+    // Функция для обработки изменения текущего input
+    function handleInputChange(e) {
+        const file = e.target.files[0]; // Получаем только первый файл из выборки
+
+        if (file.size <= 5 * 1024 * 1024) { // Проверяем размер файла (в байтах)
+            const fileName = document.createElement("div");
+            fileName.textContent = file.name;
+            selectedFiles.appendChild(fileName); // Добавляем имя файла в список выбранных файлов
+            sendFile(file); // Отправляем файл на сервер
+        } else {
+            alert("Файл '" + file.name + "' превышает максимальный размер 5 МБ и не будет отправлен.");
         }
-        this.value = null;
+
+        // Переходим к следующему инпуту или завершаем, если это последний инпут
+        currentInputIndex++;
+        {#if (currentInputIndex < fileInputs.length) {#}
+        {#    fileInputs[currentInputIndex].click(); // Вызываем клик для следующего инпута#}
+        {# }#}
+    }
+
+    // Назначаем обработчики для каждого input
+    fileInputs.forEach(input => {
+        input.addEventListener("change", handleInputChange);
     });
 
+    // Назначаем обработчик для кнопки выбора файла
+    button.onclick = () => {
+        {#currentInputIndex = 0; // Сбрасываем индекс текущего инпута#}
+        fileInputs[currentInputIndex].click(); // Вызываем клик для первого инпута
+    };
+
 </script>
+
+
 <script>
     $(document).ready(function () {
         const categorySelect = $('#id_category');
