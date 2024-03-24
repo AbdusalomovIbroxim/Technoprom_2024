@@ -21,6 +21,93 @@
 {% include 'nav_bar.html' %}
 {% include 'messages.html' %}
 
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
+
+    .preview-image {
+        max-width: 200px;
+        max-height: 200px;
+        margin-bottom: 10px;
+    }
+
+    .card {
+        border-radius: 10px;
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+        width: 600px;
+        height: 260px;
+        background-color: #ffffff;
+        padding: 10px 30px 40px;
+    }
+
+    .card h3 {
+        font-size: 22px;
+        font-weight: 600;
+
+    }
+
+    .drop_box {
+        margin: 10px 0;
+        padding: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border: 3px dotted #a3a3a3;
+        border-radius: 5px;
+    }
+
+    .drop_box h4 {
+        font-size: 16px;
+        font-weight: 400;
+        color: #2e2e2e;
+    }
+
+    .drop_box p {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        color: #a3a3a3;
+    }
+
+    .btn-choose-file {
+        text-decoration: none;
+        background-color: #005af0;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    .btn-choose-file:hover {
+        text-decoration: none;
+        background-color: #ffffff;
+        color: #005af0;
+        padding: 10px 20px;
+        border: none;
+        outline: 1px solid #010101;
+    }
+
+    .form input {
+        margin: 10px 0;
+        width: 100%;
+        background-color: #e2e2e2;
+        border: none;
+        outline: none;
+        padding: 12px 20px;
+        border-radius: 4px;
+    }
+
+</style>
+
 <div class="container">
     <section class="price-form">
         <div class="price__image-form2">
@@ -394,20 +481,36 @@
                         <label class="form-label"
                                style="font-size: 16px; padding-left: 15px">{% translate " (Eng optimal product rasmini tanlang)" %}</label>
                     </div>
-                    <div class="image-form">
-                        <label for="images" class="custom-file-upload">Выберите фотографии</label>
-                        <input type="file" name="images" id="images" multiple>
+
+                    <div class="container">
+                        <h3>Upload Files</h3>
+                        <div class="drop_box">
+                            <header>
+                                <h4>Select Files here</h4>
+                            </header>
+                            <div id="selectedFiles"></div>
+                            <p>Files Supported: Image (JPEG, JPG, PNG)</p>
+                            <input type="file" hidden accept=".png, .jpg, .jpeg" id="fileInput"
+                                   style="display:none;" multiple>
+                            <button type="button" class="btn-choose-file">Choose Files</button>
+                            {#                            <div id="imagePreview"></div>#}
+                        </div>
                     </div>
-                    <br>
-                    <div class="image-form">
-                        <label for="images" class="custom-file-upload">Выберите фотографии</label>
-                        <input type="file" name="images" id="images" multiple>
-                    </div>
-                    <br>
-                    <div class="image-form">
-                        <label for="images" class="custom-file-upload">Выберите фотографии</label>
-                        <input type="file" name="images" id="images" multiple>
-                    </div>
+
+                    {#                    <div class="image-form">#}
+                    {#                        <label for="images" class="custom-file-upload">Выберите фотографии</label>#}
+                    {#                        <input type="file" name="images" id="images" multiple>#}
+                    {#                    </div>#}
+                    {#                    <br>#}
+                    {#                    <div class="image-form">#}
+                    {#                        <label for="images" class="custom-file-upload">Выберите фотографии</label>#}
+                    {#                        <input type="file" name="images" id="images" multiple>#}
+                    {#                    </div>#}
+                    {#                    <br>#}
+                    {#                    <div class="image-form">#}
+                    {#                        <label for="images" class="custom-file-upload">Выберите фотографии</label>#}
+                    {#                        <input type="file" name="images" id="images" multiple>#}
+                    {#                    </div>#}
 
                     {#                    <button type="button" id="reset-image" class="reset-image">Сбросить фото</button>#}
                 </div>
@@ -433,6 +536,38 @@
 <script src="{% static "product/js/style.js" %}"></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+    const dropArea = document.querySelector(".drop_box");
+    const button = dropArea.querySelector(".btn-choose-file");
+    const input = dropArea.querySelector("#fileInput");
+    const selectedFiles = document.querySelector("#selectedFiles");
+
+    button.onclick = () => {
+        input.click();
+    };
+
+    input.addEventListener("change", function (e) {
+        const files = e.target.files;
+        Array.from(files).forEach(file => {
+            if (file.size <= 5 * 1024 * 1024) {
+                // Проверяем размер файла (в байтах)
+                const fileName = document.createElement("div");
+                fileName.textContent = file.name;
+                selectedFiles.appendChild(fileName);
+            } else {
+                alert("Файл '" + file.name + "' превышает максимальный размер 5 МБ и не будет добавлен.");
+            }
+        });
+
+        // Проверяем количество файлов в selectedFiles
+        if (selectedFiles.childElementCount > 2) {
+            button.style.display = "none"; // Скрываем кнопку выбора файла
+        }
+        this.value = null;
+    });
+
+</script>
 <script>
     $(document).ready(function () {
         const categorySelect = $('#id_category');

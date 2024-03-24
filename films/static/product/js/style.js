@@ -274,6 +274,7 @@ countrySelect.value = "UZ";
 updatePhonePrefix();
 updateFlag();
 
+
 $(document).ready(function () {
     $('.checkbox-container input[type="checkbox"]').change(function () {
         if ($(this).is(':checked')) {
@@ -284,3 +285,5 @@ $(document).ready(function () {
     });
 });
 
+
+// ----------------------------

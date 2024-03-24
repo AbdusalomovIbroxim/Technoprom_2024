@@ -160,23 +160,11 @@ class FilmsForm(forms.ModelForm):
         required=False,
     )
 
-    # image1 = forms.ImageField(
-    #     label="Фотография 1",
-    #     widget=forms.FileInput(attrs={"class": "form-input", "accept": "image/*"}),
-    #     required=False,
-    # )
-    #
-    # image2 = forms.ImageField(
-    #     label="Фотография 2",
-    #     widget=forms.FileInput(attrs={"class": "form-input", "accept": "image/*"}),
-    #     required=False,
-    # )
-    #
-    # image3 = forms.ImageField(
-    #     label="Фотография 3",
-    #     widget=forms.FileInput(attrs={"class": "form-input", "accept": "image/*"}),
-    #     required=False,
-    # )
+    images = forms.ImageField(
+        label="Выберите фотографии",
+        widget=forms.ClearableFileInput(),
+        required=False,
+    )
 
 
 class ProductFilterForm(forms.ModelForm):

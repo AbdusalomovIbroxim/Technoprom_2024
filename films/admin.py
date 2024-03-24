@@ -1,3 +1,4 @@
+from django.forms import ModelMultipleChoiceField
 from django import forms
 from django.contrib import admin
 from django.contrib.admin.widgets import FilteredSelectMultiple
@@ -14,17 +15,22 @@ admin.site.register(Categories)
 admin.site.register(SubCategories)
 
 
-# admin.site.register(Tag)
-
-
 class TagAdminForm(forms.ModelForm):
     class Meta:
         model = Tag
         fields = '__all__'
-        widgets = {
-            'category': FilteredSelectMultiple("Categories", is_stacked=False),
-            'subcategory': FilteredSelectMultiple("Subcategories", is_stacked=False),
-        }
+
+    subcategory = ModelMultipleChoiceField(
+        queryset=SubCategories.objects.all(),
+        widget=FilteredSelectMultiple("Subcategories", is_stacked=False),
+    )
+
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    form = TagAdminForm
+    list_display = ("name_en", "name_ru", "name_uz", "category", "subcategory")
+    search_fields = ("name_en", "name_ru", "name_uz")
 
 
 @admin.register(City)
