@@ -144,7 +144,7 @@ class Products(Model):  # Модель
         "Количество просмотров номер телефона", default=0
     )
     telegram = CharField("Телеграмм номер", max_length=100, blank=True, null=True)
-    email = CharField("Емайл адрес", max_length=100)
+    # email = CharField("Емайл адрес", max_length=100)
     view_count = PositiveBigIntegerField("Количество просмотров", default=0)
     create_date = DateTimeField("Дата создания", auto_now_add=True)
     update_date = DateTimeField("Дата обновления", auto_now=True)
@@ -157,7 +157,6 @@ class Products(Model):  # Модель
     is_active = BooleanField(default=False)
     type = CharField(max_length=50, choices=TYPE_CHOICES, default="buy")
     author = ForeignKey(get_user_model(), SET_NULL, blank=True, null=True)
-    # price = DecimalField("Цена", max_digits=10, decimal_places=2, blank=True, null=True)
     price = FloatField("Цена", blank=True, null=True)
     is_price_negotiable = BooleanField("Договорная цена", default=False)
     is_top_film = BooleanField(default=False)

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "films",
     "accounts",
     "support",
+    "event_calendar",
 
     "formtools",
     "django_social_share",

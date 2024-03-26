@@ -11,6 +11,7 @@ urlpatterns = [
     path("support/", include("support.urls")),
     path("", include("films.urls")),
     path("accounts/", include("allauth.urls")),
+    path("linkpro/", include("event_calendar.urls")),
 ]
 
 if settings.DEBUG:
