@@ -1,13 +1,13 @@
 from datetime import datetime
 
-from django.contrib.auth.decorators import login_required
-from django.urls import reverse
+from django.http import HttpResponse
 from django.http import JsonResponse
 from django.shortcuts import render
+from django.urls import reverse
 from django.views import View
-from django.http import HttpResponse
-from .models import EventLink
 from icalendar import Calendar, Event
+
+from .models import EventLink
 
 
 class EventLinkGenerator(View):
