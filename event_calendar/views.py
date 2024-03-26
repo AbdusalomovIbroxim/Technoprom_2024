@@ -73,8 +73,8 @@ class DownloadICalendar(View):
         return response
 
 
-class PostEvent(View):
+# class PostEvent(View):
 
-    @staticmethod
-    def get(request):
-        return render(request, 'create_event.html')
+    # @staticmethod
+    # def get(request):
+    #     return render(request, 'create_event.html')
