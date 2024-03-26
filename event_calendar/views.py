@@ -14,7 +14,7 @@ class EventLinkGenerator(View):
 
     @staticmethod
     def get(request):
-        return render(request, 'index.html')
+        return render(request, 'calendar/index.html')
 
     def post(self, request):
         if self.request.method == 'POST':
@@ -72,9 +72,7 @@ class DownloadICalendar(View):
         response['Content-Disposition'] = f'attachment; filename="event_{event_link.pk}.ics"'
         return response
 
-
-# class PostEvent(View):
-
-    # @staticmethod
-    # def get(request):
-    #     return render(request, 'create_event.html')
+class PostEvent(View):
+    @staticmethod
+    def get(request):
+        return render(request, 'calendar/create_event.html')

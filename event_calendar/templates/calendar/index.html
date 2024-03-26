@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Link Generator</title>
+    <link rel="stylesheet" href="{% static "style.css" %}">
+</head>
+<body>
+<h1>Event Link Generator</h1>
+<div class="container">
+    <form id="event-form" action="{% url "save_links" %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="event_id" value="{{ event_id }}">
+        <label for="event-title">Event Title:</label><br>
+        <input type="text" id="event-title" name="event-title" required><br>
+
+        <label for="event-start-date">Start Date:</label><br>
+        <input type="datetime-local" id="event-start-date" name="event-start-date" required><br>
+
+        <label for="event-end-date">End Date:</label><br>
+        <input type="datetime-local" id="event-end-date" name="event-end-date" required><br>
+
+        <label for="event-location">
+            Location:</label><br>
+        <img style="width: 24px" src="{% static "calendar/images/calendar.png" %}" alt="">
+        <input type="text" id="event-location" name="event-location"><br>
+
+        <label for="event-description">Description:</label><br>
+        <textarea id="event-description" name="event-description" rows="4" cols="50" required></textarea><br>
+
+        <button type="submit">Generate Links</button>
+        <br>
+    </form>
+</div>
+
+<div class="container" id="event-links">
+</div>
+
+<script>
+    document.getElementById("event-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        var formData = new FormData(this);
+
+        fetch(this.action, {
+            method: this.method,
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Обновляем содержимое блока event-links с помощью полученных данных
+                document.getElementById("event-links").innerHTML = `
+                <a href="${data.google_calendar_link}" target="_blank">Google Calendar Link</a>
+                <button onclick="copyText('${data.google_calendar_link}')">Copy Google Calendar Link</button>
+                <a href="${data.download_ics_link}" target="_blank">Download .ics</a>
+                <button onclick="copyText('${data.download_ics_link}')">Copy Download Link</button>
+                <a href="{% url 'post_event' %} " target="_blank">Post event</a>
+            `;
+                document.getElementById("event-links").style.display = "flex";
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+
+    function copyText(text) {
+        var dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        dummy.value = text;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+        alert("Link copied to clipboard!");
+    }
+</script>
+
+</body>
+</html>

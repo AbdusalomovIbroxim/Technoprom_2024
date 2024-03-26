@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static "style.css" %}">
+</head>
+<body>
+<div class="container">
+    <form id="event-form" action="{% url "save_links" %}" method="post">
+
+        {% csrf_token %}
+
+        <label for="event-map-link">Map Link:</label><br>
+        <input type="url" id="event-map-link" name="event-map-link"><br>
+
+        <label for="event-photo">Event Photo:</label><br>
+        <input type="file" id="event-photo" name="event-photo"><br>
+
+        <button type="submit">Generate Links</button>
+        <br>
+
+    </form>
+</div>
+</body>
+</html>
