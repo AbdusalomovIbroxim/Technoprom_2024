@@ -1,0 +1,247 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*width: 80%;*/
+    max-width: 80%;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    padding-top: 150px;
+}
+
+.card {
+    width: calc(33.33% - 20px);
+    border: 1px solid #ccc;
+    /*border-radius: 8px;*/
+    border-radius: 22px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card input[type="radio"] {
+    display: none;
+}
+
+.card label {
+    display: block;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.card h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card .price {
+    font-size: 18px;
+    color: #007bff;
+    margin: 0;
+}
+
+.card .info {
+    font-size: 16px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.card .features {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card .features li {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #666;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.button-container button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+.select-package {
+    width: calc(80% - 4px); /* Ширина кнопки с учетом толщины границы */
+    border-radius: 20px; /* Закругление углов */
+    margin-top: 20px;
+    padding: 10px; /* Внутренние отступы */
+    border: 2px solid #ccc; /* Прозрачная граница */
+    background-color: #f5f5f5; /* Прозрачный фон */
+    cursor: pointer; /* Изменение курсора при наведении */
+    transition: border-color 0.3s ease, color 0.3s ease; /* Плавное изменение цвета при hover */
+}
+
+.select-package:hover {
+    border-color: #007bff; /* Цвет границы при наведении */
+    color: #007bff; /* Цвет текста при наведении */
+    font-weight: bold; /* Жирный текст при наведении */
+}
+
+/*----------------------------------------------------------*/
+
+
+.tick {
+    display: none;
+}
+
+/* Стили для галочки при выборе */
+#topads_7[type="checkbox"]:checked + .tick {
+    display: inline-block; /* Показать галочку */
+}
+
+/*----------------------------------------------------------*/
+
+.promote-vas-variants {
+    width: 100%;
+}
+
+.promote-vas-variant {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #e8efff;
+    cursor: pointer;
+    /*border-color: rgb(255, 255, 255);*/
+    /*border-style: solid;*/
+    /*border-width: 2px;*/
+    border-radius: 4px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    height: 60px;
+    padding: 10px 20px;
+    /*width: 100%;*/
+    flex: 0 0 calc(33.33% - 20px);
+}
+
+/* Стили для метки */
+.label {
+    display: flex; /* Расположение элементов в строку */
+    align-items: center; /* Выравнивание элементов по центру */
+    height: max-content;
+    padding: 10px;
+    gap: 15px;
+    width: 80%;
+}
+
+/* Стили для скрытого чекбокса */
+#topads_7[type="checkbox"] {
+    display: block;
+    width: 20px; /* Ширина чекбокса */
+    height: 20px; /* Высота чекбокса */
+    padding: 4px; /* Паддинг вокруг чекбокса */
+    border: 2px solid #ccc; /* Граница чекбокса */
+    border-radius: 4px; /* Закругление углов */
+    accent-color: #34495e;
+}
+
+/* Стили для изображения галочки */
+.tick {
+    width: 24px; /* Ширина */
+    height: 24px; /* Высота */
+    margin-right: 10px; /* Отступ справа */
+}
+
+/* Стили для информации */
+.info {
+    flex: 1; /* Растянуть на всю доступную ширину */
+    margin-right: 10px; /* Отступ справа */
+}
+
+.dropdown {
+    position: relative;
+    margin: 0;
+    z-index: 1;
+}
+
+.dropdown-head {
+    background: white;
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+}
+
+.dropdown-head-button {
+    width: 100%;
+    padding: 10px;
+}
+
+.dropdown-expand-button,
+
+    /* Стили для выпадающего списка */
+.dropdown-list {
+    list-style: none;
+    padding: 0;
+    display: none; /* По умолчанию скрыт */
+    position: absolute; /* Абсолютное позиционирование */
+    top: 100%; /* Расположение под кнопкой */
+    left: 0; /* Выравнивание слева */
+    z-index: 1; /* Поднять над другими элементами */
+    background-color: #fff; /* Цвет фона */
+    border: 1px solid #ccc; /* Граница */
+    border-radius: 4px; /* Закругление углов */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+/* Стили для открытого списка */
+.dropdown-list.open {
+    display: block; /* Показать при открытии */
+}
+
+/* Стили для элементов списка */
+.dropdown-item {
+    padding: 8px 12px; /* Отступы */
+    cursor: pointer; /* Курсор при наведении */
+}
+
+/* Стили для элементов списка при наведении */
+.dropdown-item:hover {
+    background-color: #f0f0f0; /* Цвет фона при наведении */
+}
+
+/* Стили для кнопки внутри списка */
+.dropdown-checkmark {
+    background: none; /* Прозрачный фон */
+    border: none; /* Без границы */
+    cursor: pointer; /* Курсор при наведении */
+}
+
+/* Стили для кнопки внутри списка при наведении */
+.dropdown-checkmark:hover {
+    text-decoration: underline; /* Подчеркивание при наведении */
+}

@@ -28,11 +28,13 @@ class Categories(Model):
 
     def __str__(self):
         lang = get_language()
-        if lang == "uz":
-            return self.name_uz
-        if lang == "ru":
+        if lang == "":
             return self.name_ru
-        if lang == "en":
+        elif lang == "uz":
+            return self.name_uz
+        elif lang == "ru":
+            return self.name_ru
+        elif lang == "en":
             return self.name_en
 
     def get_absolute_url(self):
@@ -52,11 +54,13 @@ class SubCategories(Model):
 
     def __str__(self):
         lang = get_language()
-        if lang == "uz":
-            return self.name_uz
-        if lang == "ru":
+        if lang == "":
             return self.name_ru
-        if lang == "en":
+        elif lang == "uz":
+            return self.name_uz
+        elif lang == "ru":
+            return self.name_ru
+        elif lang == "en":
             return self.name_en
 
     def get_absolute_url(self):
@@ -80,11 +84,13 @@ class Tag(Model):
 
     def __str__(self):
         lang = get_language()
-        if lang == "uz":
-            return self.name_uz
-        if lang == "ru":
+        if lang == "":
             return self.name_ru
-        if lang == "en":
+        elif lang == "uz":
+            return self.name_uz
+        elif lang == "ru":
+            return self.name_ru
+        elif lang == "en":
             return self.name_en
 
 

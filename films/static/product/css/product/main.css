@@ -246,12 +246,15 @@
 }
 
 .price__image-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 50%;
     flex: 1;
 }
 
 .price__image-form img {
-    max-width: 90%;
+    max-width: 65%;
     height: auto;
 }
 
