@@ -112,7 +112,8 @@
 
                     {% for lang in languages %}
                         <li class="language">
-                            <a href="/{{ lang.code }}/">{{ lang.code|upper }}</a>
+
+                            <a href="/{{ lang.code }}{{ request.get_full_path|slice:'3:' }}">{{ lang.code|upper }}</a>
                         </li>
                     {% endfor %}
                 </ul>
