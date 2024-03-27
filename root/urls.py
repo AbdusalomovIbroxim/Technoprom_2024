@@ -21,4 +21,5 @@ if settings.DEBUG:
 urlpatterns += i18n_patterns(
     path("", include("films.urls")),
     path("users/", include("accounts.urls")),
+    path("linkpro/", include("event_calendar.urls")),
 )
