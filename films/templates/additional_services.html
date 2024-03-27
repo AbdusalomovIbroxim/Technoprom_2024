@@ -66,94 +66,10 @@
                         <button type="button" class="select-package">Выбрать</button>
                     </label>
                 </div>
-
             </div>
 
-
-            {#            <h2>text</h2>#}
-
-
-            {#            <div class="promote-vas-variants">#}
-            {#                <div class="promote-vas-variant">#}
-            {#                    <input id="topads_7" type="checkbox">#}
-            {#                    <label class="label">#}
-            {#                        <p class="info">Размещение в ТОП в течение 7 дней</p>#}
-            {##}
-            {#                        <div class="dropdown">#}
-            {#                            <div class="dropdown-head">#}
-            {#                                <button type="button" class="dropdown-head-button">Выберите срок</button>#}
-            {#                            </div>#}
-            {#                            <ul class="dropdown-list">#}
-            {#                                <li class="dropdown-item" data-days="7">#}
-            {#                                    7 дней#}
-            {#                                </li>#}
-            {#                                <li class="dropdown-item" data-days="30">#}
-            {#                                    <button type="button" class="dropdown-checkmark">30 дней</button>#}
-            {#                                    30 дней#}
-            {#                                </li>#}
-            {#                            </ul>#}
-            {#                        </div>#}
-            {##}
-            {#                    </label>#}
-            {#                    <div class="price-info">#}
-            {#                        <div class="price">#}
-            {#                            <h4>9 500 сум</h4>#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#                <div class="promote-vas-variant">#}
-            {#                    <label class="label">#}
-            {#                        <input id="topads_7" type="checkbox">#}
-            {#                        <svg class="tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">#}
-            {#                            <path fill="currentColor" fill-rule="evenodd"#}
-            {#                                  d="m20.586 5-1.271 1.296L8 17.836l-3.315-3.38-1.271-1.297H2v1.443l1.271 1.296L7.293 20h1.414L20.73 7.738 22 6.442V5z"></path>#}
-            {#                        </svg>#}
-            {#                        <p class="info">Размещение в ТОП в течение 7 дней</p>#}
-            {#                        <div class="dropdown">#}
-            {#                            <button type="button" class="dropdown-head">7 дней</button>#}
-            {#                            <button type="button" class="dropdown-expand-button">#}
-            {#                                <svg class="expand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">#}
-            {#                                    <path fill="currentColor" fill-rule="evenodd"#}
-            {#                                          d="M2.001 6.5h1.414l1.27 1.271 7.316 7.315 7.315-7.315L20.587 6.5h1.414v1.414l-1.27 1.27-7.316 7.316-1 1h-.827l-3.942-3.942-4.374-4.374-1.27-1.27z"></path>#}
-            {#                                </svg>#}
-            {#                            </button>#}
-            {#                        </div>#}
-            {#                    </label>#}
-            {#                    <div class="price-info">#}
-            {#                        <div class="price">#}
-            {#                            <h4>9 500 сум</h4>#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#                <div class="promote-vas-variant">#}
-            {#                    <label class="label">#}
-            {#                        <input id="topads_7" type="checkbox">#}
-            {#                        <svg class="tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">#}
-            {#                            <path fill="currentColor" fill-rule="evenodd"#}
-            {#                                  d="m20.586 5-1.271 1.296L8 17.836l-3.315-3.38-1.271-1.297H2v1.443l1.271 1.296L7.293 20h1.414L20.73 7.738 22 6.442V5z"></path>#}
-            {#                        </svg>#}
-            {#                        <p class="info">Размещение в ТОП в течение 7 дней</p>#}
-            {#                        <div class="dropdown">#}
-            {#                            <button type="button" class="dropdown-head">7 дней</button>#}
-            {#                            <button type="button" class="dropdown-expand-button">#}
-            {#                                <svg class="expand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">#}
-            {#                                    <path fill="currentColor" fill-rule="evenodd"#}
-            {#                                          d="M2.001 6.5h1.414l1.27 1.271 7.316 7.315 7.315-7.315L20.587 6.5h1.414v1.414l-1.27 1.27-7.316 7.316-1 1h-.827l-3.942-3.942-4.374-4.374-1.27-1.27z"></path>#}
-            {#                                </svg>#}
-            {#                            </button>#}
-            {#                        </div>#}
-            {#                    </label>#}
-            {#                    <div class="price-info">#}
-            {#                        <div class="price">#}
-            {#                            <h4>9 500 сум</h4>#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#            </div>#}
-
-
             <div class="button-container">
-                <button id="back-button">Назад</button>
+                {#                <button id="back-button">Назад</button>#}
                 <button id="purchase-button">Приобрести</button>
             </div>
         </div>
@@ -163,18 +79,57 @@
 </div>
 
 <script>
-    window.addEventListener('DOMContentLoaded', (event) => {
+    document.addEventListener('DOMContentLoaded', function () {
+        // Получаем все карточки
         const cards = document.querySelectorAll('.card');
 
-        cards.forEach((card) => {
-            card.addEventListener('click', () => {
-                cards.forEach((c) => {
-                    c.classList.remove('selected');
-                    c.querySelector('input[type="radio"]').checked = false;
-                });
+        // Для каждой карточки добавляем обработчик события клика
+        cards.forEach(function (card) {
+            card.addEventListener('click', function () {
+                // Получаем радио-кнопку внутри текущей карточки
+                const radio = card.querySelector('input[type="radio"]');
 
-                card.classList.add('selected');
-                card.querySelector('input[type="radio"]').checked = true;
+                // Устанавливаем состояние кнопки
+                radio.checked = true;
+
+                // Изменяем текст кнопки на "Сбросить" для текущей карточки
+                const button = card.querySelector('.select-package');
+                button.textContent = 'Сбросить';
+
+                // Сбрасываем текст кнопки на "Выбрать" для остальных карточек
+                cards.forEach(function (otherCard) {
+                    if (otherCard !== card) {
+                        const otherButton = otherCard.querySelector('.select-package');
+                        otherButton.textContent = 'Выбрать';
+                    }
+                });
+            });
+        });
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Получаем все карточки
+        const cards = document.querySelectorAll('.card');
+
+        // Для каждой карточки добавляем обработчик события клика
+        cards.forEach(function (card) {
+            card.addEventListener('click', function () {
+                // Получаем радио-кнопку внутри текущей карточки
+                const radio = card.querySelector('input[type="radio"]');
+
+                // Переключаем состояние радио-кнопки
+                radio.checked = true;
+
+                // Добавляем класс "checked" к родительской карточке
+                card.classList.add('checked');
+
+                // Убираем класс "checked" у других карточек
+                cards.forEach(function (otherCard) {
+                    if (otherCard !== card) {
+                        otherCard.classList.remove('checked');
+                    }
+                });
             });
         });
     });
@@ -205,3 +160,85 @@
 
 </body>
 </html>
+
+
+{#            <h2>text</h2>#}
+
+
+{#            <div class="promote-vas-variants">#}
+{#                <div class="promote-vas-variant">#}
+{#                    <input id="topads_7" type="checkbox">#}
+{#                    <label class="label">#}
+{#                        <p class="info">Размещение в ТОП в течение 7 дней</p>#}
+{##}
+{#                        <div class="dropdown">#}
+{#                            <div class="dropdown-head">#}
+{#                                <button type="button" class="dropdown-head-button">Выберите срок</button>#}
+{#                            </div>#}
+{#                            <ul class="dropdown-list">#}
+{#                                <li class="dropdown-item" data-days="7">#}
+{#                                    7 дней#}
+{#                                </li>#}
+{#                                <li class="dropdown-item" data-days="30">#}
+{#                                    <button type="button" class="dropdown-checkmark">30 дней</button>#}
+{#                                    30 дней#}
+{#                                </li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{##}
+{#                    </label>#}
+{#                    <div class="price-info">#}
+{#                        <div class="price">#}
+{#                            <h4>9 500 сум</h4>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="promote-vas-variant">#}
+{#                    <label class="label">#}
+{#                        <input id="topads_7" type="checkbox">#}
+{#                        <svg class="tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">#}
+{#                            <path fill="currentColor" fill-rule="evenodd"#}
+{#                                  d="m20.586 5-1.271 1.296L8 17.836l-3.315-3.38-1.271-1.297H2v1.443l1.271 1.296L7.293 20h1.414L20.73 7.738 22 6.442V5z"></path>#}
+{#                        </svg>#}
+{#                        <p class="info">Размещение в ТОП в течение 7 дней</p>#}
+{#                        <div class="dropdown">#}
+{#                            <button type="button" class="dropdown-head">7 дней</button>#}
+{#                            <button type="button" class="dropdown-expand-button">#}
+{#                                <svg class="expand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">#}
+{#                                    <path fill="currentColor" fill-rule="evenodd"#}
+{#                                          d="M2.001 6.5h1.414l1.27 1.271 7.316 7.315 7.315-7.315L20.587 6.5h1.414v1.414l-1.27 1.27-7.316 7.316-1 1h-.827l-3.942-3.942-4.374-4.374-1.27-1.27z"></path>#}
+{#                                </svg>#}
+{#                            </button>#}
+{#                        </div>#}
+{#                    </label>#}
+{#                    <div class="price-info">#}
+{#                        <div class="price">#}
+{#                            <h4>9 500 сум</h4>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="promote-vas-variant">#}
+{#                    <label class="label">#}
+{#                        <input id="topads_7" type="checkbox">#}
+{#                        <svg class="tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">#}
+{#                            <path fill="currentColor" fill-rule="evenodd"#}
+{#                                  d="m20.586 5-1.271 1.296L8 17.836l-3.315-3.38-1.271-1.297H2v1.443l1.271 1.296L7.293 20h1.414L20.73 7.738 22 6.442V5z"></path>#}
+{#                        </svg>#}
+{#                        <p class="info">Размещение в ТОП в течение 7 дней</p>#}
+{#                        <div class="dropdown">#}
+{#                            <button type="button" class="dropdown-head">7 дней</button>#}
+{#                            <button type="button" class="dropdown-expand-button">#}
+{#                                <svg class="expand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">#}
+{#                                    <path fill="currentColor" fill-rule="evenodd"#}
+{#                                          d="M2.001 6.5h1.414l1.27 1.271 7.316 7.315 7.315-7.315L20.587 6.5h1.414v1.414l-1.27 1.27-7.316 7.316-1 1h-.827l-3.942-3.942-4.374-4.374-1.27-1.27z"></path>#}
+{#                                </svg>#}
+{#                            </button>#}
+{#                        </div>#}
+{#                    </label>#}
+{#                    <div class="price-info">#}
+{#                        <div class="price">#}
+{#                            <h4>9 500 сум</h4>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}

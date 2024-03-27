@@ -81,7 +81,7 @@ class Migration(migrations.Migration):
                 ('description', models.TextField(blank=True, null=True, verbose_name='Описание')),
                 ('telephone', models.CharField(max_length=30, verbose_name='Номер телефона')),
                 ('email', models.CharField(max_length=100, verbose_name='Емайл адрес')),
-                ('image', models.ImageField(blank=True, null=True, upload_to='product-images/', verbose_name='Картинка')),
+                ('image', models.ImageField(blank=True, null=True, upload_to='product-about_us/', verbose_name='Картинка')),
                 ('view_count', models.PositiveBigIntegerField(default=0, verbose_name='Количество просмотров')),
                 ('create_date', models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')),
                 ('update_date', models.DateTimeField(auto_now=True, verbose_name='Дата обновления')),

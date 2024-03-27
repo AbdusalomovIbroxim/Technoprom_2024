@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='films',
             name='image',
-            field=models.ImageField(blank=True, null=True, upload_to='product-images/'),
+            field=models.ImageField(blank=True, null=True, upload_to='product-about_us/'),
         ),
         migrations.DeleteModel(
             name='Image',

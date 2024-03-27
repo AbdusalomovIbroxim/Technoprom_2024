@@ -30,8 +30,18 @@ form {
     transition: transform 0.3s ease;
 }
 
+
 .card:hover {
     transform: translateY(-5px);
+}
+
+.card.checked {
+    border-color: blue; /* Цвет границы при выборе */
+}
+
+.card.checked .select-package {
+    background-color: blue; /* Цвет кнопки при выборе */
+    color: white; /* Цвет текста кнопки при выборе */
 }
 
 .card input[type="radio"] {
@@ -91,6 +101,7 @@ form {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-left: auto;
 }
 
 .button-container button:hover {

@@ -1,6 +1,5 @@
 from django.urls import path
 
-
 from .views import (
     IndexView,
     ProductSaveView,
@@ -14,6 +13,7 @@ from .views import (
     get_suggestions,
     access_denied_page,
     AdditionalServicesView,
+    about_us_page,
 )
 
 urlpatterns = [
@@ -31,5 +31,7 @@ urlpatterns = [
     path("access-denied/", access_denied_page, name="access_denied_page"),
 
     path("product-status/", AdditionalServicesView.as_view(), name="product_update_status"),
+
+    path("about-us/", about_us_page, name="about_us_page")
 
 ]

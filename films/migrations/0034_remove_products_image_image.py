@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
                 (
                     "image",
                     models.ImageField(
-                        default="product-images/default.jpg", upload_to="product-images"
+                        default="product-about_us/default.jpg", upload_to="product-about_us"
                     ),
                 ),
                 (

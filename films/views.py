@@ -79,7 +79,7 @@ class IndexView(ListView):
                 film.author = request.user
                 film.email = request.user.email
             film.is_published = True
-            film.image = "product-images/image.png"
+            film.image = "product-about_us/image.png"
             if form.cleaned_data["telegram"].startswith("@"):
                 film.telegram = form.cleaned_data["telegram"][1:]
             message = {}
@@ -199,7 +199,7 @@ class ProductSaveView(CreateView):
         message = {}
         selected_tags = self.request.POST.getlist("tags")
         selected_subcategories = self.request.POST.getlist("subcategories")
-        images = self.request.FILES.getlist('images')
+        images = self.request.FILES.getlist('about_us')
         if self.request.POST.get("form-name") == "sell":
             film.type = "sell"
             message["тип"] = "Продать"
@@ -614,3 +614,7 @@ def get_suggestions(request):
 
 def access_denied_page(request):
     return render(request, "access_denied_page.html")
+
+
+def about_us_page(request):
+    return render(request, "about_us/about_us.html")
