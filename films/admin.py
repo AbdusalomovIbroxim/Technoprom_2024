@@ -3,7 +3,8 @@ from django import forms
 from django.contrib import admin
 from django.contrib.admin.widgets import FilteredSelectMultiple
 
-from .models import Categories, Products, SubCategories, Country, City, Tag
+from .models import Categories, Products, SubCategories, Country, City, Tag, TagCategory, TagSubcategory, \
+    SubCategoryCategory
 
 
 @admin.register(Country)
@@ -12,25 +13,33 @@ class CountryAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Categories)
-admin.site.register(SubCategories)
 
 
-class TagAdminForm(forms.ModelForm):
-    class Meta:
-        model = Tag
-        fields = '__all__'
+class SubcategoriesCategoryInline(admin.TabularInline):
+    model = SubCategoryCategory
+    extra = 1
 
-    subcategory = ModelMultipleChoiceField(
-        queryset=SubCategories.objects.all(),
-        widget=FilteredSelectMultiple("Subcategories", is_stacked=False),
-    )
+
+@admin.register(SubCategories)
+class TagsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name_en', 'name_ru', 'name_uz')
+    inlines = [SubcategoriesCategoryInline]
+
+
+class TagsInline(admin.TabularInline):
+    model = TagCategory
+    extra = 1
+
+
+class TagsSubcategoryInline(admin.TabularInline):
+    model = TagSubcategory
+    extra = 1
 
 
 @admin.register(Tag)
-class TagAdmin(admin.ModelAdmin):
-    form = TagAdminForm
-    list_display = ("name_en", "name_ru", "name_uz", "category", "subcategory")
-    search_fields = ("name_en", "name_ru", "name_uz")
+class TagsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name_en', 'name_ru', 'name_uz')
+    inlines = [TagsInline, TagsSubcategoryInline]
 
 
 @admin.register(City)

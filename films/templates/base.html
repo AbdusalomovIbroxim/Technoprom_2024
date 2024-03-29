@@ -541,28 +541,38 @@
             const selectedSubcategories = getSelectedSubcategories();
 
             tagsCheckboxes.empty();
+            const selectedCategoryId = categorySelect.val();
 
             if (selectedSubcategories.length > 0) {
+                // Создаем объект для хранения добавленных тегов
+                const addedTags = {};
+
                 selectedSubcategories.forEach(function (subcategoryId) {
                     $.ajax({
-                        url: `/${language}/related_to_it/?subcategory_id=${subcategoryId}`,
+                        url: `/${language}/related_to_it/?category_id=${selectedCategoryId}&subcategory_id=${subcategoryId}`,
                         dataType: 'json',
                         success: function (data) {
                             console.log(`Tags for Subcategory ${subcategoryId}:`, data.tags);
 
                             $.each(data.tags, function (key, value) {
-                                const checkboxContainer = $('<div>').addClass('cat action');
-                                const label = $('<label>');
-                                const checkbox = $('<input type="checkbox">')
-                                    .attr('id', `tag-${key}`)
-                                    .attr('name', 'tags')
-                                    .attr('value', key)
-                                    .appendTo(label);
+                                // Проверяем, не был ли уже добавлен такой тег
+                                if (!addedTags[key]) {
+                                    const checkboxContainer = $('<div>').addClass('cat action');
+                                    const label = $('<label>');
+                                    const checkbox = $('<input type="checkbox">')
+                                        .attr('id', `tag-${key}`)
+                                        .attr('name', 'tags')
+                                        .attr('value', key)
+                                        .appendTo(label);
 
-                                label.append(checkbox);
-                                label.append(`<span>${value}</span>`);
-                                checkboxContainer.append(label);
-                                tagsCheckboxes.append(checkboxContainer);
+                                    label.append(checkbox);
+                                    label.append(`<span>${value}</span>`);
+                                    checkboxContainer.append(label);
+                                    tagsCheckboxes.append(checkboxContainer);
+
+                                    // Добавляем тег в объект добавленных тегов
+                                    addedTags[key] = true;
+                                }
                             });
                         }
                     });

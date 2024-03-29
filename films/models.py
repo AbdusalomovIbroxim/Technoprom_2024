@@ -47,20 +47,17 @@ class Categories(Model):
 
 class SubCategories(Model):
     slug = SlugField(unique=True)
-    category = ForeignKey(Categories, on_delete=CASCADE)
     name_en = CharField("Subcategory (English)", max_length=100, default="")
     name_ru = CharField("Подкатегория (Русский)", max_length=100, default="")
     name_uz = CharField("Subkategoriya (O'zbek)", max_length=100, default="")
 
     def __str__(self):
         lang = get_language()
-        if lang == "":
-            return self.name_ru
-        elif lang == "uz":
+        if lang == 'uz':
             return self.name_uz
-        elif lang == "ru":
+        elif lang == 'ru':
             return self.name_ru
-        elif lang == "en":
+        elif lang == 'en':
             return self.name_en
 
     def get_absolute_url(self):
@@ -71,27 +68,34 @@ class SubCategories(Model):
         verbose_name_plural = "Subcategories"
 
 
+class SubCategoryCategory(Model):
+    subcategory = ForeignKey(SubCategories, on_delete=CASCADE)
+    category = ForeignKey(Categories, on_delete=CASCADE)
+
+
 class Tag(Model):
     name_en = CharField("Tag Name (English)", max_length=255, unique=True, default="")
     name_ru = CharField("Имя тега (Русский)", max_length=255, unique=True, default="")
     name_uz = CharField("Tag nomi (O'zbek)", max_length=255, unique=True, default="")
-    category = ForeignKey(
-        Categories, on_delete=CASCADE, blank=True, null=True, related_name="tags"
-    )
-    subcategory = ForeignKey(
-        SubCategories, on_delete=CASCADE, blank=True, null=True, related_name="tags"
-    )
 
     def __str__(self):
         lang = get_language()
-        if lang == "":
-            return self.name_ru
-        elif lang == "uz":
+        if lang == 'uz':
             return self.name_uz
-        elif lang == "ru":
+        elif lang == 'ru':
             return self.name_ru
-        elif lang == "en":
+        elif lang == 'en':
             return self.name_en
+
+
+class TagCategory(Model):
+    category = ForeignKey(Categories, on_delete=CASCADE, related_name="tags")
+    tag = ForeignKey(Tag, on_delete=CASCADE, related_name="category_tags", db_column="tag__category")
+
+
+class TagSubcategory(Model):
+    subcategory = ForeignKey(SubCategories, on_delete=CASCADE, related_name="tags")
+    tag = ForeignKey(Tag, on_delete=CASCADE, related_name="subcategory_tags", db_column="tag__subcategory")
 
 
 class Country(Model):

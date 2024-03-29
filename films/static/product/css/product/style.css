@@ -701,6 +701,11 @@ body {
     border-radius: 30px;
 }
 
+
+.padding-top-150 {
+    padding-top: 150px;
+}
+
 @media only screen and (max-width: 480px) {
     .container {
         width: 90%;

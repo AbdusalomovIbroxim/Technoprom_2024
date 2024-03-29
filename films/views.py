@@ -16,7 +16,7 @@ from fuzzywuzzy import fuzz
 
 from accounts.models import Message, User
 from .forms import FilmsForm, ProductFilterForm, SearchForm
-from .models import Products, SubCategories, Favorite, Tag, Image
+from .models import Products, SubCategories, Favorite, Tag, Image, Categories, SubCategoryCategory
 from .utils import send_message_to_channel
 
 
@@ -492,40 +492,37 @@ def related_to_it(request):
     category_id = request.GET.get("category_id", None)
     subcategory_id = request.GET.get("subcategory_id", None)
 
-    sub_categories = {}
     tags = {}
+    subcategories_names = {}
 
     if category_id:
-        subcategories = SubCategories.objects.filter(category_id=category_id).all()
+        category = get_object_or_404(Categories, pk=category_id)
+        subcategories = SubCategoryCategory.objects.filter(category=category)
+        subcategory_ids = subcategories.values_list('subcategory_id', flat=True)
+        subcategories_data = SubCategories.objects.filter(id__in=subcategory_ids).all()
+
         if preferred_language == 'en':
-            sub_categories = {
-                subcategory.id: subcategory.name_en for subcategory in subcategories
+            subcategories_names = {
+                subcategory.id: subcategory.name_en for subcategory in subcategories_data
             }
+
         elif preferred_language == 'ru':
-            sub_categories = {
-                subcategory.id: subcategory.name_ru for subcategory in subcategories
+            subcategories_names = {
+                subcategory.id: subcategory.name_ru for subcategory in subcategories_data
             }
+
         elif preferred_language == 'uz':
-            sub_categories = {
-                subcategory.id: subcategory.name_uz for subcategory in subcategories
+            subcategories_names = {
+                subcategory.id: subcategory.name_uz for subcategory in subcategories_data
             }
 
     if subcategory_id:
-        tags_all = Tag.objects.filter(subcategory=subcategory_id).all()
-        if preferred_language == 'en':
-            tags = {
-                tag.id: tag.name_en for tag in tags_all
-            }
-        elif preferred_language == 'ru':
-            tags = {
-                tag.id: tag.name_ru for tag in tags_all
-            }
-        elif preferred_language == 'uz':
-            tags = {
-                tag.id: tag.name_uz for tag in tags_all
-            }
+        lang = get_language()
+        tags_data = Tag.objects.filter(subcategory_tags__subcategory_id=subcategory_id,
+                                       category_tags__category_id=category_id)
+        tags = {tag.id: getattr(tag, f'name_{lang}') for tag in tags_data}
 
-    return JsonResponse({"subcategories": sub_categories, "tags": tags})
+    return JsonResponse({"subcategories": subcategories_names, "tags": tags})
 
 
 @login_required()

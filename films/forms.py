@@ -191,7 +191,7 @@ class ProductFilterForm(forms.ModelForm):
     )
 
     company_sub_category = forms.ModelChoiceField(
-        queryset=SubCategories.objects.filter(category__is_linked=True),
+        queryset=SubCategories.objects.filter(subcategorycategory__category__is_linked=True),
         empty_label="Выберите субкатегорию",
         required=False,
     )
