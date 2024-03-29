@@ -1,5 +1,3 @@
-import asyncio
-from django.shortcuts import get_object_or_404
 import emoji
 from cyrtranslit import to_cyrillic, to_latin
 from django.contrib import messages
@@ -7,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect, render
 from django.utils import timezone
 from django.utils.translation import get_language
@@ -16,7 +15,7 @@ from fuzzywuzzy import fuzz
 
 from accounts.models import Message, User
 from .forms import FilmsForm, ProductFilterForm, SearchForm
-from .models import Products, SubCategories, Favorite, Tag, Image, Categories, SubCategoryCategory
+from .models import (Products, SubCategories, Favorite, Tag, Image, Categories, SubCategoryCategory, )
 from .utils import send_message_to_channel
 
 
@@ -487,6 +486,9 @@ def new_filter(
     return queryset
 
 
+# from django.shortcuts import get_object_or_404
+
+
 def related_to_it(request):
     preferred_language = get_language()
     category_id = request.GET.get("category_id", None)
@@ -505,12 +507,10 @@ def related_to_it(request):
             subcategories_names = {
                 subcategory.id: subcategory.name_en for subcategory in subcategories_data
             }
-
         elif preferred_language == 'ru':
             subcategories_names = {
                 subcategory.id: subcategory.name_ru for subcategory in subcategories_data
             }
-
         elif preferred_language == 'uz':
             subcategories_names = {
                 subcategory.id: subcategory.name_uz for subcategory in subcategories_data
