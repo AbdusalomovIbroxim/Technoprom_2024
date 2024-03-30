@@ -5,16 +5,17 @@
 
 
 .container {
-    max-width: 1190px;
+    max-width: 1300px;
     margin-top: 90px;
+
 }
 
 .main-banner {
-    background: #0050DC;
+    background:#0050DC;
     padding: 60px 40px;
     border-radius: 10px;
     height: 310px;
-    display: flex;
+    display:flex;
     margin-bottom: 50px;
 }
 
@@ -37,15 +38,15 @@
     font-size: 16px;
     line-height: 24px;
     border-radius: 12px;
-    background: rgb(0, 80, 220);
+    background: rgb(0,80,220);
     border: 1px solid rgb(255, 255, 255);
-    padding: 1px 28px;
+    padding: 1px 28px ;
     padding-bottom: 2px;
     cursor: pointer;
     margin-top: 20px;
 }
 
-.text-info__1 {
+.text-info__1  {
     margin-top: 32px;
     margin-bottom: 16px;
     font-family: Soleil, Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -55,7 +56,7 @@
     cursor: pointer;
     float: right;
     padding-right: 70px;
-    margin-top: 20px;
+    margin-top: 20px ;
 }
 
 .text-info___1 {
@@ -68,7 +69,7 @@
     cursor: pointer;
     float: right;
     padding-right: 44px;
-    margin-top: 0px;
+    margin-top: 0px ;
 }
 
 .text-info___2 {
@@ -81,7 +82,7 @@
     cursor: pointer;
     float: right;
     padding-right: 44px;
-    margin-top: 0px;
+    margin-top: 0px ;
 }
 
 .text-info___3 {
@@ -94,7 +95,7 @@
     cursor: pointer;
     float: right;
     padding-right: 44px;
-    margin-top: 0px;
+    margin-top: 0px ;
 }
 
 .text-info__2 {
@@ -152,7 +153,7 @@
 .main-banner__info__2 {
     border-radius: 10px;
     height: 610px;
-    width: 1220px;
+    width: 1050px;
     background: #FFFFFF;
     padding-left: 60px;
     padding-top: 60px;
@@ -223,17 +224,17 @@
 }
 
 .b1 {
-    font-family: Soleil, Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    color: #312f4f;
-    padding: 16px;
-    border: 1px solid rgb(209, 209, 227);
-    border-radius: 8px;
-    margin-right: 15px;
-    display: flex;
-    align-items: center;
+   font-family: Soleil, Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+   font-weight: 600;
+   font-size: 16px;
+   line-height: 24px;
+   color: #312f4f;
+   padding: 16px;
+   border: 1px solid rgb(209, 209, 227);
+   border-radius: 8px;
+   margin-right: 15px;
+   display: flex;
+   align-items: center;
 
 }
 
@@ -244,11 +245,11 @@
     line-height: 24px;
     color: #312f4f;
     padding: 16px;
-    border: 1px solid rgb(209, 209, 227);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-}
+   border: 1px solid rgb(209, 209, 227);
+   border-radius: 8px;
+   display: flex;
+   align-items: center;
+ }
 
 .b3 {
     font-family: Soleil, Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -257,24 +258,24 @@
     line-height: 24px;
     color: #312f4f;
     padding: 16px;
-    border: 1px solid rgb(209, 209, 227);
-    border-radius: 8px;
-    margin-right: 15px;
-    display: flex;
-    align-items: center;
-}
+   border: 1px solid rgb(209, 209, 227);
+   border-radius: 8px;
+   margin-right: 15px;
+   display: flex;
+   align-items: center;
+ }
 
-.b4 {
+ .b4 {
     font-family: Soleil, Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
     color: #312f4f;
     padding: 16px;
-    border: 1px solid rgb(209, 209, 227);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
+   border: 1px solid rgb(209, 209, 227);
+   border-radius: 8px;
+   display: flex;
+   align-items: center;
 }
 
 .buttons-section {
@@ -317,7 +318,7 @@
 }
 
 .image_info {
-    display: flex;
+  display: flex;
 }
 
 .image_info__2 {
@@ -338,7 +339,7 @@
     font-size: 16px;
     line-height: 24px;
     border-radius: 12px;
-    background: rgb(0, 80, 220);
+    background: rgb(0,80,220);
     border: 1px solid rgb(255, 255, 255);
     padding: 1px 28px;
     padding-bottom: 2px;
@@ -346,7 +347,7 @@
     margin-top: 20px;
     display: flex;
     width: 175px;
-    height: 57px;;
+   height: 57px;;
 }
 
 .main-info__test__1 {
@@ -378,7 +379,6 @@
     margin-right: 60px;
     height: 560px;
 }
-
 .main-info__test__3 {
     overflow: hidden;
     border-radius: 15px;
@@ -392,7 +392,6 @@
     margin-right: 60px;
     height: 500px;
 }
-
 .main-info__test__4 {
     overflow: hidden;
     border-radius: 15px;
@@ -412,17 +411,12 @@
     margin-top: 20px;
 }
 
-.course-title-2 {
-    padding: 15px;
-    height: px;
-}
-
 .text-info_3 {
     font-family: Soleil, Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
-    color: #696D8C;
+    color:#696D8C;
     margin-bottom: 5px;
 }
 
@@ -432,8 +426,8 @@
     font-size: 16px;
     line-height: 24px;
     border-radius: 12px;
-    border: 1px solid rgb(49, 47, 79);
-    padding: 1px 28px;
+    border: 1px solid rgb(49,47,79);
+    padding: 1px 28px ;
     padding-bottom: 2px;
     cursor: pointer;
     margin-top: 20px;
@@ -520,7 +514,7 @@
 }
 
 .buttons {
-    display: flex;
+  display: flex;
 
 }
 
@@ -582,99 +576,101 @@
     width: 700px;
 }
 
-@media (max-width: 900px) {
+@media (max-width:900px) {
     .container {
         margin-left: 0px;
         margin-right: 0px;
 
     }
-
     .main-banner {
-        width: 200px;
-        height: 500px;
-        padding-top: 50px;
+    width: 200px;
+    height: 500px;
+    padding-top: 50px;
     }
 
-    .main-image {
-        width: 200px;
-        margin-left: 0px;
-    }
+   .main-image {
+    width: 200px;
+    margin-left: 0px;
+   }
 
-    .text-info__2 {
-        margin-bottom: 20px;
-        margin-top: 16px;
-    }
+   .text-info__2 {
+    margin-bottom: 20px;
+    margin-top: 16px;
+   }
 
-    /* End of 1 banner */
-    .main-banner__2 {
-        width: 800px;
-        height: 3600px;
-    }
+   /* End of 1 banner */
 
-    .main-banner__info__2 {
-        height: 1135px;
-        display: flex;
-        width: 680px;
-        flex-direction: column;
-    }
+   .main-banner__2 {
+    width: 800px;
+    height: 3600px;
+   }
 
-    .main-info__test__2 {
-        margin-right: 120px;
-        margin-top: 64px;
-    }
+   .main-banner__info__2 {
+    height: 1135px;
+    display: flex;
+    width: 680px;
+    flex-direction: column;
+   }
 
-    .buttons-section {
-        height: 400px;
-        margin-top: 0px;
-        display: flex;
-        flex-wrap: wrap;
-        align-content: center;
-    }
+   .main-info__test__2 {
+    margin-right: 120px;
+    margin-top: 64px;
+   }
+
+   .buttons-section {
+    height: 400px;
+    margin-top: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+   }
 
     /* End of 2 banner*/
+
     .main-banner__info__3 {
-        height: 1000px;
-        display: flex;
-        width: 680px;
-        flex-direction: column;
+    height: 1000px;
+    display: flex;
+    width: 680px;
+    flex-direction: column;
     }
 
     .main-info__test__3 {
-        margin-right: 120px;
-        margin-top: 64px;
+    margin-right: 120px;
+    margin-top: 64px;
     }
 
     .buttons-section__2 {
-        height: 400px;
-        margin-top: 0px;
-        display: flex;
-        flex-wrap: wrap;
-        align-content: center;
+    height: 400px;
+    margin-top: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
     }
 
     /* End of 3 banner */
+
     .main-banner__info__4 {
-        height: 1035px;
-        display: flex;
-        width: 680px;
-        flex-direction: column;
+    height: 1035px;
+    display: flex;
+    width: 680px;
+    flex-direction: column;
     }
 
     .main-info__test__4 {
-        margin-right: 120px;
-        margin-top: 64px;
+    margin-right: 120px;
+    margin-top: 64px;
     }
 
     .buttons-section__3 {
-        height: 400px;
-        margin-top: 0px;
-        display: flex;
-        flex-wrap: wrap;
-        align-content: center;
+    height: 400px;
+    margin-top: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
     }
 
     .text-info__1 {
-        margin-top: 20px;
+    margin-top: 20px;
     }
 
     .text-info___3 {
