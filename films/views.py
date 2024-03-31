@@ -325,13 +325,32 @@ class FilmsListView(ListView):
         context["top_films"] = Products.objects.filter(
             is_active=True, is_published=True, is_top_film=True
         ).order_by("-create_date")
-        # context["companies"] = User.objects.filter(is_business_account=True)
         context["search"] = SearchForm()
+
+        # Get the films queryset
         films = Products.objects.filter(is_active=True, is_published=True).order_by(
             "-create_date"
         )
-        context["films"] = films
 
+        # Apply additional filtering based on request parameters
+        category_id = self.request.GET.get('category_id')
+        sub_category_id = self.request.GET.get('sub_category_id')
+        tag_id = self.request.GET.get('tag_id')
+        country_id = self.request.GET.get('country_id')
+        city_id = self.request.GET.get('city_id')
+
+        if category_id:
+            films = films.filter(category_id=category_id)
+        elif sub_category_id:
+            films = films.filter(subcategories__in=sub_category_id)
+        elif tag_id:
+            films = films.filter(tags__id=tag_id)
+        elif country_id:
+            films = films.filter(country_id=country_id)
+        elif city_id:
+            films = films.filter(city_id=city_id)
+
+        # Set up pagination
         paginator = Paginator(films, self.paginate_by)
         page = self.request.GET.get("page", 1)
 

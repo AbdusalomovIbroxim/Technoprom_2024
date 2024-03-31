@@ -66,18 +66,19 @@
 
                     <div class="product-description">
                         <div class="path_to_product" style="padding-bottom: 10px;">
-                            <a href="#">{{ product.country }}/</a>
-                            <a href="#">{% if product.city %}{{ product.city }}/{% endif %}</a>
-                            <a href="#">{{ product.category }}/</a>
-                            {#                            {{ product_subcategories }}#}
-                            {% for product_subcategory in product_subcategories %}
-                                <a href="#">{{ product_subcategory }}/</a>
+
+                            <a href="{% url 'product-list' %}?country_id={{ product.country_id }}">{{ product.country }}/</a>
+                            <a href="{% url 'product-list' %}?city_id={{ product.city_id }}">{{ product.city }}/</a>
+                            <a href="{% url 'product-list' %}?category_id={{ product.category_id }}">{{ product.category }}/</a>
+                            {% for product_subcategory in product.subcategories.all %}
+                                <a href="{% url 'product-list' %}?sub_category_id={{ product_subcategory.id }}">{{ product_subcategory }}/</a>
                             {% endfor %}
+
 
                         </div>
                         <div class="product-tags">
                             {% for tag in product.tags.all %}
-                                <a href="" class="tag">{{ tag }}</a>
+                                <a href="{% url 'product-list' %}?tag_id={{ tag.id }}" class="tag">{{ tag }}</a>
                             {% endfor %}
                         </div>
                         <div class="product-title">
