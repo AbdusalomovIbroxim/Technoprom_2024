@@ -13,7 +13,7 @@ from django.views import View
 from django.views.generic import ListView, CreateView, DetailView, UpdateView
 from fuzzywuzzy import fuzz
 
-from accounts.models import Message, User
+from accounts.models import Message
 from .forms import FilmsForm, ProductFilterForm, SearchForm
 from .models import (Products, SubCategories, Favorite, Tag, Image, Categories, SubCategoryCategory, )
 from .utils import send_message_to_channel
@@ -143,9 +143,9 @@ class ProductDetailView(DetailView):
         product_author = film.author
         film_pk = film.pk
         product_category = film.category
-        product_subcategories = SubCategories.objects.filter(products=self.kwargs['pk'])
-
-        context["product_subcategories"] = product_subcategories.values_list()
+        product_subcategories = SubCategories.objects.filter(products=self.kwargs['pk']).values_list('name_ru',
+                                                                                                     flat=True)
+        context["product_subcategories"] = list(product_subcategories)
 
         if not self.request.user.is_anonymous:
             context["is_favorite"] = Favorite.objects.filter(
@@ -198,7 +198,7 @@ class ProductSaveView(CreateView):
         message = {}
         selected_tags = self.request.POST.getlist("tags")
         selected_subcategories = self.request.POST.getlist("subcategories")
-        images = self.request.FILES.getlist('about_us')
+        images = self.request.FILES.getlist('images')
         if self.request.POST.get("form-name") == "sell":
             film.type = "sell"
             message["тип"] = "Продать"
@@ -322,7 +322,6 @@ class FilmsListView(ListView):
         else:
             in_favorite = []
         context["in_favorite"] = in_favorite
-        # context['films'] = Films.objects.filter(is_active=True, is_published=True).order_by('-create_date')
         context["top_films"] = Products.objects.filter(
             is_active=True, is_published=True, is_top_film=True
         ).order_by("-create_date")
@@ -392,67 +391,39 @@ class FilmsListView(ListView):
         return list(similar_products)
 
     def post(self, request, *args, **kwargs):
-        search_form = SearchForm(self.request.POST)
-        product_filter_form = ProductFilterForm(self.request.POST)
+        search_form = SearchForm(request.POST)
+        product_filter_form = ProductFilterForm(request.POST)
 
-        if self.request.user.is_authenticated:
-            in_favorite = list(
-                Favorite.objects.filter(user=self.request.user).values_list(
-                    "product_id", flat=True
-                )
-            )
-        else:
-            in_favorite = []
         context = {
-            "search": SearchForm(),
-            "in_favorite": in_favorite,
-            "form": ProductFilterForm(),
+            "search": search_form,
+            "in_favorite": list(Favorite.objects.filter(user=request.user).values_list("product_id",
+                                                                                       flat=True)) if request.user.is_authenticated else [],
+            "form": product_filter_form,
         }
 
-        # ---------------------------------------------------------------------------------
         queryset = Products.objects.filter(is_active=True, is_published=True)
-        companies = User.objects.filter(is_business_account=True)
 
         if search_form.is_valid():
-            query = search_form["query"].data
+            query = search_form.cleaned_data.get("query")
             queryset = queryset.filter(
                 Q(name__icontains=query) | Q(description__icontains=query)
             )
-            context["films"] = queryset
 
         else:
-            category = self.request.POST.get("category", "")
-            sub_category = self.request.POST.get("sub_category", "")
-            tags = self.request.POST.get("tags", "")
-            country = self.request.POST.get("country", "")
-            city = self.request.POST.get("city", "")
-            product_type = self.request.POST.get("type", "")
+            if product_filter_form.is_valid():
+                queryset = product_filter_form.filter_products(queryset)
 
-            if product_type != "company":
-                filtered_queryset = new_filter(
-                    queryset,
-                    companies,
-                    category,
-                    sub_category,
-                    tags,
-                    country,
-                    city,
-                    product_type,
-                )
-                context["films"] = filtered_queryset
+        paginator = Paginator(queryset, self.paginate_by)
+        page_number = request.POST.get('page', 1)
 
-            else:
-                filtered_companies = new_filter(
-                    queryset,
-                    companies,
-                    category,
-                    sub_category,
-                    tags,
-                    country,
-                    city,
-                    product_type,
-                )
-                context["companies"] = filtered_companies
+        try:
+            films = paginator.page(page_number)
+        except (PageNotAnInteger, EmptyPage):
+            films = paginator.page(1)
+
+        context["films"] = films
+        context["paginator"] = paginator
+
         return render(request, self.template_name, context=context)
 
 

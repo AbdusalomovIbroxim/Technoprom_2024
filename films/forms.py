@@ -167,19 +167,9 @@ class FilmsForm(forms.ModelForm):
     )
 
 
-class ProductFilterForm(forms.ModelForm):
-    class Meta:
-        model = Products
-        fields = ["category", "sub_category", "tags", "country", "city", "type"]
-
+class ProductFilterForm(forms.Form):
     category = forms.ModelChoiceField(
         queryset=Categories.objects.filter(is_linked=False),
-        empty_label="Выберите категорию",
-        required=False,
-    )
-
-    company_category = forms.ModelChoiceField(
-        queryset=Categories.objects.filter(is_linked=True),
         empty_label="Выберите категорию",
         required=False,
     )
@@ -190,23 +180,12 @@ class ProductFilterForm(forms.ModelForm):
         required=False,
     )
 
-    company_sub_category = forms.ModelChoiceField(
-        queryset=SubCategories.objects.filter(subcategorycategory__category__is_linked=True),
-        empty_label="Выберите субкатегорию",
-        required=False,
-    )
-
     tags = forms.ModelMultipleChoiceField(
         label="",
         queryset=Tag.objects.all(),
         widget=forms.CheckboxSelectMultiple,
+        required=False,
     )
-
-    def clean_tags(self):
-        tags = self.cleaned_data.get('tags')
-        if not tags:
-            raise forms.ValidationError('Выберите хотя бы один тег.')
-        return tags
 
     country = forms.ModelChoiceField(
         label="",
@@ -253,6 +232,31 @@ class ProductFilterForm(forms.ModelForm):
         ),
         required=False,
     )
+
+    def filter_products(self, queryset):
+        cleaned_data = self.cleaned_data
+        category = cleaned_data.get('category')
+        subcategories = cleaned_data.get('sub_category')
+        tags = cleaned_data.get('tags')
+        country = cleaned_data.get('country')
+        city = cleaned_data.get('city')
+        product_type = cleaned_data.get('type')
+
+        # Фильтрация продуктов по переданным параметрам
+        if category:
+            queryset = queryset.filter(category=category)
+        if subcategories:
+            queryset = queryset.filter(subcategories=subcategories)
+        if tags:
+            queryset = queryset.filter(tags__in=tags)
+        if country:
+            queryset = queryset.filter(country=country)
+        if city:
+            queryset = queryset.filter(city=city)
+        if product_type != "all":
+            queryset = queryset.filter(type=product_type)
+
+        return queryset
 
 
 class SearchForm(forms.Form):

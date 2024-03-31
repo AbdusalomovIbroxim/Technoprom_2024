@@ -69,15 +69,15 @@
                             <a href="#">{{ product.country }}/</a>
                             <a href="#">{% if product.city %}{{ product.city }}/{% endif %}</a>
                             <a href="#">{{ product.category }}/</a>
-                            {{ product_subcategories }}
-                            {#                            {% for product_subcategory in product_subcategories %}#}
-                            {#                                <a href="#">{{ product_sub_category }}/</a>#}
-                            {#                            {% endfor %}#}
+                            {#                            {{ product_subcategories }}#}
+                            {% for product_subcategory in product_subcategories %}
+                                <a href="#">{{ product_subcategory }}/</a>
+                            {% endfor %}
 
                         </div>
                         <div class="product-tags">
                             {% for tag in product.tags.all %}
-                                <span class="tag">{{ tag.name }}</span>
+                                <a href="" class="tag">{{ tag }}</a>
                             {% endfor %}
                         </div>
                         <div class="product-title">
@@ -230,7 +230,7 @@
                                     <div class="card__sell card-color">
                                         <div class="card__buy-content">
                                             <div class="card__sell-image">
-                                                <img src="{{ product.image.url }}" alt="Product Image">
+                                                <img src="{{ product.image_set.first.image.url }}" alt="Product Image">
                                             </div>
                                             <a href="{% url 'product-detail' product.pk %}"
                                                class="title">{{ product.title }}</a>
@@ -333,7 +333,8 @@
                                     <div class="card__sell card-color">
                                         <div class="card__buy-content">
                                             <div class="card__sell-image">
-                                                <img src="{{ product.image.url }}" alt="Product Image">
+                                                <img src="{{ product.image_set.first.image.url }}"
+                                                     alt="Product Image">
                                             </div>
                                             <a href="{% url 'product-detail' product.pk %}"
                                                class="title">{{ product.title }}</a>

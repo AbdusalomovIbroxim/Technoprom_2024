@@ -52,6 +52,7 @@
         <div class="filter-container">
             <form class="filter-form" action="{% url 'product-list' %}" method="post">
                 {% csrf_token %}
+                <input type="hidden" name="page" value="{{ films.number }}">
                 <div class="filter-item" id="type-group">
                     <label for="type-group" class="form-label">{% translate "Товары" %}: </label>
                     {{ form.type }}
@@ -68,14 +69,12 @@
                                 {{ form.company_category }}
                             </div>
                         </div>
-                        <div class="filter-item" id="subcategory-group">
-                            <label for="type-group" class="form-label">{% translate "Суб категории" %}: </label>
-                            <div class="for-post" id="for-post-subcategory">
-                                {{ form.sub_category }}
-                            </div>
-                            <div class="for-company-subcategory" id="for-company-subcategory">
-                                {{ form.company_sub_category }}
-                            </div>
+                        <div class="form-group" id="subcategory-group">
+                            <label for="subcategory" class="form-label">{% translate "Субкатегория" %}:
+                                {% for error in form.sub_category.errors %}
+                                    <div class="error-message">{{ error }}</div>
+                                {% endfor %}</label>
+                            <div id="subcategories-checkboxes" style="width: 450px;"></div>
                         </div>
                     </div>
                     <div class="form-group" id="tags-group" style="display: block">
@@ -106,6 +105,7 @@
 
             </form>
         </div>
+
     </div>
 </section>
 <section id="cards__buy-section" class="cards__buy-section">
@@ -159,7 +159,7 @@
                             <div class="card__buy-content">
                                 <a class="dont-text-decoration" href="{% url 'product-detail' product.pk %}">
                                     <div class="card__sell-image">
-                                        <img src="{{ product.image.url }}" alt="Product Image">
+                                        <img src="{{ product.image_set.first.image.url }}" alt="Product Image">
                                     </div>
                                     <div class="title">{{ product.title }}</div>
                                 </a>
@@ -352,97 +352,138 @@
 </script>
 
 <script>
+
+
     $(document).ready(function () {
         const categorySelect = $('#id_category');
-        const subcategorySelect = $('#id_sub_category');
-        const tagsGroup = $('#tags-group'); // Добавляем элемент для тегов
-        const tagsSelect = $('#id_tags'); // Замените на соответствующий id поля тегов
+        const subcategoryGroup = $('#subcategory-group');
+        const subcategoryCheckboxes = $('#subcategories-checkboxes');
+        const tagsGroup = $('#tags-group');
+        const tagsCheckboxes = $('#tags-checkboxes');
+        const pathParts = window.location.pathname.split('/');
+        const language = pathParts[1] ? pathParts[1] : 'ru';
+        const placeholderText = {
+            'ru': {
+                'title': "Я ищу термопластичную машину",
+                'description': "должен производить продукт по 150 гр.",
+            },
+            'en': {
+                'title': "I'm looking for a thermoplastic machine",
+                'description': 'Enter description',
+            },
+            "uz": {
+                'title': "Termoplastavtomat qidiryapman",
+                'description': "150 gr lik mahsulot chiqarishi kerak",
+            }
+        };
+        const languageText = {
+            'ru': 'Выберите категорию',
+            'en': 'Select a category',
+            'uz': 'Ketegoriyani tanlang',
+        };
 
-        // Функция для загрузки субкатегорий
+        $('#id_title').attr('placeholder', placeholderText[language]['title']);
+        $('#id_description').attr('placeholder', placeholderText[language]['description']);
+        categorySelect.find('option[value=""]').text(languageText[language]);
+
         function loadSubcategories() {
             const selectedCategoryId = categorySelect.val();
 
-            // Очищаем предыдущие опции и добавляем "Выберите субкатегорию"
-            subcategorySelect.empty().append($('<option></option>').attr('value', '').text('Сначала выберите категорию'));
-            tagsGroup.hide(); // Скрываем поле выбора тегов
+            subcategoryCheckboxes.empty();
 
             if (selectedCategoryId) {
-                // Запрос на сервер для получения субкатегорий по выбранной категории
+                subcategoryGroup.show();
+                tagsGroup.hide()
                 $.ajax({
-                    url: `/related_to_it/?category_id=${selectedCategoryId}`,
+                    url: `/${language}/related_to_it/?category_id=${selectedCategoryId}`,
                     dataType: 'json',
                     success: function (data) {
-                        console.log(data.subcategories); // Здесь data определена и содержит данные
-                        subcategorySelect.empty();
-                        subcategorySelect.append($('<option></option>').attr('value', '').text('Выберите субкатегорию')); // Добавляем опцию по умолчанию
+                        console.log(data.subcategories);
+
                         $.each(data.subcategories, function (key, value) {
-                            subcategorySelect.append($('<option></option>').attr('value', key).text(value));
+                            const checkboxContainer = $('<div>').addClass('cat action');
+                            const label = $('<label>');
+                            const checkbox = $('<input type="checkbox">')
+                                .attr('id', `subcategory-${key}`)
+                                .attr('name', 'subcategories')
+                                .attr('value', key)
+                                .appendTo(label);
+
+                            label.append(checkbox);
+                            label.append(`<span>${value}</span>`);
+                            checkboxContainer.append(label);
+                            subcategoryCheckboxes.append(checkboxContainer);
                         });
-                        tagsGroup.show(); // Показываем поле выбора субкатегории
                     }
                 });
             } else {
-                tagsGroup.show(); // Показываем поле выбора субкатегории, даже если категория не выбрана
+                subcategoryGroup.hide();
+                tagsGroup.hide()
             }
         }
 
         categorySelect.change(loadSubcategories);
-
         loadSubcategories();
 
-        // Функция для загрузки тегов
+        function getSelectedSubcategories() {
+            const selectedSubcategories = [];
+            subcategoryCheckboxes.find('input[name="subcategories"]:checked').each(function () {
+                selectedSubcategories.push($(this).val());
+            });
+            return selectedSubcategories;
+        }
+
         function loadTags() {
-            const selectedSubcategoryId = subcategorySelect.val();
+            const selectedSubcategories = getSelectedSubcategories();
 
-            // Очищаем предыдущие чекбоксы
-            $('#tags-checkboxes').empty();
+            tagsCheckboxes.empty();
+            const selectedCategoryId = categorySelect.val();
 
-            if (selectedSubcategoryId) {
-                // Запрос на сервер для получения тегов по выбранной субкатегории
-                $.ajax({
-                    url: `/related_to_it/?subcategory_id=${selectedSubcategoryId}`,
-                    dataType: 'json',
-                    success: function (data) {
-                        console.log(data.tags); // Здесь data определена и содержит данные
-                        $.each(data.tags, function (key, value) {
-                            // Создаем div контейнер для каждого чекбокса и его лейбла
-                            const checkboxContainer = $('<div>')
-                                .addClass('cat')
-                                .addClass('action');
+            if (selectedSubcategories.length > 0) {
+                // Создаем объект для хранения добавленных тегов
+                const addedTags = {};
 
-                            // Создаем лейбл для каждого тега
-                            const label = $('<label>');
+                selectedSubcategories.forEach(function (subcategoryId) {
+                    $.ajax({
+                        url: `/${language}/related_to_it/?category_id=${selectedCategoryId}&subcategory_id=${subcategoryId}`,
+                        dataType: 'json',
+                        success: function (data) {
+                            console.log(`Tags for Subcategory ${subcategoryId}:`, data.tags);
 
-                            // Создаем чекбокс для каждого тега и добавляем его внутрь лейбла
-                            const checkbox = $('<input type="checkbox">')
-                                .attr('id', `tag-${key}`)
-                                .attr('name', 'tags')
-                                .attr('value', key)
-                                .appendTo(label);
+                            $.each(data.tags, function (key, value) {
+                                // Проверяем, не был ли уже добавлен такой тег
+                                if (!addedTags[key]) {
+                                    const checkboxContainer = $('<div>').addClass('cat action');
+                                    const label = $('<label>');
+                                    const checkbox = $('<input type="checkbox">')
+                                        .attr('id', `tag-${key}`)
+                                        .attr('name', 'tags')
+                                        .attr('value', key)
+                                        .appendTo(label);
 
-                            // Добавляем текст тега внутрь лейбла
-                            label.append($('<span>').text(value));
+                                    label.append(checkbox);
+                                    label.append(`<span>${value}</span>`);
+                                    checkboxContainer.append(label);
+                                    tagsCheckboxes.append(checkboxContainer);
 
-                            // Добавляем лейбл в контейнер
-                            checkboxContainer.append(label);
-
-                            // Добавляем контейнер в блок с чекбоксами
-                            $('#tags-checkboxes').append(checkboxContainer);
-                        });
-                        tagsGroup.show(); // Показываем блок с чекбоксами для тегов
-                    }
+                                    // Добавляем тег в объект добавленных тегов
+                                    addedTags[key] = true;
+                                }
+                            });
+                        }
+                    });
                 });
+
+                tagsGroup.show();
             } else {
-                tagsGroup.hide(); // Скрываем блок с чекбоксами для тегов, если субкатегория не выбрана
+                tagsGroup.hide();
             }
         }
 
-        // Отслеживаем изменения в поле выбора субкатегории
-        subcategorySelect.change(loadTags);
-
-        // Вызываем функцию загрузки тегов при инициализации страницы
+        subcategoryCheckboxes.on('change', loadTags);
         loadTags();
     });
+
 
 </script>
 

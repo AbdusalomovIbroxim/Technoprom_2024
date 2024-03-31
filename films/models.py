@@ -190,6 +190,16 @@ class Image(Model):
     product = ForeignKey("films.Products", on_delete=CASCADE)
 
 
+# class ProductSubcategories(Model):
+#     subCategory = ForeignKey("films.SubCategories", on_delete=CASCADE)
+#     product = ForeignKey("films.Products", on_delete=CASCADE)
+#
+#
+# class ProductTag(Model):
+#     subCategory = ForeignKey("films.Tag", on_delete=CASCADE)
+#     product = ForeignKey("films.Products", on_delete=CASCADE)
+
+
 class Favorite(Model):
     user = ForeignKey(get_user_model(), CASCADE)
     product_id = ForeignKey(Products, CASCADE)

@@ -627,7 +627,7 @@ msgstr "Subcategory"
 
 #: films/templates/product-list.html:91
 msgid "Страны"
-msgstr "Cpuntry"
+msgstr "Country"
 
 #: films/templates/product-list.html:103
 msgid "Фильтровать"
