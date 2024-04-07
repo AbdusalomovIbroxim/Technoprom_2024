@@ -72,16 +72,16 @@
             <div class="error-message">{{ error }}</div>
         {% endfor %}</div>
         <div class="error-field">{% for error in register_form.email.errors %}
-            <div class="error-message">test text for errors{{ error }}</div>
+            <div class="error-message">{{ error }}</div>
         {% endfor %}</div>
         <div class="error-field">{% for error in register_form.telegram.errors %}
-            <div class="error-message">test text for errors{{ error }}</div>
+            <div class="error-message">{{ error }}</div>
         {% endfor %}</div>
         <div class="error-field">{% for error in register_form.password1.errors %}
-            <div class="error-message">test text for errors{{ error }}</div>
+            <div class="error-message">{{ error }}</div>
         {% endfor %}</div>
     </div>
-    {#        </div>#}
+
     <a href="{% provider_login_url 'google' %}?next=/">login with google</a>
 </section>
 

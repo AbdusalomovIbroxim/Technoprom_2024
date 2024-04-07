@@ -46,7 +46,7 @@ from .forms import (
     AddBallForm,
     TopUpYourAccountForm,
 )
-from .models import UserRating, Message, UserSubscription, Complaint, PointsTransaction
+from .models import UserRating, Message, UserSubscription, Complaint, PointsTransaction, User
 
 from .utils import send_message_to_channel, true_account_status, send_message
 
@@ -62,7 +62,6 @@ def generate_verification_code():
 
 
 def send_sms_verification_code(phone_number, code):
-    # Замените следующие значения на ваши данные и ключи Infobip
     api_key = "1871b27648f478206aceb224f14851a0-03afcb56-5e8e-48f9-804b-7121e6697dd5"
     sender_id = "Ibroxim 🧑🏻‍💻"
 
@@ -133,46 +132,37 @@ class VerifyCodeView(View):
     def post(self, request, *args, **kwargs):
         verification_code = request.session.get(
             "verification_code"
-        )  # Получить код из сессии
+        )
         user_id = request.session.get("user_id")
-        # User = get_user_model()
 
         if verification_code and user_id:
             entered_code = request.POST.get("verification_code")
 
-            try:
-                user = get_user_model().objects.get(id=user_id, is_active=False)
-                if entered_code == verification_code:
-                    user.is_active = True
-                    user.save()
-                    login(request, user)
-                    message = Message.objects.create(
-                        sender=user,
-                        message="Ваша учетная запись была успешно активирована.",
-                        created_at=timezone.now(),
-                    )
+            user = get_user_model().objects.get(id=user_id, is_active=False)
+            if entered_code == verification_code:
+                user.is_active = True
+                user.save()
+                login(request, user, backend="django.contrib.auth.backends.ModelBackend")
+                message = Message.objects.create(
+                    sender=user,
+                    message="Ваша учетная запись была успешно активирована.",
+                    created_at=timezone.now(),
+                )
 
-                    message.recipients.set([user])
-                    messages.success(
-                        request, "Ваша учетная запись была успешно активирована."
-                    )
+                message.recipients.set([user])
+                messages.success(
+                    request, "Ваша учетная запись была успешно активирована."
+                )
 
-                    return redirect("index")
-                else:
-                    messages.error(
-                        request,
-                        "Неверный код подтверждения. Пожалуйста, попробуйте еще раз.",
-                    )
-                    return redirect(
-                        "register"
-                    )  # Можно перенаправить на страницу регистрации или на другую страницу
-            except Exception as e:
+                return redirect("index")
+            else:
                 messages.error(
-                    request, "Произошла ошибка при активации учетной записи."
+                    request,
+                    "Неверный код подтверждения. Пожалуйста, попробуйте еще раз.",
                 )
                 return redirect(
                     "register"
-                )  # Можно перенаправить на страницу регистрации или на другую страницу
+                )
         else:
             messages.error(
                 request,
@@ -180,7 +170,7 @@ class VerifyCodeView(View):
             )
             return redirect(
                 "register"
-            )  # Можно перенаправить на страницу регистрации или на другую страницу
+            )
 
 
 class LoginUserView(LoginView):
