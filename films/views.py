@@ -1,4 +1,5 @@
 import emoji
+import asyncio
 from cyrtranslit import to_cyrillic, to_latin
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -227,13 +228,10 @@ class ProductSaveView(CreateView):
         film.tags.set(selected_tags)
 
         message["film_id"] = film.id
-        image_paths = []
-        for image_obj in Image.objects.filter(product=film):
-            image_paths.append(image_obj.image.url)
-
-        if image_paths:
-            # asyncio.run(send_message_to_channel(message, image_paths))
-            send_message_to_channel(message, image_paths)
+        if images:
+            files = [i for i in images]
+            asyncio.run(send_message_to_channel(message, files))
+        # send_message_to_channel(message, images)
         else:
             # asyncio.run(send_message_to_channel(message))
             send_message_to_channel(message)

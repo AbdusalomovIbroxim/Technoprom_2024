@@ -94,7 +94,7 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-TELEGRAM_API_URL = f"https://api.telegram.org/bot{TOKEN}/sendPhoto"
+TELEGRAM_API_URL = f"https://api.telegram.org/bot{TOKEN}/"
 
 
 async def send_message(user_id, amount, photo):
@@ -118,7 +118,7 @@ async def send_message(user_id, amount, photo):
     }
 
     files = {'photo': photo}
-    response = requests.post(TELEGRAM_API_URL, data=payload, files=files)
+    response = requests.post(TELEGRAM_API_URL + "sendPhoto", data=payload, files=files)
 
     if response.status_code != 200:
         print(f"Failed to send message. Status code: {response.status_code}, Response: {response.text}")
@@ -150,7 +150,7 @@ async def send_message_to_channel(message_data, pk):
         "reply_markup": inline_kb
     }
 
-    response = requests.post(TELEGRAM_API_URL, json=payload)
+    response = requests.post(TELEGRAM_API_URL + "sendMessage", json=payload)
 
     if response.status_code != 200:
         print(f"Failed to send message. Status code: {response.status_code}, Response: {response.text}")

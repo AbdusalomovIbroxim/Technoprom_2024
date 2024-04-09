@@ -1,3 +1,5 @@
+import json
+
 import environ
 import requests
 
@@ -9,10 +11,10 @@ environ.Env.read_env()
 TOKEN = env("TOKEN")
 CHAT_ID = env("CHAT_ID")
 
-api_url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+api_url = f"https://api.telegram.org/bot{TOKEN}/"
 
 
-def send_message_to_channel(message, images=None):
+async def send_message_to_channel(message, images=None):
     tags = message.get('tags', [])
     subcategories = message.get("subcategories", [])
     film_id = message['film_id']
@@ -30,7 +32,10 @@ def send_message_to_channel(message, images=None):
         f"🌆 *Город*: {message['city']}\n"
         f"📞 *Телефон*: {message['telephone']}\n"
         f"📞 *Телеграм*: {message['telegram']}\n"
-        f"📋 *Тип*: {message['тип']}\n"
+        f"📋 *Тип*: {message['тип']}\n\n"
+        f"http://192.168.100.3:8000/product/{film_id}/ \n"
+        f"http://localhost:8000/product/{film_id}/ \n"
+        f"http://tecnoprom.uz/product/{film_id}/ \n\n"
     )
 
     if message['is_price_negotiable']:
@@ -38,11 +43,12 @@ def send_message_to_channel(message, images=None):
     else:
         formatted_message += f"💰 *Цена*: {message['price']}\n"
 
-    inline_kb = {
+    inline_kb = json.dumps({
         "inline_keyboard": [
-            [{"text": "👍", "callback_data": f"button1_{film_id}"}, {"text": "👎", "callback_data": f"button2_{film_id}"}]
+            [{"text": "Активировать", "callback_data": "button1_{}".format(film_id)},
+             {"text": "Деактивировать", "callback_data": "button2_{}".format(film_id)}]
         ]
-    }
+    })
 
     payload = {
         "chat_id": CHAT_ID,
@@ -51,11 +57,14 @@ def send_message_to_channel(message, images=None):
         "reply_markup": inline_kb
     }
 
-    if images:
-        files = {('photo', open(f"{BASE_DIR}/{image_path}", 'rb')) for image_path in images}
-        response = requests.post(api_url, files=files)
-    else:
-        response = requests.post(api_url, json=payload)
+    # if images:
+    #     for image in images:
+    #         files = {'photo': image}
+    #         response = requests.post(api_url + "sendPhoto", data={"chat_id": CHAT_ID}, files=files)
+    response = requests.post(api_url + "sendMessage", json=payload)
+
+    # else:
+    #     response = requests.post(api_url + "sendMessage", json=payload)
 
     if response.status_code != 200:
         print(f"Failed to send message. Status code: {response.status_code}, Response: {response.text}")
