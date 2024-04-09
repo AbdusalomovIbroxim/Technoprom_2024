@@ -22,27 +22,27 @@ msgstr ""
 
 #: accounts/forms.py:85 accounts/forms.py:150
 msgid "Password"
-msgstr ""
+msgstr "Password"
 
 #: accounts/forms.py:125
 msgid "Пожалуйста, введите правильный номер телефона."
-msgstr ""
+msgstr "Пожалуйста, введите правильный номер телефона."
 
 #: accounts/forms.py:133
 msgid "Этот email уже используется."
-msgstr ""
+msgstr "Этот email уже используется."
 
 #: accounts/forms.py:161
 msgid "Поле \"Пароль\" обязательно для заполнения."
-msgstr ""
+msgstr "Поле \"Пароль\" обязательно для заполнения."
 
 #: accounts/forms.py:162
 msgid "Неверный формат пароля."
-msgstr ""
+msgstr "Неверный формат пароля."
 
 #: accounts/forms.py:306 films/forms.py:53
 msgid "Введите описание"
-msgstr ""
+msgstr "Введите описание"
 
 #: accounts/templates/admin/products_active.html:101
 #: accounts/templates/admin/products_moderation.html:98
@@ -54,171 +54,171 @@ msgstr ""
 #: accounts/templates/user/profile.html:408 films/templates/index.html:56
 #: films/templates/product-list.html:149 films/templates/product-list.html:240
 msgid "Подробнее"
-msgstr ""
+msgstr "Подробнее"
 
 #: accounts/templates/user/company-profile.html:101
 msgid "Отписаться"
-msgstr ""
+msgstr "Отписаться"
 
 #: accounts/templates/user/company-profile.html:104
 msgid "Подписаться"
-msgstr ""
+msgstr "Подписаться"
 
 #: accounts/templates/user/company-profile.html:112
 msgid "Веб сайт"
-msgstr ""
+msgstr "Веб сайт"
 
 #: accounts/templates/user/company-profile.html:119
 #: films/templates/base.html:144
 msgid "Телеграм"
-msgstr ""
+msgstr "Телеграм"
 
 #: accounts/templates/user/company-profile.html:152
 msgid "отправить"
-msgstr ""
+msgstr "отправить"
 
 #: accounts/templates/user/company-profile.html:166
 #: accounts/templates/user/company-profile.html:181
 msgid "рейтинг"
-msgstr ""
+msgstr "рейтинг"
 
 #: accounts/templates/user/company-profile.html:366
 #: films/templates/product-list.html:256
 msgid "Пока что нет объявлений."
-msgstr ""
+msgstr "Пока что нет объявлений."
 
 #: accounts/templates/user/login.html:33 accounts/templates/user/login.html:53
 #: films/templates/nav_bar.html:306
 msgid "Войти"
-msgstr ""
+msgstr "Войти"
 
 #: accounts/templates/user/login.html:48
 msgid "Забыли пароль?"
-msgstr ""
+msgstr "Забыли пароль?"
 
 #: accounts/templates/user/login.html:71
 msgid "Don't have an account"
-msgstr ""
+msgstr "У вас нет учетной записи"
 
 #: accounts/templates/user/login.html:72
 msgid "Signup"
-msgstr ""
+msgstr "Зарегистрироваться"
 
 #: accounts/templates/user/notification.html:33
 #: accounts/templates/user/update-profile.html:21
 msgid "Назад"
-msgstr ""
+msgstr "Назад"
 
 #: accounts/templates/user/profile.html:66
 msgid "Отслеживаете"
-msgstr ""
+msgstr "Отслеживаете"
 
 #: accounts/templates/user/profile.html:68
 msgid "Связаться с нами"
-msgstr ""
+msgstr "Связаться с нами"
 
 #: accounts/templates/user/profile.html:85
 #: accounts/templates/user/profile.html:136
 msgid "seen"
-msgstr ""
+msgstr "Просмотры"
 
 #: accounts/templates/user/profile.html:88
 #: accounts/templates/user/profile.html:139
 msgid "open number"
-msgstr ""
+msgstr "показать номер"
 
 #: accounts/templates/user/profile.html:91
 #: accounts/templates/user/profile.html:142
 msgid "like"
-msgstr ""
+msgstr "нравиться"
 
 #: accounts/templates/user/profile.html:154
 msgid "Ваши объявления"
-msgstr ""
+msgstr "Ваши объявления"
 
 #: accounts/templates/user/profile.html:158
 msgid "Пополнить счет"
-msgstr ""
+msgstr "Пополнить счет"
 
 #: accounts/templates/user/profile.html:159
 msgid "Тарифы"
-msgstr ""
+msgstr "Тарифы"
 
 #: accounts/templates/user/profile.html:168 films/templates/index.html:78
 #: films/templates/index.html:219 films/templates/index.html:354
 #: films/templates/nav_bar.html:308 films/templates/nav_bar.html:459
 msgid "размещение заказа"
-msgstr ""
+msgstr "размещение заказа"
 
 #: accounts/templates/user/profile.html:170
 msgid "Активные"
-msgstr ""
+msgstr "Активные"
 
 #: accounts/templates/user/profile.html:171
 msgid "В модерации"
-msgstr ""
+msgstr "В модерации"
 
 #: accounts/templates/user/profile.html:172
 msgid "Не активные"
-msgstr ""
+msgstr "Не активные"
 
 #: accounts/templates/user/profile.html:173
 msgid "Избранные"
-msgstr ""
+msgstr "Избранные"
 
 #: accounts/templates/user/profile.html:184
 #: accounts/templates/user/profile.html:431
 #: accounts/templates/user/profile.html:519
 msgid "Удалить"
-msgstr ""
+msgstr "Удалить"
 
 #: accounts/templates/user/profile.html:187
 #: accounts/templates/user/profile.html:434
 msgid "Изменить"
-msgstr ""
+msgstr "Изменить"
 
 #: accounts/templates/user/profile.html:191
 msgid "Деактивировать"
-msgstr ""
+msgstr "Деактивировать"
 
 #: accounts/templates/user/profile.html:196
 msgid "Поднять в топ 1"
-msgstr ""
+msgstr "Поднять в топ 1"
 
 #: accounts/templates/user/profile.html:202
 msgid "1 день"
-msgstr ""
+msgstr "1 день"
 
 #: accounts/templates/user/profile.html:208
 msgid "2 дня"
-msgstr ""
+msgstr "2 дня"
 
 #: accounts/templates/user/profile.html:214
 msgid "3 дней"
-msgstr ""
+msgstr "3 дней"
 
 #: accounts/templates/user/profile.html:220
 msgid "up_to_top 2"
-msgstr ""
+msgstr "поднять в топ 2"
 
-#: accounts/templates/user/profile.html:226
+#: accounts/template/user/profile.html:226
 msgid "Вы уверены, что хотите выполнить это действие?"
-msgstr ""
+msgstr "Вы уверены, что хотите выполнить это действие?"
 
 #: accounts/templates/user/profile.html:228
 #: accounts/templates/user/profile.html:528
 msgid "Да"
-msgstr ""
+msgstr "Да"
 
 #: accounts/templates/user/profile.html:229
 #: accounts/templates/user/profile.html:531
 msgid "Нет"
-msgstr ""
+msgstr "Нет"
 
 #: accounts/templates/user/profile.html:318 films/templates/index.html:139
 #: films/templates/product-list.html:196
 msgid "сум"
-msgstr ""
+msgstr "сум"
 
 #: accounts/templates/user/profile.html:371
 #: accounts/templates/user/profile.html:505
@@ -226,59 +226,59 @@ msgstr ""
 #: accounts/templates/user/profile.html:587
 #: films/templates/product-details.html:117
 msgid "Опубликовано"
-msgstr ""
+msgstr "Опубликовано"
 
 #: accounts/templates/user/profile.html:437
 msgid "Активировать"
-msgstr ""
+msgstr "Активировать"
 
 #: accounts/templates/user/profile.html:443
 #: accounts/templates/user/profile.html:525
 msgid "Are you sure you want to perform this action?"
-msgstr ""
+msgstr "Вы уверены, что хотите выполнить это действие?"
 
 #: accounts/templates/user/profile.html:445
 #: venv/lib/python3.10/site-packages/django/forms/widgets.py:795
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 #: accounts/templates/user/profile.html:446
 #: venv/lib/python3.10/site-packages/django/forms/widgets.py:796
 msgid "No"
-msgstr ""
+msgstr "Нет"
 
 #: accounts/templates/user/sections/forgot-password.html:32
 #: accounts/templates/user/sections/update-password.html:32
 msgid "Восстановление данных"
-msgstr ""
+msgstr "Восстановление данных"
 
 #: accounts/templates/user/verify_code.html:35
 msgid "Верификация электронной почты"
-msgstr ""
+msgstr "Верификация электронной почты"
 
 #: accounts/templates/user/verify_code.html:42
 msgid "Код верификации"
-msgstr ""
+msgstr "Код верификации"
 
 #: accounts/templates/user/verify_code.html:48
 msgid "Подтвердить"
-msgstr ""
+msgstr "Подтвердить"
 
 #: films/forms.py:96
 msgid "+998 66 666 66 66"
-msgstr ""
+msgstr "+998 66 666 66 66"
 
 #: films/forms.py:106 films/forms.py:108
 msgid "Некорректный номер телефона"
-msgstr ""
+msgstr "Некорректный номер телефона"
 
 #: films/forms.py:115
 msgid "+998666666666 или @имя пользователя"
-msgstr ""
+msgstr "+998666666666 или @имя пользователя"
 
 #: films/forms.py:119
 msgid "Это поле обязательно для заполнения."
-msgstr ""
+msgstr "Это поле обязательно для заполнения."
 
 #: films/forms.py:121
 msgid ""
@@ -292,207 +292,207 @@ msgstr ""
 
 #: films/templates/base.html:31
 msgid "Всё для производства"
-msgstr ""
+msgstr "Всё для производства"
 
 #: films/templates/base.html:33
 msgid "найти и сделать ставку в одном месте!"
-msgstr ""
+msgstr "найти и сделать ставку в одном месте!"
 
 #: films/templates/base.html:40
 msgid "Вторичный сырьё"
-msgstr ""
+msgstr "Вторичный сырьё"
 
 #: films/templates/base.html:44 films/templates/footer.html:15
 #: films/templates/footer.html:33 films/templates/nav_bar.html:269
 #: films/templates/nav_bar.html:381
 msgid "Новое оборудование"
-msgstr ""
+msgstr "Новое оборудование"
 
 #: films/templates/base.html:48 films/templates/footer.html:15
 #: films/templates/nav_bar.html:275 films/templates/nav_bar.html:383
 msgid "Б/у оборудование"
-msgstr ""
+msgstr "Б/у оборудование"
 
 #: films/templates/base.html:52
 msgid "Сырьё"
-msgstr ""
+msgstr "Сырьё"
 
 #: films/templates/base.html:56 films/templates/footer.html:15
 #: films/templates/nav_bar.html:287 films/templates/nav_bar.html:387
 msgid "Услуга"
-msgstr ""
+msgstr "Услуга"
 
 #: films/templates/base.html:60 films/templates/footer.html:15
 #: films/templates/footer.html:35 films/templates/nav_bar.html:293
 msgid "Технолог"
-msgstr ""
+msgstr "Технолог"
 
 #: films/templates/base.html:75
 msgid "Найдите необходимое вам"
-msgstr ""
+msgstr "Найдите необходимое вам"
 
 #: films/templates/base.html:76 films/templates/base.html:85
 msgid "сырье"
-msgstr ""
+msgstr "сырье"
 
 #: films/templates/base.html:77
 msgid "или предложите его на переработку!"
-msgstr ""
+msgstr "или предложите его на переработку!"
 
 #: films/templates/base.html:78
 msgid "Мгновенно"
-msgstr ""
+msgstr "Мгновенно"
 
 #: films/templates/base.html:79
 msgid "найдите"
-msgstr ""
+msgstr "найдите"
 
 #: films/templates/base.html:80
 msgid "нужного вам поставщика оборудования"
-msgstr ""
+msgstr "нужного вам поставщика оборудования"
 
 #: films/templates/base.html:81
 msgid "Здесь вы найдете"
-msgstr ""
+msgstr "Здесь вы найдете"
 
 #: films/templates/base.html:82
 msgid "б/у технику"
-msgstr ""
+msgstr "б/у технику"
 
 #: films/templates/base.html:83
 msgid "ожидающую нового владельца."
-msgstr ""
+msgstr "ожидающую нового владельца."
 
 #: films/templates/base.html:84
 msgid "Быстро найти необходимое"
-msgstr ""
+msgstr "Быстро найти необходимое"
 
 #: films/templates/base.html:86
 msgid "для вашего производства"
-msgstr ""
+msgstr "для вашего производства"
 
 #: films/templates/base.html:87
 msgid "Найдите проверенных"
-msgstr ""
+msgstr "Найдите проверенных"
 
 #: films/templates/base.html:88
 msgid "производителей"
-msgstr ""
+msgstr "производителей"
 
 #: films/templates/base.html:89
 msgid "для вашего продукта"
-msgstr ""
+msgstr "для вашего продукта"
 
 #: films/templates/base.html:90
 msgid "Здесь вы найдете "
-msgstr ""
+msgstr "Здесь вы найдете "
 
 #: films/templates/base.html:91
 msgid "технологов, инженеров,"
-msgstr ""
+msgstr "технологов, инженеров,"
 
 #: films/templates/base.html:92
 msgid "операторов и мастеров."
-msgstr ""
+msgstr "операторов и мастеров."
 
 #: films/templates/base.html:101
 msgid "Заголовок"
-msgstr ""
+msgstr "Заголовок"
 
 #: films/templates/base.html:108 films/templates/form.html:58
 msgid "Описание"
-msgstr ""
+msgstr "Описание"
 
 #: films/templates/base.html:116 films/templates/form.html:67
 msgid "Категория"
-msgstr ""
+msgstr "Категория"
 
 #: films/templates/base.html:123 films/templates/form.html:74
 msgid "Субкатегория"
-msgstr ""
+msgstr "Субкатегория"
 
 #: films/templates/base.html:130 films/templates/form.html:81
 msgid "Теги"
-msgstr ""
+msgstr "Теги"
 
 #: films/templates/base.html:137
 msgid "Телефон"
-msgstr ""
+msgstr "Телефон"
 
 #: films/templates/base.html:152 films/templates/form.html:104
 msgid "Страна"
-msgstr ""
+msgstr "Страна"
 
 #: films/templates/base.html:158 films/templates/form.html:112
 #: films/templates/product-list.html:96
 msgid "Город"
-msgstr ""
+msgstr "Город"
 
 #: films/templates/base.html:164 films/templates/form.html:139
 msgid "Отправить"
-msgstr ""
+msgstr "Отправить"
 
 #: films/templates/footer.html:9
 msgid "Яккасарой 11. Ташкент. Узбекистан."
-msgstr ""
+msgstr "Яккасарой 11. Ташкент. Узбекистан."
 
 #: films/templates/footer.html:11
 msgid "© 2023 Технопром. Все права защищены."
-msgstr ""
+msgstr "© 2023 Технопром. Все права защищены."
 
 #: films/templates/footer.html:15
 msgid "Вторичный сирьё"
-msgstr ""
+msgstr "Вторичный сирьё"
 
 #: films/templates/footer.html:15 films/templates/footer.html:26
 #: films/templates/footer.html:34 films/templates/nav_bar.html:281
 #: films/templates/nav_bar.html:385
 msgid "Сырье"
-msgstr ""
+msgstr "Сырье"
 
 #: films/templates/footer.html:21
 msgid "Телеграм каналы"
-msgstr ""
+msgstr "Телеграм каналы"
 
 #: films/templates/footer.html:24
 msgid "LeMachine.uz"
-msgstr ""
+msgstr "LeMachine.uz"
 
 #: films/templates/footer.html:31
 msgid "Телеграм группы"
-msgstr ""
+msgstr "Телеграм группы"
 
 #: films/templates/footer.html:40
 msgid "Социальные сети"
-msgstr ""
+msgstr "Социальные сети"
 
 #: films/templates/form.html:32
 msgid "Выберите действие:"
-msgstr ""
+msgstr "Выберите действие:"
 
 #: films/templates/form.html:36
 msgid "Купить"
-msgstr ""
+msgstr "Купить"
 
 #: films/templates/form.html:40
 msgid "Продать"
-msgstr ""
+msgstr "Продать"
 
 #: films/templates/form.html:50
 msgid "Название"
-msgstr ""
+msgstr "Название"
 
 #: films/templates/form.html:89
 msgid "Телефон номер"
-msgstr ""
+msgstr "Телефон номер"
 
 #: films/templates/form.html:96
 msgid "Телеграмм"
-msgstr ""
+msgstr "Телеграмм"
 
 #: films/templates/form.html:120
 msgid "Фотографии"
-msgstr ""
+msgstr "Фотографии"
 
 #: films/templates/form.html:122
 msgid " (Eng optimal product rasmini tanlang)"
@@ -500,156 +500,156 @@ msgstr ""
 
 #: films/templates/form.html:132
 msgid "Цена"
-msgstr ""
+msgstr "Цена"
 
 #: films/templates/form.html:136 films/templates/index.html:143
 #: films/templates/index.html:278
 msgid "Договорная"
-msgstr ""
+msgstr "Договорная"
 
 #: films/templates/index.html:14
 msgid "Покупка"
-msgstr ""
+msgstr "Покупка"
 
 #: films/templates/index.html:46 films/templates/index.html:120
 #: films/templates/index.html:255 films/templates/product-list.html:177
 msgid "топ"
-msgstr ""
+msgstr "топ"
 
 #: films/templates/index.html:75 films/templates/index.html:216
 #: films/templates/index.html:351
 msgid "Все объявлении"
-msgstr ""
+msgstr "Все объявлении"
 
 #: films/templates/index.html:94
 msgid "Продажа"
-msgstr ""
+msgstr "Продажа"
 
 #: films/templates/index.html:229
 msgid "Вакансии"
-msgstr ""
+msgstr "Вакансии"
 
 #: films/templates/nav_bar.html:249 films/templates/nav_bar.html:336
 msgid "промышленность"
-msgstr ""
+msgstr "промышленность"
 
 #: films/templates/nav_bar.html:254 films/templates/nav_bar.html:350
 msgid "Пластик"
-msgstr ""
+msgstr "Пластик"
 
 #: films/templates/nav_bar.html:255 films/templates/nav_bar.html:352
 msgid "Упаковка"
-msgstr ""
+msgstr "Упаковка"
 
 #: films/templates/nav_bar.html:256 films/templates/nav_bar.html:354
 msgid "Текстиль"
-msgstr ""
+msgstr "Текстиль"
 
 #: films/templates/nav_bar.html:257 films/templates/nav_bar.html:356
 msgid "Еда"
-msgstr ""
+msgstr "Еда"
 
 #: films/templates/nav_bar.html:258 films/templates/nav_bar.html:358
 msgid "Агро"
-msgstr ""
+msgstr "Агро"
 
 #: films/templates/nav_bar.html:259 films/templates/nav_bar.html:360
 msgid "Металл"
-msgstr ""
+msgstr "Металл"
 
 #: films/templates/nav_bar.html:264 films/templates/nav_bar.html:367
 msgid "направления"
-msgstr ""
+msgstr "направления"
 
 #: films/templates/nav_bar.html:424 films/templates/nav_bar.html:438
 msgid "Профиль"
-msgstr ""
+msgstr "Профиль"
 
 #: films/templates/nav_bar.html:440
 msgid "Создать бизнесс аккоунт"
-msgstr ""
+msgstr "Создать бизнесс аккоунт"
 
 #: films/templates/nav_bar.html:442
 msgid "Обновить профиль"
-msgstr ""
+msgstr "Обновить профиль"
 
 #: films/templates/nav_bar.html:452
 msgid "Барахолка"
-msgstr ""
+msgstr "Барахолка"
 
 #: films/templates/product-details.html:66
 msgid "Описание товара"
-msgstr ""
+msgstr "Описание товара"
 
 #: films/templates/product-details.html:70
 msgid "id"
-msgstr ""
+msgstr "Ид"
 
 #: films/templates/product-details.html:71
 msgid "Просмотров"
-msgstr ""
+msgstr "Просмотров"
 
 #: films/templates/product-details.html:96
 #: films/templates/product-details.html:152
 msgid "телеграм"
-msgstr ""
+msgstr "телеграм"
 
 #: films/templates/product-details.html:100
 #: films/templates/product-details.html:156
 msgid "Посмотреть телефон номер"
-msgstr ""
+msgstr "Посмотреть телефон номер"
 
 #: films/templates/product-details.html:166
 msgid "ПОЛЬЗОВАТЕЛЬ"
-msgstr ""
+msgstr "ПОЛЬЗОВАТЕЛЬ"
 
 #: films/templates/product-details.html:174
 msgid "в TECNOPROM с"
-msgstr ""
+msgstr "в TECNOPROM с"
 
 #: films/templates/product-details.html:180
 msgid "Все объявления автора"
-msgstr ""
+msgstr "Все объявления автора"
 
 #: films/templates/product-details.html:185
 msgid "МЕСТОПОЛОЖЕНИЕ"
-msgstr ""
+msgstr "МЕСТОПОЛОЖЕНИЕ"
 
 #: films/templates/product-list.html:56
 msgid "Товары"
-msgstr ""
+msgstr "Товары"
 
 #: films/templates/product-list.html:63
 msgid "Категории"
-msgstr ""
+msgstr "Категории"
 
 #: films/templates/product-list.html:72
 msgid "Суб категории"
-msgstr ""
+msgstr "Суб категории"
 
 #: films/templates/product-list.html:91
 msgid "Страны"
-msgstr ""
+msgstr "Страны"
 
 #: films/templates/product-list.html:103
 msgid "Фильтровать"
-msgstr ""
+msgstr "Фильтровать"
 
 #: films/templates/product-list.html:200
 msgid "Договорный"
-msgstr ""
+msgstr "Договорный"
 
 #: root/settings.py:137
 msgid "English"
-msgstr ""
+msgstr "Английский"
 
 #: root/settings.py:138
 msgid "Uzbek"
-msgstr ""
+msgstr "Узбекский"
 
 #: root/settings.py:139
 msgid "Russian"
-msgstr ""
+msgstr "Русскои"
 
 #: root/urls.py:9
 msgid "admin/"

@@ -68,7 +68,9 @@
                         <div class="path_to_product" style="padding-bottom: 10px;">
 
                             <a href="{% url 'product-list' %}?country_id={{ product.country_id }}">{{ product.country }}/</a>
-                            <a href="{% url 'product-list' %}?city_id={{ product.city_id }}">{{ product.city }}/</a>
+                            {% if product.city %}
+                                <a href="{% url 'product-list' %}?city_id={{ product.city_id }}">{{ product.city }}/</a>
+                            {% endif %}
                             <a href="{% url 'product-list' %}?category_id={{ product.category_id }}">{{ product.category }}/</a>
                             {% for product_subcategory in product.subcategories.all %}
                                 <a href="{% url 'product-list' %}?sub_category_id={{ product_subcategory.id }}">{{ product_subcategory }}/</a>
@@ -165,12 +167,6 @@
 
                         <div class="product-buttons">
 
-                            <div class="share-buttons">
-                                <div class="share_to-telegram">
-                                    {% post_to_telegram object_or_url '' "<i class='fa-brands fa-telegram'></i>" 'fdsfasdf' %}
-                                </div>
-                            </div>
-
                             <div class="messanger">
                                 <a href="https://t.me/{{ product.telegram }}"
                                    class="messanger-link">{% translate "телеграм" %}</a>
@@ -219,6 +215,15 @@
                             </div>
                         </div>
                     </div>
+                    <div class="share-buttons">
+                        <div class="share_to-telegram">
+                            {#                            <a href="">#}
+                            <img src='{% static 'product/images/share-1.svg' %}' alt='share' style="width: 24px;">
+                            {% post_to_telegram object_or_url "123" "share to telegram" "fdsfasdf" %}
+                            {#                            </a>#}
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <p style="font-size: 24px; font-weight: 500;">Author products</p>

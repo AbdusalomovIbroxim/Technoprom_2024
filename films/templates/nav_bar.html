@@ -33,58 +33,66 @@
                     </a>
 
                     <ul class="main-navigation__items">
-                        <li class="main-navigation__item"><a href="#">{% translate "Пластик" %}</a></li>
-                        <li class="main-navigation__item"><a href="#">{% translate "Упаковка" %}</a></li>
-                        <li class="main-navigation__item"><a href="#">{% translate "Текстиль" %}</a></li>
-                        <li class="main-navigation__item"><a href="#">{% translate "Еда" %}</a></li>
-                        <li class="main-navigation__item"><a href="#">{% translate "Агро" %}</a></li>
-                        <li class="main-navigation__item"><a href="#">{% translate "Металл" %}</a></li>
+                        <li class="main-navigation__item"><a
+                                href="{% url 'product-list' %}?category_id=1">{% translate "Мебель" %}</a></li>
+                        <li class="main-navigation__item"><a
+                                href="{% url 'product-list' %}?category_id=2">{% translate "Еда" %}</a></li>
+                        <li class="main-navigation__item"><a
+                                href="{% url 'product-list' %}?category_id=3">{% translate "Пластик" %}</a></li>
+                        <li class="main-navigation__item"><a
+                                href="{% url 'product-list' %}?category_id=4">{% translate "Упаковка" %}</a></li>
+                        <li class="main-navigation__item"><a
+                                href="{% url 'product-list' %}?category_id=5">{% translate "Агро" %}</a></li>
+                        <li class="main-navigation__item"><a
+                                href="{% url 'product-list' %}?category_id=6">{% translate "Металл" %}</a></li>
+                        <li class="main-navigation__item"><a
+                                href="{% url 'product-list' %}?category_id=7">{% translate "Строительство" %}</a></li>
+                        <li class="main-navigation__item"><a
+                                href="{% url 'product-list' %}?category_id=8">{% translate "Текстиль" %}</a></li>
                     </ul>
                 </nav>
 
 
                 <nav class="main-navigation">
-                    <form action="{% url "product-list" %}" method="post">
-                        {% csrf_token %}
                         <span class="main-navigation__button">{% translate "направления" %}
                         <img src="{% static 'product/images/directions.png' %}" class="img__categories"
                              alt="img for categories" style="top: 0; width: 18px;">
                         </span>
-                        <ul class="main-navigation__items">
-                            <li class="main-navigation__item">
-                                <img src="{% static 'product/images/categories/yangi-uskunalar-24px.png' %}" alt="">
-                                <button name="category" value="1">
-                                    {% translate "Новое оборудование" %}
-                                </button>
-                            </li>
-                            <li class="main-navigation__item">
-                                <img src="{% static 'product/images/categories/ishlatilgan-uskunalar-24px.png' %}"
-                                     alt="">
-                                <button name="category" value="2">
-                                    {% translate "Б/у оборудование" %}
-                                </button>
-                            </li>
+                    <ul class="main-navigation__items">
+                        <li class="main-navigation__item">
+                            <img src="{% static 'product/images/categories/yangi-uskunalar-24px.png' %}" alt="">
+                            <button>
+                                <a href="{% url "product-list" %}?category_id=1">{% translate "Новое оборудование" %}</a>
+                            </button>
+                        </li>
+                        <li class="main-navigation__item">
+                            <img src="{% static 'product/images/categories/ishlatilgan-uskunalar-24px.png' %}"
+                                 alt="">
+                            <button name="category">
+                                <a href="{% url "product-list" %}?category_id=2">{% translate "Б/у оборудование" %}</a>
+                            </button>
+                        </li>
 
-                            <li class="main-navigation__item">
-                                <img src="{% static 'product/images/categories/xomashyo-24px.png' %}" alt="">
-                                <button name="category" value="3">
-                                    {% translate "Сырье" %}
-                                </button>
-                            </li>
-                            <li class="main-navigation__item">
-                                <img src="{% static 'product/images/categories/sanoat-xomashyo-24px.png' %}" alt="">
-                                <button name="category" value="8">
-                                    {% translate "Услуга" %}
-                                </button>
-                            </li>
-                            <li class="main-navigation__item">
-                                <img src="{% static 'product/images/categories/texnologlar-24px.png' %}" alt="">
-                                <button name="category" value="9">
-                                    {% translate "Технолог" %}
-                                </button>
-                            </li>
-                        </ul>
-                    </form>
+                        <li class="main-navigation__item">
+                            <img src="{% static 'product/images/categories/xomashyo-24px.png' %}" alt="">
+                            <button name="category">
+                                <a href="{% url 'product-list' %}?category_id=3">{% translate "Сырье" %}</a>
+                            </button>
+                        </li>
+
+                        <li class="main-navigation__item">
+                            <img src="{% static 'product/images/categories/texnologlar-24px.png' %}" alt="">
+                            <button name="category">
+                                <a href="{% url 'product-list' %}?category_id=4">{% translate "Технолог" %}</a>
+                            </button>
+                        </li>
+                        <li class="main-navigation__item">
+                            <img src="{% static 'product/images/categories/sanoat-xomashyo-24px.png' %}" alt="">
+                            <button name="category">
+                                <a href="{% url 'product-list' %}?category_id=5">{% translate "Услуга" %}</a>
+                            </button>
+                        </li>
+                    </ul>
                 </nav>
             </div>
             <div class="right-buttons">
@@ -122,37 +130,6 @@
                 <i class="fa-solid fa-bars" id="barsIcon"></i>
                 <div class="buttons-for-choice-section" id="ButtonsForChoiceSection">
                     <div class="MuinBox-root">
-                        {#                        <div class="MuiButtonBase-root MuiAccordionSummary-root" tabindex="0" role="button"#}
-                        {#                             aria-expanded="false">#}
-                        {#                            <div class="button-for-choice-section">#}
-                        {#                                <div class="MuiBox-root">{% translate 'промышленность' %}<!-- --></div>#}
-                        {#                                <div class="MuiAccordionSummary-expandIconWrapper">#}
-                        {#                                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down"#}
-                        {#                                         class="svg-inline--fa fa-chevron-down " role="img"#}
-                        {#                                         xmlns="http://www.w3.org/2000/svg"#}
-                        {#                                         viewBox="0 0 448 512">#}
-                        {#                                        <path fill="currentColor"#}
-                        {#                                              d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path>#}
-                        {#                                    </svg>#}
-                        {#                                </div>#}
-                        {#                            </div>#}
-                        {##}
-                        {#                            <div class="buttons-for-section profile">#}
-                        {#                                <a class="button-for-section dont-text-decoration"#}
-                        {#                                   href="{% url 'product-list' %}">{% translate "Пластик" %}</a>#}
-                        {#                                <a class="button-for-section dont-text-decoration"#}
-                        {#                                   href="{% url 'product-list' %}">{% translate "Упаковка" %}</a>#}
-                        {#                                <a class="button-for-section dont-text-decoration"#}
-                        {#                                   href="{% url 'product-list' %}">{% translate "Текстиль" %}</a>#}
-                        {#                                <a class="button-for-section dont-text-decoration"#}
-                        {#                                   href="{% url 'product-list' %}">{% translate "Еда" %}</a>#}
-                        {#                                <a class="button-for-section dont-text-decoration"#}
-                        {#                                   href="{% url 'product-list' %}">{% translate "Агро" %}</a>#}
-                        {#                                <a class="button-for-section dont-text-decoration"#}
-                        {#                                   href="{% url 'product-list' %}">{% translate "Металл" %}</a>#}
-                        {#                            </div>#}
-                        {##}
-                        {#                        </div>#}
                         <div class="MuiButtonBase-root MuiAccordionSummary-root" tabindex="0" role="button"
                              aria-expanded="false">
                             <div class="button-for-choice-section">
@@ -170,13 +147,13 @@
 
                             <div class="buttons-for-section industry">
                                 <a class="button-for-section dont-text-decoration"
-                                   href="{% url 'product-list' %}">{% translate "Новое оборудование" %}</a>
+                                   href="{% url 'product-list' %}?category_id=1">{% translate "Новое оборудование" %}</a>
                                 <a class="button-for-section dont-text-decoration"
-                                   href="{% url 'product-list' %}">{% translate "Б/у оборудование" %}</a>
+                                   href="{% url 'product-list' %}?category_id=2">{% translate "Б/у оборудование" %}</a>
                                 <a class="button-for-section dont-text-decoration"
-                                   href="{% url 'product-list' %}">{% translate "Сырье" %}</a>
+                                   href="{% url 'product-list' %}?category_id=3">{% translate "Сырье" %}</a>
                                 <a class="button-for-section dont-text-decoration"
-                                   href="{% url 'product-list' %}">{% translate "Услуга" %}</a>
+                                   href="{% url 'product-list' %}?category_id=5">{% translate "Услуга" %}</a>
                             </div>
                             <div class="MuiButtonBase-root MuiAccordionSummary-root" tabindex="0" role="button"
                                  aria-expanded="false">

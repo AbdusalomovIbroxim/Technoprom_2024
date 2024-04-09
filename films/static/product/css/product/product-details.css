@@ -57,6 +57,7 @@ body {
 }
 
 
+.share-buttons,
 .product-location,
 .author-info,
 .product-info {
@@ -467,18 +468,18 @@ body {
 
 /*Share buttons--------------------------------------*/
 
-.share-buttons {
+.share-buttons .share_to-telegram {
     display: flex;
     gap: 20px;
 }
 
-.share-buttons .share_to-telegram,
-.share-buttons .share_to-facebook,
-.share-buttons .share_to-instagram {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-}
+/*.share-buttons .share_to-telegram,*/
+/*.share-buttons .share_to-facebook,*/
+/*.share-buttons .share_to-instagram {*/
+/*    width: 24px;*/
+/*    height: 24px;*/
+/*    cursor: pointer;*/
+/*}*/
 
 .fa-telegram {
     color: #3691ec;
