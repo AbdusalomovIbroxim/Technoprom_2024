@@ -177,7 +177,7 @@
                                     {% get_available_languages as LANGUAGES %}
                                     {% get_language_info_list for LANGUAGES as languages %}
                                     {% for lang in languages %}
-                                        <a class="button-for-section dont-text-decoration"
+                                        <a class="dont-text-decoration"
                                            href="/{{ lang.code }}/">{{ lang.code|upper }}</a>
                                     {% endfor %}
                                 </div>
@@ -214,16 +214,19 @@
                             {% endif %}
 
                             <div class="MuiButtonBase-root MuiAccordionSummary-root" tabindex="0" aria-expanded="false">
-                                <div class="button-for-choice-section">
-                                    <a class="MuiBox-root dont-text-decoration"
-                                       href="{% url 'product-list' %}">{% translate "Барахолка" %}</a>
-                                </div>
+                                <a class="MuiBox-root dont-text-decoration" href="{% url 'product-list' %}">
+                                    <div class="button-for-choice-section">
+                                        {% translate "Барахолка" %}
+                                    </div>
+                                </a>
                             </div>
                             <div class="MuiButtonBase-root MuiAccordionSummary-root" tabindex="0" aria-expanded="false">
-                                <div class="button-for-choice-section">
-                                    <a class="MuiBox-root dont-text-decoration"
-                                       href="{% url 'top-up-your-account' %}">{% translate "Пополнить счет" %}</a>
-                                </div>
+                                <a class="MuiBox-root dont-text-decoration"
+                                   href="{% url 'top-up-your-account' %}">
+                                    <div class="button-for-choice-section">
+                                        {% translate "Пополнить счет" %}
+                                    </div>
+                                </a>
                             </div>
 
                         </div>
