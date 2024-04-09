@@ -136,12 +136,12 @@ async def send_message_to_channel(message_data, pk):
             if value:
                 message += "*{}:* {}\n".format(key, value)
 
-    inline_kb = {
+    inline_kb = json.dumps({
         "inline_keyboard": [
             [{"text": "Активировать", "callback_data": "activate_company_{}".format(pk)},
              {"text": "Деактивировать", "callback_data": "dis_activate_company_{}".format(pk)}]
         ]
-    }
+    })
 
     payload = {
         "chat_id": CHAT_ID,
