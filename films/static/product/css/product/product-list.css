@@ -251,7 +251,8 @@
     .filter-form__category-subcategory,
     .filter-items {
         display: block;
-        width: 100%;
+        /*width: 100%;*/
+        max-width: 100%;
     }
 
     .filter-item {
