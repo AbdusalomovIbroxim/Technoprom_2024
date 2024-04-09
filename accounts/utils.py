@@ -86,29 +86,35 @@
 #     user.save()
 #     return "status true"
 
+import json
 import requests
+from .models import Message
 from root.settings import TOKEN, CHAT_ID
 from django.contrib.auth import get_user_model
-from .models import Message
 
 User = get_user_model()
 
-TELEGRAM_API_URL = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+TELEGRAM_API_URL = f"https://api.telegram.org/bot{TOKEN}/sendPhoto"
 
 
 async def send_message(user_id, amount, photo):
-    inline_kb = {
-        "inline_keyboard": [
-            [{"text": "Добавить", "callback_data": "+"}, {"text": "Перейти", "url": f"https://tecnoprom-2024.onrender.com/users/profile/{user_id}"}]
-        ]
-    }
-
     message_text = f"User id: {user_id}\nAmount: {amount}\n"
+    # url = f"http://localhost:8000/users/profile/{user_id}"
+    url = f"http://tecnoprom.uz/users/profile/{user_id}"
+    keyboard = json.dumps({
+        "inline_keyboard": [
+            [{"text": "👍", "callback_data": "yes"},
+             {"text": "👎", "callback_data": "no"},
+             {"text": "Перейти", "url": url},
+             ]
+        ]
+    })
+
     payload = {
         "chat_id": CHAT_ID,
-        "text": message_text,
+        "caption": message_text,
         "parse_mode": "markdown",
-        "reply_markup": inline_kb
+        "reply_markup": keyboard,
     }
 
     files = {'photo': photo}
