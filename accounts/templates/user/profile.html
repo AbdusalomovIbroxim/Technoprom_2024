@@ -53,7 +53,11 @@
                         </div>
 
                         <div class="more_data-company">{{ profile.country }}</div>
-                        <div class="more_data-company">{{ profile.category }} / {{ profile.sub_category }}</div>
+                        <div class="more_data-company">{{ profile.category }} /
+                            {% for sub_category in profile.subcategories.all %}
+                                {{ sub_category }}
+                            {% endfor %}
+                        </div>
                         <div class="more_data-company">{% for foo in user.tags.all %}
                             {{ foo }}
                         {% endfor %}
@@ -166,6 +170,8 @@
                     <li class="login-button"><a
                             href="{% url "top-up-your-account" %}">{% translate "Пополнить счет" %}</a></li>
                     <li class="price-button"><a href="#">{% translate "Тарифы" %}</a></li>
+                    <li class="login-button"><a
+                            href="{% url "create-company" %}">{% translate "Создать компанию" %}</a></li>
                 </ul>
             </div>
         </div>

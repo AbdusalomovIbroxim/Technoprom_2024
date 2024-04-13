@@ -1,8 +1,10 @@
 from django.db.models.signals import post_save
+from django.urls import reverse_lazy
 from django.dispatch import receiver
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser
 from django.db.models import Avg, PositiveIntegerField
+from django.utils.translation.trans_real import get_language
 from django.db.models import (
     Model,
     CharField,
@@ -15,11 +17,11 @@ from django.db.models import (
     CASCADE,
     TextField,
     DateTimeField,
-    IntegerField,
     DecimalField,
+    SlugField,
 )
 
-from films.models import Categories, SubCategories, Tag, Country
+from films.models import Country, Categories, SubCategories, Tag
 
 
 class User(AbstractUser):
@@ -33,8 +35,8 @@ class User(AbstractUser):
     category = ForeignKey(
         Categories, SET_NULL, blank=True, null=True, related_name="user_category"
     )
-    sub_category = ForeignKey(
-        SubCategories, SET_NULL, blank=True, null=True, related_name="user_sub_category"
+    subcategories = ManyToManyField(
+        SubCategories, blank=True,
     )
     tags = ManyToManyField(Tag, blank=True)
     telegram = CharField(max_length=100, blank=True, null=True)

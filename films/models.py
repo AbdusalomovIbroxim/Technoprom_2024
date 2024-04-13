@@ -50,6 +50,7 @@ class SubCategories(Model):
     name_en = CharField("Subcategory (English)", max_length=100, default="")
     name_ru = CharField("Подкатегория (Русский)", max_length=100, default="")
     name_uz = CharField("Subkategoriya (O'zbek)", max_length=100, default="")
+    is_linked = BooleanField(default=False)
 
     def __str__(self):
         lang = get_language()
@@ -77,6 +78,7 @@ class Tag(Model):
     name_en = CharField("Tag Name (English)", max_length=255, unique=True, default="")
     name_ru = CharField("Имя тега (Русский)", max_length=255, unique=True, default="")
     name_uz = CharField("Tag nomi (O'zbek)", max_length=255, unique=True, default="")
+    is_linked = BooleanField(default=False)
 
     def __str__(self):
         lang = get_language()

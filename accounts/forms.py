@@ -1,24 +1,21 @@
 import phonenumbers
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import AuthenticationForm
 
-# from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import (
     UserCreationForm,
     UsernameField,
+    AuthenticationForm,
 )
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 from django.forms.widgets import CheckboxSelectMultiple
 
-# from django.utils.translation import gettext as _
 from django.utils.translation import gettext_lazy as _
 from phonenumbers import is_valid_number
 from phonenumbers.phonenumberutil import NumberParseException
 
 from films.models import Categories, Tag, SubCategories, Country
-from .models import Complaint
 
 User = get_user_model()
 
@@ -168,7 +165,8 @@ class CompanyInfoForm(forms.ModelForm):
     class Meta:
         # model = User()
         model = User
-        fields = ["company_name", "category", "sub_category", "tags"]
+        fields = ["company_name", "category", "subcategories", "tags"]
+        # fields = ["company_name", "category"]
 
     company_name = forms.CharField(
         widget=forms.TextInput(
@@ -184,14 +182,14 @@ class CompanyInfoForm(forms.ModelForm):
         required=False,
     )
 
-    subcategories = forms.ModelChoiceField(
-        queryset=SubCategories.objects.all(),  # Replace with your actual queryset
-        widget=forms.Select(attrs={"class": "company-select", "id": "id_sub_category"}),
+    subcategories = forms.ModelMultipleChoiceField(
+        queryset=SubCategories.objects.filter(is_linked=True),
+        widget=CheckboxSelectMultiple(attrs={"class": "company-select", "id": "id_sub_category"}),
         required=False,
     )
 
     tags = forms.ModelMultipleChoiceField(
-        queryset=Tag.objects.all(),
+        queryset=Tag.objects.filter(is_linked=True),
         widget=CheckboxSelectMultiple(
             attrs={"class": "company-input", "id": "id_tags"}
         ),
@@ -351,8 +349,9 @@ class UserProfileUpdateForm(forms.ModelForm):
             "company_name",
             "description",
             "category",
-            "sub_category",
-            "tags",
+            # "sub_category",
+            # "tags",
+
         ]
         widgets = {
             "username": forms.TextInput(attrs={"class": "username_id"}),

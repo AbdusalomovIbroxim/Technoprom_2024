@@ -15,7 +15,7 @@ urlpatterns = [
         "update-profile/", views.UserProfileUpdateView.as_view(), name="update_profile"
     ),
     path(
-        "add-company/", views.CreateBusinessAccountView.as_view(), name="create-company"
+        "create-company/", views.CreateBusinessAccountView.as_view(), name="create-company"
     ),
     path(
         "product-edit/<int:pk>", views.EditProductsView.as_view(), name="product-edit"

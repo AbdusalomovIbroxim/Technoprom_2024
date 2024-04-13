@@ -492,6 +492,8 @@ class EditProductsView(UpdateView):
         return reverse("myaccount")
 
 
+# Ваш код
+
 class CreateBusinessAccountView(View):
     template_name = "user/create_company.html"
     form_classes = [
@@ -523,8 +525,12 @@ class CreateBusinessAccountView(View):
                     if key == "tags":
                         tags = value
                         company.tags.set(tags)
+                    elif key == "subcategories":
+                        subcategories = value
+                        company.subcategories.set(subcategories)
                     else:
                         setattr(company, key, value)
+
                 company.is_business_account = False
                 company.save()
 
@@ -541,7 +547,7 @@ class CreateBusinessAccountView(View):
                         "telephone": company.telephone,
                         "email": company.email,
                         "category": company.category,
-                        "subcategories": company.sub_category,
+                        "subcategories": company.subcategories,
                         "tags": company.tags,
                         "telegram": company.telegram,
                         "whatsapp": company.whatsapp,
@@ -807,7 +813,6 @@ Client secret: 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
 
 # Добавьте URL-паттерн в ваш urls.py
 # path('subscribe/<int:user_id>/', views.subscribe, name='subscribe')
-
 
 @login_required
 def subscribe(request, user_id):
