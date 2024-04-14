@@ -429,7 +429,6 @@ def add_tags():
     create_tag_subcategory_relations()
 
 
-
 def add_categories():
     categories_data = [
         {"slug": "new-machinery", "name_en": "New machinery", "name_ru": "Новые оборудования",
