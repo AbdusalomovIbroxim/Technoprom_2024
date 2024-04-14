@@ -429,9 +429,6 @@ def add_tags():
     create_tag_subcategory_relations()
 
 
-# Запустите функцию для добавления тегов
-add_tags()
-
 
 def add_categories():
     categories_data = [
