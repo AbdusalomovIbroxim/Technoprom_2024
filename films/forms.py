@@ -175,7 +175,7 @@ class ProductFilterForm(forms.Form):
     )
 
     sub_category = forms.ModelChoiceField(
-        queryset=SubCategories.objects.all(),
+        queryset=SubCategories.objects.filter(is_linked=False),
         empty_label="Выберите субкатегорию",
         required=False,
     )
