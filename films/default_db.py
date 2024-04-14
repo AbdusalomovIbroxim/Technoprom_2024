@@ -1,14 +1,15 @@
-from films.models import Categories, SubCategories, SubCategoryCategory
+from films.models import Categories, SubCategories, SubCategoryCategory, Tag, TagCategory, TagSubcategory
 from django.core.exceptions import ObjectDoesNotExist
 
 
-def create_category_if_not_exists(slug, name_en, name_ru, name_uz):
+def create_category_if_not_exists(slug, name_en, name_ru, name_uz, is_linked=False):
     if not Categories.objects.filter(slug=slug).exists():
         category = Categories.objects.create(
             slug=slug,
             name_en=name_en,
             name_ru=name_ru,
-            name_uz=name_uz
+            name_uz=name_uz,
+            is_linked=is_linked
         )
         return category
     else:
@@ -38,9 +39,6 @@ def create_subcategory_category_relation(subcategory_id, category_id):
         )
     except ObjectDoesNotExist:
         print(f"One of the provided subcategory_id ({subcategory_id}) or category_id ({category_id}) does not exist.")
-
-
-from films.models import Tag, TagCategory, TagSubcategory
 
 
 def create_tags():
@@ -440,10 +438,10 @@ def add_categories():
         {"slug": "service", "name_en": "Service", "name_ru": "Услуга", "name_uz": "Xizmat ko'rsatish"},
         {"slug": "recycled-raw-materials", "name_en": "Recycled raw materials", "name_ru": "Вторичный сырьё",
          "name_uz": "Ikkilamchi xom ashyo"},
-        {"slug": "C1", "name_en": "C1", "name_ru": "C1", "name_uz": "C1"},
-        {"slug": "C2", "name_en": "C2", "name_ru": "C2", "name_uz": "C2"},
-        {"slug": "C3", "name_en": "C3", "name_ru": "C3", "name_uz": "C3"},
-        {"slug": "C4", "name_en": "C4", "name_ru": "C4", "name_uz": "C4"},
+        {"slug": "C1", "name_en": "C1", "name_ru": "C1", "name_uz": "C1", "is_linked": True},
+        {"slug": "C2", "name_en": "C2", "name_ru": "C2", "name_uz": "C2", "is_linked": True},
+        {"slug": "C3", "name_en": "C3", "name_ru": "C3", "name_uz": "C3", "is_linked": True},
+        {"slug": "C4", "name_en": "C4", "name_ru": "C4", "name_uz": "C4", "is_linked": True},
     ]
 
     for category_data in categories_data:
