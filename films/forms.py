@@ -57,7 +57,7 @@ class FilmsForm(forms.ModelForm):
 
     category = forms.ModelChoiceField(
         label="",
-        queryset=Categories.objects.all(),
+        queryset=Categories.objects.filter(is_linked=False),
         empty_label="",
         to_field_name="id",
         widget=forms.Select(
@@ -71,7 +71,7 @@ class FilmsForm(forms.ModelForm):
 
     subcategories = forms.ModelMultipleChoiceField(
         label="",
-        queryset=SubCategories.objects.all(),
+        queryset=SubCategories.objects.filter(is_linked=False),
         widget=forms.CheckboxSelectMultiple,
     )
 
