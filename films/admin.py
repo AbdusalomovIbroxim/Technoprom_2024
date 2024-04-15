@@ -9,7 +9,7 @@ from .models import Categories, Products, SubCategories, Country, City, Tag, Tag
 
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
-    list_display = ("name", "slug")
+    list_display = ("slug", "name_uz", "name_ru", "name_en")
 
 
 admin.site.register(Categories)

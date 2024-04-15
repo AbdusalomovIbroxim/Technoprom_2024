@@ -27,14 +27,14 @@ class Categories(Model):
     is_linked = BooleanField(default=False)
 
     def __str__(self):
-        lang = get_language()
-        if lang == "":
+        language_code = get_language()
+        if language_code == "uz":
             return self.name_ru
-        elif lang == "uz":
-            return self.name_uz
-        elif lang == "ru":
+        elif language_code == "ru":
             return self.name_ru
-        elif lang == "en":
+        elif language_code == "en":
+            return self.name_en
+        else:
             return self.name_en
 
     def get_absolute_url(self):
@@ -53,12 +53,14 @@ class SubCategories(Model):
     is_linked = BooleanField(default=False)
 
     def __str__(self):
-        lang = get_language()
-        if lang == 'uz':
+        language_code = get_language()
+        if language_code == 'uz':
             return self.name_uz
-        elif lang == 'ru':
+        elif language_code == 'ru':
             return self.name_ru
-        elif lang == 'en':
+        elif language_code == 'en':
+            return self.name_en
+        else:
             return self.name_en
 
     def get_absolute_url(self):
@@ -81,12 +83,14 @@ class Tag(Model):
     is_linked = BooleanField(default=False)
 
     def __str__(self):
-        lang = get_language()
-        if lang == 'uz':
+        language_code = get_language()
+        if language_code == 'uz':
             return self.name_uz
-        elif lang == 'ru':
+        elif language_code == 'ru':
             return self.name_ru
-        elif lang == 'en':
+        elif language_code == 'en':
+            return self.name_en
+        else:
             return self.name_en
 
 
@@ -102,17 +106,36 @@ class TagSubcategory(Model):
 
 class Country(Model):
     slug = SlugField(unique=True)
-    name = CharField("Страна", max_length=50)
+    name_en = CharField("Country (English)", max_length=50, default="")
+    name_ru = CharField("Страна (Русский)", max_length=50, default="")
+    name_uz = CharField("Davlat (O'zbek)", max_length=50, default="")
 
     def __str__(self):
-        return self.name
+        language_code = get_language()
+        if language_code == 'en':
+            return self.name_en
+        elif language_code == 'ru':
+            return self.name_ru
+        elif language_code == 'uz':
+            return self.name_uz
+        else:
+            return self.name_uz
 
     def get_absolute_url(self):
-        return reverse_lazy("country_detail", kwargs={"slug": self.slug})
+        language_code = get_language()
+        if language_code == 'en':
+            return reverse_lazy("country_detail", kwargs={"slug": self.slug})
+        elif language_code == 'ru':
+            return reverse_lazy("country_detail_ru", kwargs={"slug": self.slug})
+        elif language_code == 'uz':
+            return reverse_lazy("country_detail_uz", kwargs={"slug": self.slug})
+        else:
+            return reverse_lazy("country_detail",
+                                kwargs={"slug": self.slug})  # По умолчанию возвращаем английскую ссылку
 
     class Meta:
-        verbose_name = "Страна"
-        verbose_name_plural = "Страна"
+        verbose_name = "Country"
+        verbose_name_plural = "Countries"
 
 
 class City(Model):
