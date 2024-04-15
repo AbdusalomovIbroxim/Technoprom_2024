@@ -1,5 +1,6 @@
-from films.models import Categories, SubCategories, SubCategoryCategory, Tag, TagCategory, TagSubcategory, Country
+from films.models import Categories, SubCategories, SubCategoryCategory, Tag, TagCategory, TagSubcategory, Country, City
 from django.core.exceptions import ObjectDoesNotExist
+from django.db import transaction
 
 
 def create_category_if_not_exists(slug, name_en, name_ru, name_uz, is_linked=False):
@@ -721,3 +722,32 @@ def add_countries():
     ]
     for country_data in countries_data:
         create_country_if_not_exists(**country_data)
+
+
+@transaction.atomic
+def add_cities():
+    cities_data = [
+        {"slug": "tashkent", "name": "Ташкент", "country_slug": "uzbekistan"},
+        {"slug": "andijon", "name": "Андижанская область", "country_slug": "uzbekistan"},
+        {"slug": "buxoro", "name": "Бухарская область", "country_slug": "uzbekistan"},
+        {"slug": "fargona", "name": "Ферганская область", "country_slug": "uzbekistan"},
+        {"slug": "jizzax", "name": "Джизакская область", "country_slug": "uzbekistan"},
+        {"slug": "namangan", "name": "Наманганская область", "country_slug": "uzbekistan"},
+        {"slug": "navoi", "name": "Навоийская область", "country_slug": "uzbekistan"},
+        {"slug": "qashqadaryo", "name": "Кашкадарьинская область", "country_slug": "uzbekistan"},
+        {"slug": "samarqand", "name": "Самаркандская область", "country_slug": "uzbekistan"},
+        {"slug": "sirdaryo", "name": "Сырдарьинская область", "country_slug": "uzbekistan"},
+        {"slug": "surxandaryo", "name": "Сурхандарьинская область", "country_slug": "uzbekistan"},
+        {"slug": "toshkent-viloyati", "name": "Ташкентская область", "country_slug": "uzbekistan"},
+        {"slug": "xorazm", "name": "Хорезмская область", "country_slug": "uzbekistan"},
+        {"slug": "Qoraqalpogiston-respublikasi", "name": "Республика Каракалпакстан", "country_slug": "uzbekistan"}
+    ]
+
+    for city_info in cities_data:
+        country_slug = city_info["country_slug"]
+        country = Country.objects.get(slug=country_slug)
+        City.objects.create(
+            slug=city_info["slug"],
+            country=country,
+            name=city_info["name"]
+        )

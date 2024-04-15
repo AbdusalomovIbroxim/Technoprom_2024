@@ -12,11 +12,12 @@ def main():
         execute_from_command_line(sys.argv)
 
         # Проверяем наличие данных о категориях и вызываем функцию добавления категорий, если данные отсутствуют
-        from films.default_db import add_categories, add_subcategories, add_tags, add_countries
+        from films.default_db import add_categories, add_subcategories, add_tags, add_countries, add_cities
         add_categories()
         add_subcategories()
         add_tags()
         add_countries()
+        add_cities()
     except ImportError as exc:
         raise ImportError(
             "Couldn't import Django. Are you sure it's installed and "
