@@ -720,7 +720,8 @@ body {
 
 .logo-item img {
     width: 100px;
-    filter: grayscale(100%)
+    filter: grayscale(100%);
+    transition: 0.2s;
 }
 
 .logo-item img:hover {
