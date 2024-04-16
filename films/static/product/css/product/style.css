@@ -706,6 +706,28 @@ body {
     padding-top: 150px;
 }
 
+
+.logo-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+
+.logo-item {
+    display: flex;
+}
+
+.logo-item img {
+    width: 100px;
+    filter: grayscale(100%)
+}
+
+.logo-item img:hover {
+    filter: grayscale(0%)
+}
+
+
 @media only screen and (max-width: 480px) {
     .container {
         width: 90%;
