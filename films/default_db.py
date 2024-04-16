@@ -746,7 +746,7 @@ def add_cities():
     for city_info in cities_data:
         country_slug = city_info["country_slug"]
         country = Country.objects.get(slug=country_slug)
-        City.objects.create(
+        City.objects.get_or_create(
             slug=city_info["slug"],
             country=country,
             name=city_info["name"]

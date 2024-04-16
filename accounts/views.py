@@ -105,15 +105,15 @@ class RegisterUserView(CreateView):
         message = f"{code}"
         from_email = settings.EMAIL_HOST_USER
         to = [user.email]
-        try:
-            send_sms_verification_code(form.cleaned_data["telephone"], message)
-            send_mail(subject, message, from_email, to)
-        except:
-            messages.error(
-                self.request,
-                f"Проблема с отправкой электронного письма на адрес {to}. Проверьте, правильно ли вы его ввели.",
-            )
-            return render(self.request, self.template_name, {"register_form": form})
+        # try:
+        send_sms_verification_code(form.cleaned_data["telephone"], message)
+        send_mail(subject, message, from_email, to)
+        # except:
+        #     messages.error(
+        #         self.request,
+        #         f"Проблема с отправкой электронного письма на адрес {to}. Проверьте, правильно ли вы его ввели.",
+        #     )
+        #     return render(self.request, self.template_name, {"register_form": form})
         self.request.session["verification_code"] = code
         self.request.session["user_id"] = user.pk
         return redirect("verify_code")

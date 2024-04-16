@@ -19,7 +19,7 @@
 <section class="authentication register">
     {#    <div class="container">#}
     <div class="main-header__logo">
-        <a href="../..">
+        <a href="{% url "index" %}">
             <img src="{% static 'product/images/TECNOPROM-LOGO.png' %}" alt="logo">
         </a>
     </div>
@@ -32,7 +32,9 @@
             </div>
 
             <form id="registrationForm" method="post" action="{% url 'register' %}">
+
                 {% csrf_token %}
+
                 <div class="field">
                     <label type="text" for="username">Имя пользователя</label>
                     {{ register_form.username }}
