@@ -72,6 +72,9 @@ urlpatterns = [
         views.AdminStatistics.as_view(),
         name="admin_statistics",
     ),
+
+    path('admin/logs/', views.AdminLogsView.as_view(), name='admin_logs'),
+
     path(
         "add-ball/<int:user_id>/",
         views.add_ball,

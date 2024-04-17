@@ -1,5 +1,5 @@
 from django.urls import path
-
+from django.contrib.sitemaps.views import sitemap
 from .views import (
     IndexView,
     ProductSaveView,
@@ -14,6 +14,8 @@ from .views import (
     access_denied_page,
     AdditionalServicesView,
     about_us_page,
+    RobotsTxtView,
+    YourSitemap
 )
 
 urlpatterns = [
@@ -32,6 +34,10 @@ urlpatterns = [
 
     path("product-status/", AdditionalServicesView.as_view(), name="product_update_status"),
 
-    path("about-us/", about_us_page, name="about_us_page")
+    path("about-us/", about_us_page, name="about_us_page"),
+    path("robots.txt", RobotsTxtView.as_view(content_type="text/plain"), name="robots"),
+    path('sitemap.xml', sitemap, {'sitemaps': {'your_sitemap': YourSitemap}}),
+
 
 ]
+

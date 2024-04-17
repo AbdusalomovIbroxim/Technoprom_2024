@@ -203,7 +203,7 @@ class Products(Model):  # Модель
         return self.title
 
     def get_absolute_url(self):
-        return reverse_lazy("film_detail", kwargs={"pk": self.pk})
+        return reverse_lazy("product-detail", kwargs={"pk": self.pk})
 
     class Meta:
         verbose_name = "Запрос"

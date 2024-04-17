@@ -3,6 +3,8 @@ import random
 import secrets
 import string
 import requests
+import os
+import logging
 
 from django.views import View
 from django.db.models import Q
@@ -16,10 +18,11 @@ from django.urls import reverse_lazy
 from django.db.models import Avg, Sum
 from django.core.mail import send_mail
 from datetime import datetime, timedelta
+from django.views.generic import ListView
 from django.http import HttpResponseRedirect
+from django.views.generic import TemplateView
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
-from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.contrib.auth import login, get_user_model, logout
 from django.contrib.auth.hashers import make_password
@@ -1054,3 +1057,36 @@ class TopUpYourAccount(View):
         photo = self.request.FILES.get("photo")
         asyncio.run(send_message(self.request.user.pk, amount, photo))
         return redirect('myaccount')
+
+
+class AdminLogsView(TemplateView):
+    template_name = 'admin/logs.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Получаем логи приложения
+        log_content = self.get_application_logs()
+        context['log_content'] = log_content
+        # Получаем вывод ошибок Python
+        error_content = self.get_python_errors()
+        context['error_content'] = error_content
+        return context
+
+    def get_application_logs(self):
+        log_content = ''
+        logger = logging.getLogger(__name__)
+        for handler in logger.handlers:
+            if isinstance(handler, logging.FileHandler):
+                with open(handler.baseFilename, 'r') as f:
+                    log_content += f.read()
+        return log_content
+
+    def get_python_errors(self):
+        error_content = ''
+        from root.settings import BASE_DIR
+        LOG_DIR = os.path.join(BASE_DIR, 'logs')
+        error_log_path = os.path.join(LOG_DIR, 'error.log')
+        if os.path.exists(error_log_path):
+            with open(error_log_path, 'r') as f:
+                error_content = f.read()
+        return error_content

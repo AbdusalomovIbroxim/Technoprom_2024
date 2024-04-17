@@ -13,7 +13,8 @@ from django.utils.translation import get_language
 from django.views import View
 from django.views.generic import ListView, CreateView, DetailView, UpdateView
 from fuzzywuzzy import fuzz
-
+from django.views.generic import TemplateView
+from django.contrib.sitemaps import Sitemap
 from accounts.models import Message
 from .forms import FilmsForm, ProductFilterForm, SearchForm
 from .models import (Products, SubCategories, Favorite, Tag, Image, Categories, SubCategoryCategory, )
@@ -603,3 +604,20 @@ def access_denied_page(request):
 
 def about_us_page(request):
     return render(request, "about_us/about_us.html")
+
+
+class RobotsTxtView(TemplateView):
+    template_name = "robots.txt"
+
+
+class YourSitemap(Sitemap):
+    changefreq = 'daily'
+    priority = 0.5
+
+    def items(self):
+        return Products.objects.all()
+
+    def lastmod(self, obj):
+        return obj.update_date
+
+
