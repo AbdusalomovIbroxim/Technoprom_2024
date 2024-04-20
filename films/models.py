@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.utils.text import slugify
+from unidecode import unidecode
 from django.db.models import (
     Model,
     CharField,
@@ -194,7 +195,9 @@ class Products(Model):  # Модель
 
     def save(self, *args, **kwargs):
         if not self.slug:  # Check if slug is not already set
-            self.slug = slugify(self.title)  # Generate slug based on title
+            # Convert non-Latin characters to Latin characters
+            latin_title = unidecode(self.title)
+            self.slug = slugify(latin_title)  # Generate slug based on Latin title
 
             # Ensure uniqueness of the slug
             original_slug = self.slug
@@ -203,7 +206,7 @@ class Products(Model):  # Модель
                 self.slug = '{}-{}'.format(original_slug, counter)
                 counter += 1
 
-            # Set is_top_film based on top_duration
+        # Set is_top_film based on top_duration
         self.is_top_film = self.top_duration > 0
 
         super().save(*args, **kwargs)
