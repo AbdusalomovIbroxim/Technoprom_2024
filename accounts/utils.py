@@ -180,3 +180,4 @@ def true_account_status(pk: int):
     user.recipients.add(pk)
     user.save()
     return "status true"
+

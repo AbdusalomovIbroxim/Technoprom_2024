@@ -31,7 +31,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import user_passes_test
 from django.views.generic.edit import CreateView, UpdateView
-
+from django.utils.decorators import method_decorator
 from support.models import SupportTicket
 from films.forms import FilmsForm
 from films.models import Products, Favorite
@@ -1059,6 +1059,14 @@ class TopUpYourAccount(View):
         return redirect('myaccount')
 
 
+def is_admin(user):
+    if not user.is_anonymous:
+        return user.is_superuser
+    else:
+        return False
+
+
+# @method_decorator(is_admin, name='dispatch')
 class AdminLogsView(TemplateView):
     template_name = 'admin/logs.html'
 

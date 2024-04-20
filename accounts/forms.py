@@ -349,8 +349,8 @@ class UserProfileUpdateForm(forms.ModelForm):
             "company_name",
             "description",
             "category",
-            # "sub_category",
-            # "tags",
+            "subcategories",
+            "tags",
 
         ]
         widgets = {
@@ -358,7 +358,7 @@ class UserProfileUpdateForm(forms.ModelForm):
             "company_name": forms.TextInput(attrs={"class": "company-name_id"}),
             "description": forms.Textarea(attrs={"class": "description_id"}),
             "category": forms.Select(attrs={"class": "category_id"}),
-            "sub_category": forms.Select(attrs={"class": "sub_category_id"}),
+            "subcategories": forms.CheckboxSelectMultiple(attrs={"class": "subcategories_id"}),
             # 'tags': forms.CheckboxSelectMultiple(attrs={'class': 'tag_id'}),
             "tags": forms.CheckboxSelectMultiple,
         }
