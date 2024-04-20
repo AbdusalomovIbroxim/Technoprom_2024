@@ -20,7 +20,7 @@ from .views import (
 
 urlpatterns = [
     path("", IndexView.as_view(), name="index"),
-    path("product/<int:pk>/", ProductDetailView.as_view(), name="product-detail"),
+    path("product/<slug:slug>/", ProductDetailView.as_view(), name="product-detail"),
     path("request/", ProductSaveView.as_view(), name="add_film"),
     path("update-film/<int:pk>/", FilmsUpdateView.as_view(), name="update_film"),
     path("product-list/", FilmsListView.as_view(), name="product-list"),

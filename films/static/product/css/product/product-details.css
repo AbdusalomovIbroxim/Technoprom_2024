@@ -98,11 +98,16 @@ body {
 }
 
 
-.product-title h1 {
+.product-title h1,
+.product-description h2 {
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 500;
     margin-bottom: 10px;
     word-wrap: break-word;
+}
+
+.product-description h2 {
+    font-weight: 400;
 }
 
 

@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-
+from django.utils.text import slugify
 from django.db.models import (
     Model,
     CharField,
@@ -159,7 +159,7 @@ class Products(Model):  # Модель
         ("buy", "Buy"),
         ("sell", "Sell"),
     ]
-
+    slug = SlugField(unique=True)
     title = CharField("Наименование", max_length=100)
     description = CharField("Описание", max_length=900, null=True, blank=True)
     # image = ImageField(
@@ -193,11 +193,20 @@ class Products(Model):  # Модель
     create_date_changed = BooleanField(default=False, editable=False)
 
     def save(self, *args, **kwargs):
-        if self.top_duration > 0:
-            self.is_top_film = True
-        else:
-            self.is_top_film = False
-        super(Products, self).save(*args, **kwargs)
+        if not self.slug:  # Check if slug is not already set
+            self.slug = slugify(self.title)  # Generate slug based on title
+
+            # Ensure uniqueness of the slug
+            original_slug = self.slug
+            counter = 1
+            while Products.objects.filter(slug=self.slug).exists():
+                self.slug = '{}-{}'.format(original_slug, counter)
+                counter += 1
+
+            # Set is_top_film based on top_duration
+        self.is_top_film = self.top_duration > 0
+
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title

@@ -119,40 +119,43 @@ class ProductDetailView(DetailView):
     context_object_name = "product"
 
     def dispatch(self, request, *args, **kwargs):
-        film = self.get_object()
+        product = self.get_object()
 
-        if not film.is_active:
-            if not user_can_view_product(request.user, film):
+        if not product.is_active:
+            if not user_can_view_product(request.user, product):
                 return redirect("access_denied_page")
-            # Если продукт неактивен, но пользователь - администратор или автор продукта, разрешить доступ
+            # If the product is not active, but the user is an admin or the product's author, allow access
             pass
-        session_key = "film_{}_viewed".format(film.pk)
+
+        session_key = "product_{}_viewed".format(product.pk)
 
         if not request.session.get(session_key, False):
-            film.view_count += 1
-            film.save()
+            product.view_count += 1
+            product.save()
             request.session[session_key] = True
 
         return super().dispatch(request, *args, **kwargs)
 
-    def get_queryset(self):
-        return Products.objects.filter(pk=self.kwargs["pk"])
+    def get_object(self, queryset=None):
+        slug = self.kwargs.get('slug')
+        return self.model.objects.get(slug=slug)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        user = None if self.request.user.is_anonymous else self.request.user
-        film = self.object
-        product_author = film.author
-        film_pk = film.pk
-        product_category = film.category
-        product_subcategories = SubCategories.objects.filter(products=self.kwargs['pk']).values_list('name_ru',
-                                                                                                     flat=True)
+        user = self.request.user
+
+        product = self.object
+        product_author = product.author
+        product_pk = product.pk
+        product_category = product.category
+        product_subcategories = product.subcategories.values_list('name_ru', flat=True)
         context["product_subcategories"] = list(product_subcategories)
 
-        if not self.request.user.is_anonymous:
+        if not user.is_anonymous:
             context["is_favorite"] = Favorite.objects.filter(
-                user=user, product_id=film
+                user=user, product_id=product
             ).exists()
+
         context["author_products"] = Products.objects.filter(
             author=product_author
         ).order_by("-create_date")[:16]
@@ -160,32 +163,15 @@ class ProductDetailView(DetailView):
         similar_products = Products.objects.filter(
             category=product_category,
             subcategories__in=product_subcategories
-        ).exclude(id=film_pk).order_by("-create_date")[:16]
+        ).exclude(pk=product_pk).order_by("-create_date")[:16]
 
         if len(similar_products) < 16:
-            add = 16 - len(similar_products)
             additional_products = Products.objects.exclude(
-                id__in=[product.id for product in similar_products]
-            ).order_by("-create_date")[:add]
+                pk__in=[product.pk for product in similar_products]
+            ).order_by("-create_date")[:16 - len(similar_products)]
             similar_products = list(similar_products) + list(additional_products)
 
         context["similar_products"] = similar_products
-
-        product_images = Image.objects.filter(product=self.kwargs['pk'])
-        context["product_images"] = product_images
-
-        # similar_products = Products.objects.filter(
-        #     category__in=product_categories,
-        #     subcategories__in=product_subcategories
-        # ).exclude(id=film.id).order_by("-create_date")[:16]
-
-        # if len(similar_products) < 16:
-        #     add = 16 - len(similar_products)
-        #     additional_products = Products.objects.exclude(
-        #         id__in=[product.id for product in similar_products]).order_by("-create_date")[:add]
-        #     similar_products = list(similar_products) + list(additional_products)
-
-        # context["similar_products"] = similar_products
 
         return context
 
@@ -619,5 +605,3 @@ class YourSitemap(Sitemap):
 
     def lastmod(self, obj):
         return obj.update_date
-
-
