@@ -13,7 +13,7 @@
                     {% if product.type == 'sell' %}
                         <div class="card__sell card-color">
                             <div class="card__buy-content">
-                                <a class="dont-text-decoration" href="{% url 'product-detail' product.pk %}">
+                                <a class="dont-text-decoration" href="{% url 'product-detail' product.slug %}">
                                     <div class="card__sell-image">
                                         <img src="{{ product.image.url }}" alt="Product Image">
                                     </div>
@@ -24,6 +24,7 @@
 
                                     <div class="category-info">
                                         <div class="product-cat__image">
+{#                                            <img src="{% static 'about_us/categories/1.svg' %}" alt="cat image">#}
                                             <img src="{% static 'about_us/categories/1.svg' %}" alt="cat image">
                                         </div>
                                         <a href="#">{{ product.category }}</a>
@@ -35,24 +36,24 @@
 
                                     <div class="flags">
                                         <a style="text-decoration: none; color: black;"
-                                           href="{% url 'product-detail' product.pk %}">
+                                           href="{% url 'product-detail' product.slug %}">
                                             <span class="country">{{ product.country }}</span>
                                         </a>
                                     </div>
                                     <div class="date">
                                         <a style="text-decoration: none; color: black;"
-                                           href="{% url 'product-detail' product.pk %}">
+                                           href="{% url 'product-detail' product.slug %}">
                                             <span class="full-date">{{ product.create_date }}</span>
                                         </a>
                                     </div>
                                     <div class="like-and-more">
                                         {% if product.price %}
-                                            <a href="{% url 'product-detail' product.pk %}">
+                                            <a href="{% url 'product-detail' product.slug %}">
                                                 {{ product.price|floatformat:0|intcomma }}
                                                 сум
                                             </a>
                                         {% else %}
-                                            <a href="{% url 'product-detail' product.pk %}">
+                                            <a href="{% url 'product-detail' product.slug %}">
                                                 Договорный
                                             </a>
                                         {% endif %}
@@ -87,7 +88,7 @@
                                 {#                            <div class="card__sell-image">#}
                                 {#                                <img src="{{ product.image.url }}" alt="Product Image">#}
                                 {#                            </div>#}
-                                <h2 class="title"><a href="{% url 'product-detail' product.pk %}"
+                                <h2 class="title"><a href="{% url 'product-detail' product.slug %}"
                                                      class="title">{{ product.title }}</a></h2>
                                 <p class="description">{{ product.description }}</p>
                                 <div class="product-data">
@@ -98,7 +99,7 @@
                                         <span class="full-date">{{ product.create_date }}</span>
                                     </div>
                                     <div class="like-and-more">
-                                        <a href="{% url 'product-detail' product.pk %}"
+                                        <a href="{% url 'product-detail' product.slug %}"
                                            class="read-more">{% translate "Подробнее" %}</a>
                                         <div class="svg-icon-container">
                                             {% if user.is_authenticated %}
