@@ -14,11 +14,12 @@
     <link rel="stylesheet" href="{% static "product/css/product/style.css" %}">
     <link rel="stylesheet" href="{% static "product/css/product/main.css" %}">
     <link rel="stylesheet" href="{% static "product/css/product/product-details.css" %}">
-    <title>Tecnoprom uz {{ product.title }}</title>
+    <title>Tecnoprom uz - {{ product.title }}</title>
     <!-- Добавьте это в раздел head вашего HTML-файла -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
 </head>
 <body>
+
 <style>
     @media only screen and (max-width: 600px) {
         .swiper-container {
@@ -64,9 +65,41 @@
                     </div>
 
 
-                    <div class="product-description">
-                        <div class="path_to_product" style="padding-bottom: 10px;">
+                    {#                    <div class="product-description">#}
+                    {#                        <div class="path_to_product" style="padding-bottom: 10px;">#}
+                    {##}
+                    {#                            <a href="{% url 'product-list' %}?country_id={{ product.country_id }}">{{ product.country }}/</a>#}
+                    {#                            {% if product.city %}#}
+                    {#                                <a href="{% url 'product-list' %}?city_id={{ product.city_id }}">{{ product.city }}/</a>#}
+                    {#                            {% endif %}#}
+                    {#                            <a href="{% url 'product-list' %}?category_id={{ product.category_id }}">{{ product.category }}/</a>#}
+                    {#                            {% for product_subcategory in product.subcategories.all %}#}
+                    {#                                <a href="{% url 'product-list' %}?sub_category_id={{ product_subcategory.id }}">{{ product_subcategory }}/</a>#}
+                    {#                            {% endfor %}#}
+                    {##}
+                    {##}
+                    {#                        </div>#}
+                    {#                        <div class="product-tags">#}
+                    {#                            {% for tag in product.tags.all %}#}
+                    {#                                <a href="{% url 'product-list' %}?tag_id={{ tag.id }}" class="tag">{{ tag }}</a>#}
+                    {#                            {% endfor %}#}
+                    {#                        </div>#}
+                    {#                        <div class="product-title">#}
+                    {#                            <h1>{{ product.title }}</h1>#}
+                    {#                        </div>#}
+                    {#                        <h3>{% translate "Описание товара" %}</h3>#}
+                    {#                        <h2>{{ product.description }}</h2>#}
+                    {#                        <hr>#}
+                    {#                        <div style="display: flex; justify-content: space-between;">#}
+                    {#                            <span>{% translate "id" %}:{{ product.pk }}</span>#}
+                    {#                            <span>{% translate "Просмотров" %}: {{ product.view_count }}</span>#}
+                    {#                        </div>#}
+                    {#                    </div>#}
 
+
+                    <div class="product-description">
+                        <!-- Путь к продукту -->
+                        <div class="path_to_product" style="padding-bottom: 10px;">
                             <a href="{% url 'product-list' %}?country_id={{ product.country_id }}">{{ product.country }}/</a>
                             {% if product.city %}
                                 <a href="{% url 'product-list' %}?city_id={{ product.city_id }}">{{ product.city }}/</a>
@@ -75,27 +108,27 @@
                             {% for product_subcategory in product.subcategories.all %}
                                 <a href="{% url 'product-list' %}?sub_category_id={{ product_subcategory.id }}">{{ product_subcategory }}/</a>
                             {% endfor %}
-
-
                         </div>
+                        <!-- Теги продукта -->
                         <div class="product-tags">
                             {% for tag in product.tags.all %}
                                 <a href="{% url 'product-list' %}?tag_id={{ tag.id }}" class="tag">{{ tag }}</a>
                             {% endfor %}
                         </div>
+                        <!-- Название продукта -->
                         <div class="product-title">
                             <h1>{{ product.title }}</h1>
                         </div>
+                        <!-- Описание продукта -->
                         <h3>{% translate "Описание товара" %}</h3>
-                        <span>{{ product.description }}</span>
+                        <h2>{{ product.description }}</h2>
                         <hr>
+                        <!-- Дополнительная информация о продукте -->
                         <div style="display: flex; justify-content: space-between;">
-                            <span>{% translate "id" %}:{{ product.pk }}</span>
+                            <span>{% translate "ID" %}:{{ product.pk }}</span>
                             <span>{% translate "Просмотров" %}: {{ product.view_count }}</span>
                         </div>
                     </div>
-
-
                     <div class="contact-the-seller">
 
                         <div class="author-info2">
