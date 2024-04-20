@@ -596,6 +596,8 @@ class RobotsTxtView(TemplateView):
     template_name = "robots.txt"
 
 
+# sitemap.py
+
 class YourSitemap(Sitemap):
     changefreq = 'daily'
     priority = 0.5

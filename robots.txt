@@ -1,3 +1,12 @@
-User-agent: *
+# robots.txt
+User-agent: Linguee
 Disallow: /
 
+User-agent: *
+Disallow:   /login/
+Disallow:   /uz/login/
+Disallow:   /ru/login/
+Disallow:   /en/login/
+
+Host: tecnoprom.uz
+Sitemap: https://tecnoprom.uz/sitemap.xml

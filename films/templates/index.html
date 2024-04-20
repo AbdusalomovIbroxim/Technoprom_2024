@@ -188,7 +188,7 @@
                 {% for job in jobs %}
                     <div class="card__sell card-color">
                         <div class="card__buy-content">
-                            <a class="dont-text-decoration" href="{% url 'product-detail' job.pk %}">
+                            <a class="dont-text-decoration" href="{% url 'product-detail' job.slug %}">
                                 <div class="card__sell-image">
                                     <img src="{{ job.image.url }}" alt="Product Image">
                                 </div>
@@ -210,19 +210,19 @@
 
                                 <div class="flags">
                                     <a style="text-decoration: none; color: black;"
-                                       href="{% url 'product-detail' job.pk %}">
+                                       href="{% url 'product-detail' job.slug %}">
                                         <span class="country">{{ job.country }}</span>
                                     </a>
                                 </div>
                                 <div class="date">
                                     <a style="text-decoration: none; color: black;"
-                                       href="{% url 'product-detail' job.pk %}">
+                                       href="{% url 'product-detail' job.slug %}">
                                         <span class="full-date">{{ job.create_date }}</span>
                                     </a>
                                 </div>
                                 <div class="like-and-more">
                                     {% if sell.price %}
-                                        <a href="{% url 'product-detail' job.pk %}">
+                                        <a href="{% url 'product-detail' job.slug %}">
                                             {{ job.price|floatformat:0|intcomma }}
                                             сум
                                         </a>

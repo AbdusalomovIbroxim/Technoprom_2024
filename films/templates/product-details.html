@@ -271,7 +271,7 @@
                                             <div class="card__sell-image">
                                                 <img src="{{ product.image_set.first.image.url }}" alt="Product Image">
                                             </div>
-                                            <a href="{% url 'product-detail' product.pk %}"
+                                            <a href="{% url 'product-detail' product.slug %}"
                                                class="title">{{ product.title }}</a>
                                             <div class="product-data">
                                                 <div class="category-info">
@@ -289,7 +289,7 @@
                                                     <span class="full-date">{{ product.create_date }}</span>
                                                 </div>
                                                 <div class="like-and-more">
-                                                    <a href="{% url "product-detail" product.pk %}"
+                                                    <a href="{% url "product-detail" product.slug %}"
                                                        class="read-more">{% translate "Подробнее" %}</a>
                                                     <div class="svg-icon-container">
                                                         {#                                                    {% if user.is_authenticated %}#}
@@ -317,7 +317,7 @@
                                                 </div>
                                                 <a href="#">{{ product.category }}</a>
                                             </div>
-                                            <h2 class="title"><a href="{% url 'product-detail' product.pk %}"
+                                            <h2 class="title"><a href="{% url 'product-detail' product.slug %}"
                                                                  class="title">{{ product.title }}</a></h2>
                                             <p class="description">{{ product.description }}</p>
                                             <div class="product-data">
@@ -328,7 +328,7 @@
                                                     <span class="full-date">{{ product.create_date }}</span>
                                                 </div>
                                                 <div class="like-and-more">
-                                                    <a href="{% url 'product-detail' product.pk %}"
+                                                    <a href="{% url 'product-detail' product.slug %}"
                                                        class="read-more">{% translate "Подробнее" %}</a>
                                                     <div class="svg-icon-container">
                                                         {% if user.is_authenticated %}
@@ -375,7 +375,7 @@
                                                 <img src="{{ product.image_set.first.image.url }}"
                                                      alt="Product Image">
                                             </div>
-                                            <a href="{% url 'product-detail' product.pk %}"
+                                            <a href="{% url 'product-detail' product.slug %}"
                                                class="title">{{ product.title }}</a>
                                             <div class="product-data">
                                                 <div class="category-info">
@@ -393,7 +393,7 @@
                                                     <span class="full-date">{{ product.create_date }}</span>
                                                 </div>
                                                 <div class="like-and-more">
-                                                    <a href="{% url "product-detail" product.pk %}"
+                                                    <a href="{% url "product-detail" product.slug %}"
                                                        class="read-more">{% translate "Подробнее" %}</a>
                                                     <div class="svg-icon-container">
                                                         {#                                                    {% if user.is_authenticated %}#}
@@ -422,7 +422,7 @@
                                                 </div>
                                                 <a href="#">{{ product.category }}</a>
                                             </div>
-                                            <h2 class="title"><a href="{% url 'product-detail' product.pk %}"
+                                            <h2 class="title"><a href="{% url 'product-detail' product.slug %}"
                                                                  class="title">{{ product.title }}</a></h2>
                                             <p class="description">{{ product.description }}</p>
                                             <div class="product-data">
@@ -433,7 +433,7 @@
                                                     <span class="full-date">{{ product.create_date }}</span>
                                                 </div>
                                                 <div class="like-and-more">
-                                                    <a href="{% url 'product-detail' product.pk %}"
+                                                    <a href="{% url 'product-detail' product.slug %}"
                                                        class="read-more">{% translate "Подробнее" %}</a>
                                                     <div class="svg-icon-container">
                                                         {% if user.is_authenticated %}
