@@ -9,4 +9,4 @@ Disallow:   /ru/login/
 Disallow:   /en/login/
 
 Host: tecnoprom.uz
-Sitemap: https://tecnoprom.uz/sitemap.xml
+Sitemap: http://tecnoprom.uz/sitemap.xml
