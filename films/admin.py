@@ -10,9 +10,19 @@ from .models import Categories, Products, SubCategories, Country, City, Tag, Tag
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
     list_display = ("slug", "name_uz", "name_ru", "name_en")
+    prepopulated_fields = {'slug': ('name_en',)}
 
 
-admin.site.register(Categories)
+@admin.register(City)
+class CityAdmin(admin.ModelAdmin):
+    list_display = ("name", "slug")
+    prepopulated_fields = {'slug': ('name',)}
+
+
+@admin.register(Categories)
+class CategoriesAdmin(admin.ModelAdmin):
+    list_display = ("slug", "name_uz", "name_ru", "name_en")
+    prepopulated_fields = {'slug': ('name_en',)}
 
 
 class SubcategoriesCategoryInline(admin.TabularInline):
@@ -24,6 +34,7 @@ class SubcategoriesCategoryInline(admin.TabularInline):
 class TagsAdmin(admin.ModelAdmin):
     list_display = ('id', 'name_en', 'name_ru', 'name_uz')
     inlines = [SubcategoriesCategoryInline]
+    prepopulated_fields = {'slug': ('name_en',)}
 
 
 class TagsInline(admin.TabularInline):
@@ -42,16 +53,12 @@ class TagsAdmin(admin.ModelAdmin):
     inlines = [TagsInline, TagsSubcategoryInline]
 
 
-@admin.register(City)
-class CityAdmin(admin.ModelAdmin):
-    list_display = ("name", "slug")
-
-
 @admin.register(Products)
 class FilmsAdmin(admin.ModelAdmin):
     list_display = ("title", "create_date", "update_date", "is_published")
     list_filter = ("is_published",)
     search_fields = ("title",)
+    prepopulated_fields = {'slug': ('title',)}
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "sub_category":
