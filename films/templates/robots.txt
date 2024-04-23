@@ -1,33 +1,13 @@
-# Запрет индексации для поискового робота Linguee
-User-agent: Linguee
+User-agent: *
 Disallow: /
 
-# Общие правила для всех остальных поисковых роботов
 User-agent: *
-# Запрет на индексацию страниц в разделах аутентификации на разных языках
+
 Disallow: /login/
 Disallow: /uz/login/
 Disallow: /ru/login/
 Disallow: /en/login/
 
-# Определение основного домена сайта
 Host: tecnoprom.uz
 
-# Ссылка на файл sitemap.xml
 Sitemap: http://tecnoprom.uz/sitemap.xml
-
-# Разрешение индексации для страниц в разделе "новости"
-User-agent: *
-Allow: /news/
-
-# Запрет индексации для страниц с отзывами пользователей
-User-agent: *
-Noindex: /reviews/
-
-# Установить задержку в 5 секунд между запросами
-User-agent: *
-Crawl-delay: 5
-
-# Запрещаем индексацию страниц в разделе "страницы пользователя" из-за повышенного количества спама
-User-agent: *
-Disallow: /user-pages/
