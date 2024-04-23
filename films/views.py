@@ -599,7 +599,7 @@ class RobotsTxtView(TemplateView):
 
 # sitemap.py
 
-class YourSitemap(Sitemap):
+class Sitemap(Sitemap):
     changefreq = 'always'
     priority = 0.7
 
