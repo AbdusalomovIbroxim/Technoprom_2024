@@ -726,7 +726,6 @@ body {
 
 .logo-item img {
     width: 100px;
-    max-height: 70px;
     filter: grayscale(100%);
     transition: 0.2s;
 }
