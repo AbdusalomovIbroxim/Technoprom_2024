@@ -239,6 +239,7 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 .idea/
 ./db.sqlite3
+db.sqlite3
 ./test.py
 #./celerybeat-schedule
 #./venv
