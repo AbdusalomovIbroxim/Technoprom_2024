@@ -15,43 +15,52 @@ def load_from_json_and_save_to_database(file_path):
         data = json.load(json_file)
 
     for category_data in data.get('categories', []):
-        Categories.objects.get_or_create(**category_data)
+        try:
+            Categories.objects.create(**category_data)
+        except IntegrityError as e:
+            print(f"Error adding category: {e}")
 
     for subcategory_data in data.get('subcategories', []):
-        SubCategories.objects.get_or_create(**subcategory_data)
+        try:
+            SubCategories.objects.create(**subcategory_data)
+        except IntegrityError as e:
+            print(f"Error adding subcategory: {e}")
 
     for tag_data in data.get('tags', []):
-        Tag.objects.get_or_create(**tag_data)
+        try:
+            Tag.objects.create(**tag_data)
+        except IntegrityError as e:
+            print(f"Error adding tag: {e}")
 
-    try:
-        for country_data in data.get('countries', []):
-            Country.objects.get_or_create(**country_data)
-    except IntegrityError as e:
-        print(f"Error adding countries: {e}")
+    for country_data in data.get('countries', []):
+        try:
+            Country.objects.create(**country_data)
+        except IntegrityError as e:
+            print(f"Error adding country: {e}")
 
-    try:
-        for city_data in data.get('cities', []):
-            City.objects.get_or_create(**city_data)
-    except IntegrityError as e:
-        print(f"Error adding cities: {e}")
+    for city_data in data.get('cities', []):
+        try:
+            City.objects.create(**city_data)
+        except IntegrityError as e:
+            print(f"Error adding city: {e}")
 
-    try:
-        for subcategory_category_data in data.get('subcategory_category', []):
-            SubCategoryCategory.objects.get_or_create(**subcategory_category_data)
-    except IntegrityError as e:
-        print(f"Error adding subcategory_category: {e}")
+    for subcategory_category_data in data.get('subcategory_category', []):
+        try:
+            SubCategoryCategory.objects.create(**subcategory_category_data)
+        except IntegrityError as e:
+            print(f"Error adding subcategory category: {e}")
 
-    try:
-        for tag_category_data in data.get('tag_category', []):
+    for tag_category_data in data.get('tag_category', []):
+        try:
             TagCategory.objects.get_or_create(**tag_category_data)
-    except IntegrityError as e:
-        print(f"Error adding tag_category: {e}")
+        except IntegrityError as e:
+            print(f"Error adding tag category: {e}")
 
-    try:
-        for tag_subcategory_data in data.get('tag_subcategory', []):
+    for tag_subcategory_data in data.get('tag_subcategory', []):
+        try:
             TagSubcategory.objects.get_or_create(**tag_subcategory_data)
-    except IntegrityError as e:
-        print(f"Error adding tag_subcategory: {e}")
+        except IntegrityError as e:
+            print(f"Error adding tag subcategory: {e}")
 
 
 if __name__ == "__main__":
