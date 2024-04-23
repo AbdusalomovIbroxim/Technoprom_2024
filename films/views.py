@@ -9,6 +9,7 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect, render
 from django.utils import timezone
+from django.utils.functional import cached_property
 from django.utils.translation import get_language
 from django.views import View
 from django.views.generic import ListView, CreateView, DetailView, UpdateView
@@ -599,11 +600,15 @@ class RobotsTxtView(TemplateView):
 # sitemap.py
 
 class YourSitemap(Sitemap):
-    changefreq = 'daily'
-    priority = 0.5
+    changefreq = 'always'
+    priority = 0.7
+
+    @cached_property
+    def products(self):
+        return Products.objects.all()
 
     def items(self):
-        return Products.objects.all()
+        return self.products
 
     def lastmod(self, obj):
         return obj.update_date
