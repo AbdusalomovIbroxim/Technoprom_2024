@@ -454,7 +454,7 @@ msgstr "Telegram channels"
 
 #: films/templates/footer.html:38
 msgid "О нас"
-msgstr ""
+msgstr "About us"
 
 #: films/templates/footer.html:40
 msgid "LeMachine.uz"
