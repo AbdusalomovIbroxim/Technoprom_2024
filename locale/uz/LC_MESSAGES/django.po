@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-09 17:15+0500\n"
+"POT-Creation-Date: 2024-04-23 18:35+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,42 +18,42 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: accounts/forms.py:85 accounts/forms.py:150
+#: accounts/forms.py:82 accounts/forms.py:147
 msgid "Password"
 msgstr ""
 
-#: accounts/forms.py:125
+#: accounts/forms.py:122
 msgid "Пожалуйста, введите правильный номер телефона."
 msgstr ""
 
-#: accounts/forms.py:133
+#: accounts/forms.py:130
 msgid "Этот email уже используется."
 msgstr ""
 
-#: accounts/forms.py:161
+#: accounts/forms.py:158
 msgid "Поле \"Пароль\" обязательно для заполнения."
 msgstr ""
 
-#: accounts/forms.py:162
+#: accounts/forms.py:159
 msgid "Неверный формат пароля."
 msgstr ""
 
-#: accounts/forms.py:306
+#: accounts/forms.py:304
 msgid "Введите описание"
 msgstr ""
 
-#: accounts/templates/admin/products_active.html:102
+#: accounts/templates/admin/products_active.html:103
 #: accounts/templates/admin/products_moderation.html:98
-#: accounts/templates/user/company-profile.html:312
-#: accounts/templates/user/company-profile.html:348
-#: accounts/templates/user/company-profile.html:414
-#: accounts/templates/user/profile.html:287
-#: accounts/templates/user/profile.html:389
-#: accounts/templates/user/profile.html:422 films/templates/index.html:58
-#: films/templates/product-details.html:260
-#: films/templates/product-details.html:299
-#: films/templates/product-details.html:364
-#: films/templates/product-details.html:404
+#: accounts/templates/user/company-profile.html:226
+#: accounts/templates/user/company-profile.html:263
+#: accounts/templates/user/company-profile.html:329
+#: accounts/templates/user/profile.html:293
+#: accounts/templates/user/profile.html:395
+#: accounts/templates/user/profile.html:428 films/templates/index.html:56
+#: films/templates/product-details.html:293
+#: films/templates/product-details.html:332
+#: films/templates/product-details.html:397
+#: films/templates/product-details.html:437
 #: films/templates/product-list.html:149 films/templates/product-list.html:238
 msgid "Подробнее"
 msgstr "Batafsil"
@@ -71,7 +71,7 @@ msgid "Веб сайт"
 msgstr "Veb sayt"
 
 #: accounts/templates/user/company-profile.html:119
-#: films/templates/base.html:406
+#: films/templates/base.html:432
 msgid "Телеграм"
 msgstr "Telegram"
 
@@ -84,12 +84,22 @@ msgstr "yuborish"
 msgid "рейтинг"
 msgstr "reyting"
 
-#: accounts/templates/user/company-profile.html:366
-#: films/templates/product-details.html:318
-#: films/templates/product-details.html:423
+#: accounts/templates/user/company-profile.html:281
+#: films/templates/product-details.html:351
+#: films/templates/product-details.html:456
 #: films/templates/product-list.html:252
 msgid "Пока что нет объявлений."
 msgstr "Hozircha e'lonlar yo'q."
+
+#: accounts/templates/user/create_company.html:94 films/templates/base.html:149
+#: films/templates/form.html:161 films/templates/product-list.html:73
+msgid "Субкатегория"
+msgstr "sub kategoriya"
+
+#: accounts/templates/user/create_company.html:103
+#: films/templates/base.html:156 films/templates/form.html:168
+msgid "Теги"
+msgstr "teglar"
 
 #: accounts/templates/user/login.html:33 accounts/templates/user/login.html:55
 #: films/templates/nav_bar.html:105
@@ -113,139 +123,145 @@ msgstr "Ro'yxatdan o'tish"
 msgid "Назад"
 msgstr "Orqaga"
 
-#: accounts/templates/user/profile.html:66
+#: accounts/templates/user/profile.html:70
 msgid "Отслеживаете"
 msgstr "Kuzatmoqddasiz"
 
-#: accounts/templates/user/profile.html:68
+#: accounts/templates/user/profile.html:72
 msgid "Связаться с нами"
 msgstr "Biz bilan bog'lanish"
 
-#: accounts/templates/user/profile.html:85
-#: accounts/templates/user/profile.html:138
+#: accounts/templates/user/profile.html:89
+#: accounts/templates/user/profile.html:142
 msgid "seen"
 msgstr "ko'rgan"
 
-#: accounts/templates/user/profile.html:88
-#: accounts/templates/user/profile.html:141
+#: accounts/templates/user/profile.html:92
+#: accounts/templates/user/profile.html:145
 msgid "open number"
 msgstr "raqam korildi"
 
-#: accounts/templates/user/profile.html:91
-#: accounts/templates/user/profile.html:144
+#: accounts/templates/user/profile.html:95
+#: accounts/templates/user/profile.html:148
 msgid "like"
 msgstr "layk"
 
-#: accounts/templates/user/profile.html:161
+#: accounts/templates/user/profile.html:165
 msgid "Ваши объявления"
 msgstr "Sizning e'lonlaringiz"
 
-#: accounts/templates/user/profile.html:167 films/templates/nav_bar.html:225
+#: accounts/templates/user/profile.html:171 films/templates/nav_bar.html:227
 msgid "Пополнить счет"
 msgstr "Hisobni to'ldirish"
 
-#: accounts/templates/user/profile.html:168
+#: accounts/templates/user/profile.html:172
 msgid "Тарифы"
 msgstr "Tariflar"
 
-#: accounts/templates/user/profile.html:178 films/templates/index.html:80
-#: films/templates/index.html:172 films/templates/index.html:307
-#: films/templates/nav_bar.html:107 films/templates/nav_bar.html:232
+#: accounts/templates/user/profile.html:174
+#, fuzzy
+#| msgid "Создать бизнесс аккоунт"
+msgid "Создать компанию"
+msgstr "Biznes akkaunt yarating"
+
+#: accounts/templates/user/profile.html:184 films/templates/index.html:78
+#: films/templates/index.html:170 films/templates/index.html:254
+#: films/templates/nav_bar.html:107 films/templates/nav_bar.html:235
 msgid "размещение заказа"
 msgstr "buyurtma berish"
 
-#: accounts/templates/user/profile.html:182
+#: accounts/templates/user/profile.html:188
 msgid "Активные"
 msgstr "Faolsizlar"
 
-#: accounts/templates/user/profile.html:183
+#: accounts/templates/user/profile.html:189
 msgid "В модерации"
 msgstr "Moderatsiyada"
 
-#: accounts/templates/user/profile.html:184
+#: accounts/templates/user/profile.html:190
 msgid "Не активные"
 msgstr "Faol emaslar"
 
-#: accounts/templates/user/profile.html:185
+#: accounts/templates/user/profile.html:191
 msgid "Избранные"
 msgstr "Sevimlilar"
 
-#: accounts/templates/user/profile.html:197
-#: accounts/templates/user/profile.html:445
-#: accounts/templates/user/profile.html:533
+#: accounts/templates/user/profile.html:203
+#: accounts/templates/user/profile.html:451
+#: accounts/templates/user/profile.html:539
 msgid "Удалить"
 msgstr "O'chirish"
 
-#: accounts/templates/user/profile.html:200
-#: accounts/templates/user/profile.html:448
+#: accounts/templates/user/profile.html:206
+#: accounts/templates/user/profile.html:454
 msgid "Изменить"
 msgstr "O'zgartirish"
 
-#: accounts/templates/user/profile.html:204
+#: accounts/templates/user/profile.html:210
 msgid "Деактивировать"
 msgstr "Faolsizlantirish"
 
-#: accounts/templates/user/profile.html:209
+#: accounts/templates/user/profile.html:215
 msgid "Поднять в топ 1"
 msgstr "Topga chiqarish"
 
-#: accounts/templates/user/profile.html:215
+#: accounts/templates/user/profile.html:221
 msgid "1 день"
 msgstr "1 kun"
 
-#: accounts/templates/user/profile.html:221
+#: accounts/templates/user/profile.html:227
 msgid "2 дня"
 msgstr "2 kun"
 
-#: accounts/templates/user/profile.html:227
+#: accounts/templates/user/profile.html:233
 msgid "3 дней"
 msgstr "3 kun"
 
-#: accounts/templates/user/profile.html:233
+#: accounts/templates/user/profile.html:239
 msgid "up_to_top 2"
 msgstr "tepaga koratish"
 
-#: accounts/templates/user/profile.html:239
+#: accounts/templates/user/profile.html:245
 msgid "Вы уверены, что хотите выполнить это действие?"
 msgstr "Haqiqatan ham bu amalni bajarmoqchimisiz?"
 
-#: accounts/templates/user/profile.html:241
-#: accounts/templates/user/profile.html:542
+#: accounts/templates/user/profile.html:247
+#: accounts/templates/user/profile.html:548
 msgid "Да"
 msgstr "Ha"
 
-#: accounts/templates/user/profile.html:242
-#: accounts/templates/user/profile.html:545
+#: accounts/templates/user/profile.html:248
+#: accounts/templates/user/profile.html:551
 msgid "Нет"
 msgstr "Yo'q"
 
-#: accounts/templates/user/profile.html:331 films/templates/index.html:143
+#: accounts/templates/user/profile.html:337 films/templates/index.html:141
 #: films/templates/product-list.html:196
 msgid "сум"
 msgstr "so'm"
 
-#: accounts/templates/user/profile.html:385
-#: accounts/templates/user/profile.html:519
-#: accounts/templates/user/profile.html:579
-#: accounts/templates/user/profile.html:601
-#: films/templates/product-details.html:143
+#: accounts/templates/user/profile.html:391
+#: accounts/templates/user/profile.html:525
+#: accounts/templates/user/profile.html:585
+#: accounts/templates/user/profile.html:607
+#: films/templates/product-details.html:176
 msgid "Опубликовано"
 msgstr "Chop etilgan"
 
-#: accounts/templates/user/profile.html:451
+#: accounts/templates/user/profile.html:457
 msgid "Активировать"
 msgstr "Faollashtirish"
 
-#: accounts/templates/user/profile.html:457
-#: accounts/templates/user/profile.html:539
+#: accounts/templates/user/profile.html:463
+#: accounts/templates/user/profile.html:545
 msgid "Are you sure you want to perform this action?"
 msgstr "Haqiqatan ham bu amalni bajarmoqchimisiz?"
 
-#: accounts/templates/user/profile.html:459
+#: accounts/templates/user/profile.html:465
 msgid "Yes"
 msgstr "Ha"
 
-#: accounts/templates/user/profile.html:460
+#: accounts/templates/user/profile.html:466
 msgid "No"
 msgstr "Yo'q"
 
@@ -266,146 +282,151 @@ msgstr "Tasdiqlash kodi"
 msgid "Подтвердить"
 msgstr "Tasdiqlang"
 
-#: films/templates/base.html:30
+#: films/templates/base.html:58
 msgid "Всё для производства"
 msgstr "Bir joyda ishlab chiqarish uchun "
 
-#: films/templates/base.html:32
+#: films/templates/base.html:58
 msgid "найти и сделать ставку в одном месте!"
 msgstr "hamma narsani toping va taklif qiling!"
 
-#: films/templates/base.html:39
+#: films/templates/base.html:65
 msgid "Вторичный сырьё"
 msgstr "Ikkilamchi xom ashyo"
 
-#: films/templates/base.html:43 films/templates/footer.html:17
+#: films/templates/base.html:69 films/templates/footer.html:17
 #: films/templates/footer.html:50 films/templates/nav_bar.html:65
 #: films/templates/nav_bar.html:150
 msgid "Новое оборудование"
 msgstr "Yangi uskunalar"
 
-#: films/templates/base.html:47 films/templates/footer.html:19
+#: films/templates/base.html:73 films/templates/footer.html:19
 #: films/templates/nav_bar.html:72 films/templates/nav_bar.html:152
 msgid "Б/у оборудование"
 msgstr "Ishlatilgan uskunalar"
 
-#: films/templates/base.html:51
+#: films/templates/base.html:77
 msgid "Сырьё"
 msgstr "Xomashyo"
 
-#: films/templates/base.html:55 films/templates/footer.html:23
+#: films/templates/base.html:81 films/templates/footer.html:23
 #: films/templates/nav_bar.html:92 films/templates/nav_bar.html:156
 msgid "Услуга"
 msgstr "Xizmat ko'rsatish"
 
-#: films/templates/base.html:59 films/templates/footer.html:25
+#: films/templates/base.html:85 films/templates/footer.html:25
 #: films/templates/footer.html:53 films/templates/nav_bar.html:86
 msgid "Технолог"
 msgstr "Texnolog"
 
-#: films/templates/base.html:74
-msgid "Найдите необходимое вам"
+#: films/templates/base.html:100
+#, fuzzy
+#| msgid "Найдите необходимое вам"
+msgid "Найдите необходимое вам "
 msgstr "Kerakli xom-ashyo"
 
-#: films/templates/base.html:75 films/templates/base.html:84
-msgid "сырье"
+#: films/templates/base.html:101 films/templates/base.html:110
+#, fuzzy
+#| msgid "сырье"
+msgid "сырье "
 msgstr "toping"
 
-#: films/templates/base.html:76
+#: films/templates/base.html:102
 msgid "или предложите его на переработку!"
 msgstr "yoki ularni qayta ishlashga taklif qiling!"
 
-#: films/templates/base.html:77
-msgid "Мгновенно"
+#: films/templates/base.html:103
+#, fuzzy
+#| msgid "Мгновенно"
+msgid "Мгновенно "
 msgstr "Bir zumda o'zingizga"
 
-#: films/templates/base.html:78
-msgid "найдите"
+#: films/templates/base.html:104
+#, fuzzy
+#| msgid "найдите"
+msgid "найдите "
 msgstr "kerakli"
 
-#: films/templates/base.html:79
+#: films/templates/base.html:105
 msgid "нужного вам поставщика оборудования"
 msgstr "uskuna ta'minotchisini shuyerda toping"
 
-#: films/templates/base.html:80
-msgid "Здесь вы найдете"
-msgstr "Foydalainib bo'lingan, yangi egasini kutayotgan"
-
-#: films/templates/base.html:81
-msgid "б/у технику"
-msgstr "uskuna-qurilmalarni"
-
-#: films/templates/base.html:82
-msgid "ожидающую нового владельца."
-msgstr "shuyerdan topasiz"
-
-#: films/templates/base.html:83
-msgid "Быстро найти необходимое"
-msgstr "Ishlab chiqarishingiz uchun zarur"
-
-#: films/templates/base.html:85
-msgid "для вашего производства"
-msgstr "tezda toping"
-
-#: films/templates/base.html:86
-msgid "Найдите проверенных"
-msgstr "Mahsulotingiz uchun sinovdan o'tgan"
-
-#: films/templates/base.html:87
-msgid "производителей"
-msgstr "ishlab chiqaruvchilarni"
-
-#: films/templates/base.html:88
-msgid "для вашего продукта"
-msgstr "toping"
-
-#: films/templates/base.html:89
+#: films/templates/base.html:106 films/templates/base.html:115
 msgid "Здесь вы найдете "
 msgstr "Texnolog, muhandis,"
 
-#: films/templates/base.html:90
-msgid "технологов, инженеров,"
+#: films/templates/base.html:107
+#, fuzzy
+#| msgid "б/у технику"
+msgid "б/у технику "
+msgstr "uskuna-qurilmalarni"
+
+#: films/templates/base.html:108
+msgid "ожидающую нового владельца."
+msgstr "shuyerdan topasiz"
+
+#: films/templates/base.html:109
+#, fuzzy
+#| msgid "Быстро найти необходимое"
+msgid "Быстро найти необходимое "
+msgstr "Ishlab chiqarishingiz uchun zarur"
+
+#: films/templates/base.html:111
+msgid "для вашего производства"
+msgstr "tezda toping"
+
+#: films/templates/base.html:112
+#, fuzzy
+#| msgid "Найдите проверенных"
+msgid "Найдите проверенных "
+msgstr "Mahsulotingiz uchun sinovdan o'tgan"
+
+#: films/templates/base.html:113
+#, fuzzy
+#| msgid "производителей"
+msgid "производителей "
+msgstr "ishlab chiqaruvchilarni"
+
+#: films/templates/base.html:114
+msgid "для вашего продукта"
+msgstr "toping"
+
+#: films/templates/base.html:116
+#, fuzzy
+#| msgid "технологов, инженеров,"
+msgid "технологов, инженеров, "
 msgstr "operator va masterlarni"
 
-#: films/templates/base.html:91
+#: films/templates/base.html:117
 msgid "операторов и мастеров."
 msgstr "shuyerdan topasiz"
 
-#: films/templates/base.html:100
+#: films/templates/base.html:126
 msgid "Заголовок"
 msgstr "Sarlavha"
 
-#: films/templates/base.html:108 films/templates/form.html:145
+#: films/templates/base.html:134 films/templates/form.html:145
 msgid "Описание"
 msgstr "Tavsif"
 
-#: films/templates/base.html:116 films/templates/form.html:154
+#: films/templates/base.html:142 films/templates/form.html:154
 msgid "Категория"
 msgstr "Kategoriya"
 
-#: films/templates/base.html:123 films/templates/form.html:161
-#: films/templates/product-list.html:73
-msgid "Субкатегория"
-msgstr "sub kategoriya"
-
-#: films/templates/base.html:130 films/templates/form.html:168
-msgid "Теги"
-msgstr "teglar"
-
-#: films/templates/base.html:137
+#: films/templates/base.html:163
 msgid "Телефон"
 msgstr "Telefon"
 
-#: films/templates/base.html:414 films/templates/form.html:464
+#: films/templates/base.html:440 films/templates/form.html:464
 msgid "Страна"
 msgstr "Mamlakat"
 
-#: films/templates/base.html:420 films/templates/form.html:472
+#: films/templates/base.html:446 films/templates/form.html:472
 #: films/templates/product-list.html:95
 msgid "Город"
 msgstr "Shahar"
 
-#: films/templates/base.html:426 films/templates/form.html:513
+#: films/templates/base.html:452 films/templates/form.html:513
 msgid "Отправить"
 msgstr "Yuborish"
 
@@ -432,7 +453,7 @@ msgid "Телеграм каналы"
 msgstr "Telegram kanallari"
 
 #: films/templates/footer.html:38
-msgid "About us"
+msgid "О нас"
 msgstr ""
 
 #: films/templates/footer.html:40
@@ -489,30 +510,30 @@ msgstr ""
 msgid "Цена"
 msgstr "Narxi"
 
-#: films/templates/form.html:510 films/templates/index.html:147
-#: films/templates/index.html:231
+#: films/templates/form.html:510 films/templates/index.html:145
+#: films/templates/index.html:229
 msgid "Договорная"
 msgstr "Kelishiladi"
 
-#: films/templates/index.html:14
+#: films/templates/index.html:12
 msgid "Покупка"
 msgstr "Sotib olish"
 
-#: films/templates/index.html:48 films/templates/index.html:124
-#: films/templates/index.html:208 films/templates/product-list.html:177
+#: films/templates/index.html:46 films/templates/index.html:122
+#: films/templates/index.html:206 films/templates/product-list.html:177
 msgid "топ"
 msgstr "to'p"
 
-#: films/templates/index.html:77 films/templates/index.html:169
-#: films/templates/index.html:304
+#: films/templates/index.html:75 films/templates/index.html:167
+#: films/templates/index.html:251
 msgid "Все объявлении"
 msgstr "Boshqa e'lonlar"
 
-#: films/templates/index.html:96
+#: films/templates/index.html:94
 msgid "Продажа"
 msgstr "Sotish"
 
-#: films/templates/index.html:182
+#: films/templates/index.html:180 films/templates/index.html:264
 msgid "Вакансии"
 msgstr "Ish o'rinlari"
 
@@ -576,41 +597,41 @@ msgstr "Proilni o'zgartirish"
 msgid "Барахолка"
 msgstr "Bozor"
 
-#: films/templates/product-details.html:89
+#: films/templates/product-details.html:123
 msgid "Описание товара"
 msgstr "Mahsulot tavsifi"
 
-#: films/templates/product-details.html:93
-msgid "id"
-msgstr "id"
+#: films/templates/product-details.html:128
+msgid "ID"
+msgstr ""
 
-#: films/templates/product-details.html:94
+#: films/templates/product-details.html:129
 msgid "Просмотров"
 msgstr "Koʻrishlar"
 
-#: films/templates/product-details.html:122
-#: films/templates/product-details.html:172
+#: films/templates/product-details.html:155
+#: films/templates/product-details.html:205
 msgid "телеграм"
 msgstr "Telegram"
 
-#: films/templates/product-details.html:126
-#: films/templates/product-details.html:176
+#: films/templates/product-details.html:159
+#: films/templates/product-details.html:209
 msgid "Посмотреть телефон номер"
 msgstr "Telefon raqamni ko'rish"
 
-#: films/templates/product-details.html:186
+#: films/templates/product-details.html:219
 msgid "ПОЛЬЗОВАТЕЛЬ"
 msgstr "USER"
 
-#: films/templates/product-details.html:194
+#: films/templates/product-details.html:227
 msgid "в TECNOPROM с"
 msgstr "TECNOPROM bilan"
 
-#: films/templates/product-details.html:200
+#: films/templates/product-details.html:233
 msgid "Все объявления автора"
 msgstr "Muallifning boshqa e'lonlari"
 
-#: films/templates/product-details.html:205
+#: films/templates/product-details.html:238
 msgid "МЕСТОПОЛОЖЕНИЕ"
 msgstr "MANZIL"
 
@@ -634,21 +655,27 @@ msgstr "Filterlash"
 msgid "Договорный"
 msgstr "Kelishiladiga"
 
-#: root/settings.py:146
+#: root/settings.py:153
 msgid "English"
 msgstr "Ingilizcha"
 
-#: root/settings.py:147
+#: root/settings.py:154
 msgid "Uzbek"
 msgstr "O'zbekcha"
 
-#: root/settings.py:148
+#: root/settings.py:155
 msgid "Russian"
 msgstr "Ruscha"
 
 #: root/urls.py:10
 msgid "admin/"
 msgstr ""
+
+#~ msgid "Здесь вы найдете"
+#~ msgstr "Foydalainib bo'lingan, yangi egasini kutayotgan"
+
+#~ msgid "id"
+#~ msgstr "id"
 
 #~ msgid "Некорректный номер телефона"
 #~ msgstr "Telefon raqami noto‘g‘ri"

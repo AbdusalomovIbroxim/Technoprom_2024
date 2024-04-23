@@ -36,8 +36,6 @@ urlpatterns = [
 
     path("about-us/", about_us_page, name="about_us_page"),
     path("robots.txt", RobotsTxtView.as_view(content_type="text/plain"), name="robots"),
-    path('sitemap.xml', sitemap, {'sitemaps': {'your_sitemap': YourSitemap}}),
-
+    path('sitemap.xml/', sitemap, {'sitemaps': {'sitemaps': YourSitemap}}),
 
 ]
-

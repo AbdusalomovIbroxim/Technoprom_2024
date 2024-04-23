@@ -716,14 +716,17 @@ body {
 
 .logo-item {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.logo-item #fallmin img {
+#fallmin img {
     width: 70px;
 }
 
 .logo-item img {
     width: 100px;
+    max-height: 70px;
     filter: grayscale(100%);
     transition: 0.2s;
 }
