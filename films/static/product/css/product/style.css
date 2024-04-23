@@ -718,6 +718,10 @@ body {
     display: flex;
 }
 
+.logo-item #fallmin img {
+    width: 70px;
+}
+
 .logo-item img {
     width: 100px;
     filter: grayscale(100%);
