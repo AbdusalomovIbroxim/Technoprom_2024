@@ -1,8 +1,5 @@
 User-agent: *
 Disallow: /
-
-User-agent: *
-
 Disallow: /login/
 Disallow: /uz/login/
 Disallow: /ru/login/
