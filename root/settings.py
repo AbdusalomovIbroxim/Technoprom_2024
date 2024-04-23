@@ -22,7 +22,7 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = os.getenv("DEBUG")
 # DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [os.getenv("ALLOWED_HOSTS")]
 
 # Application definition
 SITE_ID = 2
