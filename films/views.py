@@ -610,5 +610,8 @@ class YourSitemap(Sitemap):
     def items(self):
         return self.products
 
+    def location(self, obj):
+        return obj.get_absolute_url()
+
     def lastmod(self, obj):
         return obj.update_date
