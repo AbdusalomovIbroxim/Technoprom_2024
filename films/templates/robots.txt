@@ -5,8 +5,6 @@ Disallow: /uz/login/
 Disallow: /ru/login/
 Disallow: /en/login/
 
-User-agent: *
-Allow: /
 
 Host: tecnoprom.uz
 Sitemap: http://tecnoprom.uz/sitemap.xml
