@@ -1,7 +1,5 @@
 User-agent: *
-
-Disallow: /login/
-
+Disallow:
 
 Host: tecnoprom.uz
 Sitemap: http://tecnoprom.uz/sitemap.xml
