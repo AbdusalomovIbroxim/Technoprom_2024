@@ -1,6 +1,6 @@
 import emoji
 import asyncio
-from django.urls import reverse
+from django.urls import reverse, NoReverseMatch
 from cyrtranslit import to_cyrillic, to_latin
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -621,7 +621,10 @@ class CustomSitemap(Sitemap):
         urls = {}
         for lang_code in lang_codes:
             activate(lang_code)  # Установка временного языка
-            urls[lang_code] = reverse(item.get_absolute_url())
+            try:
+                urls[lang_code] = item.get_absolute_url()
+            except NoReverseMatch:
+                urls[lang_code] = None
         activate(None)  # Сброс временного языка
         return urls
 
