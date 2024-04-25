@@ -604,6 +604,13 @@ class CustomSitemap(Sitemap):
     changefreq = "daily"
     priority = 0.5
 
+    @cached_property
+    def products(self):
+        return Products.objects.all()
+
+    def location(self, obj):
+        return obj.get_absolute_url()
+    
     def items(self):
         # Возвращаем список URL-адресов, которые мы хотим включить в sitemap.
         return ['index', 'product-list', 'about_us_page',
