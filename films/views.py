@@ -604,20 +604,21 @@ class CustomSitemap(Sitemap):
     changefreq = "daily"
     priority = 0.5
 
-    @cached_property
-    def products(self):
-        return Products.objects.all()
-
-    # def location(self, obj):
-    #     return obj.get_absolute_url()
-
     def items(self):
-        # Возвращаем список URL-адресов, которые мы хотим включить в sitemap.
-        return ['index', 'product-list', 'about_us_page',
-                'register', self.products]
+        urls = ['index', 'product-list', 'about_us_page', 'register']
+        products = Products.objects.all()
+        return urls + list(products)
 
     def location(self, item):
-        return reverse(item)
+        # Если элемент является строкой (URL-адресом), преобразуйте его в URL-адрес с помощью reverse
+        if isinstance(item, str):
+            return reverse(item)
+        # Если элемент является объектом модели, верните его абсолютный URL
+        return item.get_absolute_url()
 
     def lastmod(self, obj):
-        return obj.update_date
+        # Если объект модели имеет атрибут update_date, возвращаем его значение
+        if hasattr(obj, 'update_date'):
+            return obj.update_date
+        # В противном случае возвращаем None
+        return None
