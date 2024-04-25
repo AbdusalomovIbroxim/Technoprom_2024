@@ -711,7 +711,7 @@ class SendNotificationView(View):
         return render(request, self.template_name, {"form": form})
 
 
-@user_passes_test(is_admin)
+@user_passes_test(is_admin, login_url=None)
 def product_phone_view_count(request):
     if request.method == "POST":
         product_id = request.POST.get("product_id")
