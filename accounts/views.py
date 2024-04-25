@@ -60,6 +60,10 @@ def generate_password(length=12):
     return password
 
 
+def is_admin(user):
+    return user.is_superuser or user.is_staff
+
+
 def generate_verification_code():
     return "".join(random.choices(string.digits, k=4))
 
@@ -707,6 +711,7 @@ class SendNotificationView(View):
         return render(request, self.template_name, {"form": form})
 
 
+@user_passes_test(is_admin)
 def product_phone_view_count(request):
     if request.method == "POST":
         product_id = request.POST.get("product_id")
@@ -863,10 +868,6 @@ def complaint_view(request):
             return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
         else:
             return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
-
-
-def is_admin(user):
-    return user.is_superuser or user.is_staff
 
 
 @user_passes_test(

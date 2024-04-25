@@ -32,6 +32,7 @@ urlpatterns = [
         views.product_phone_view_count,
         name="product_phone_view_count",
     ),
+
     path("forgot-password/", views.SendUserDataView.as_view(), name="forgot-password"),
     path("update-password/", views.update_password, name="update-password"),
     path("subscribe/<int:user_id>/", views.subscribe, name="subscribe"),
