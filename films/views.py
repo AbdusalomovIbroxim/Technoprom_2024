@@ -604,50 +604,50 @@ class RobotsTxtView(TemplateView):
 
 # sitemap.py
 
-# class CustomSitemap(Sitemap):
-#     changefreq = "daily"
-#     priority = 0.5
-#
-#     def items(self):
-#         urls = ['index', 'product-list', 'about_us_page', 'register']
-#         products = Products.objects.all()
-#         return urls + list(products)
-#
-#     def location(self, item):
-#         # Если элемент является строкой (URL-адресом), преобразуйте его в URL-адрес с помощью reverse
-#         if isinstance(item, str):
-#             return reverse(item)
-#         # Если элемент является объектом модели, верните его абсолютный URL
-#         return item.get_absolute_url()
-#
-#     def lastmod(self, obj):
-#         # Если объект модели имеет атрибут update_date, возвращаем его значение
-#         if hasattr(obj, 'update_date'):
-#             return obj.update_date
-#         # В противном случае возвращаем None
-#         return None
-
-
 class CustomSitemap(Sitemap):
     changefreq = "daily"
     priority = 0.5
 
     def items(self):
-        return Products.objects.all()  # Замените на свою модель или список URL
+        urls = ['index', 'product-list', 'about_us_page', 'register']
+        products = Products.objects.all()
+        return urls + list(products)
 
     def location(self, item):
-        return item.get_absolute_url()  # Замените на ваш метод получения абсолютного URL
-
-    def lastmod(self, item):
-        return item.update_date  # Замените на ваш атрибут даты модификации
-
-    def get_urls(self, page=1, site=None, protocol=None):
-        urls = []
-        for item in self.paginator.page(page):
-            for lang_code, lang_name in settings.LANGUAGES:
-                with override(lang_code):
-                    urls.append({
-                        'location': f"{site.domain}{self.location(item)}",
-                        'lastmod': self.lastmod(item),
-                    })
+        if isinstance(item, str):
+            return reverse(item)
+            # Предполагается, что ваша модель имеет метод get_absolute_url(), который поддерживает передачу языка
+        lang_codes = ['en', 'ru', 'uz']  # Список языковых кодов
+        urls = {}
+        for lang_code in lang_codes:
+            urls[lang_code] = item.get_absolute_url(lang=lang_code)
         return urls
+
+    def lastmod(self, obj):
+        if hasattr(obj, 'update_date'):
+            return obj.update_date
+        return None
+
+# class CustomSitemap(Sitemap):
+#     changefreq = "daily"
+#     priority = 0.5
+#
+#     def items(self):
+#         return Products.objects.all()  # Замените на свою модель или список URL
+#
+#     def location(self, item):
+#         return item.get_absolute_url()  # Замените на ваш метод получения абсолютного URL
+#
+#     def lastmod(self, item):
+#         return item.update_date  # Замените на ваш атрибут даты модификации
+#
+#     def get_urls(self, page=1, site=None, protocol=None):
+#         urls = []
+#         for item in self.paginator.page(page):
+#             for lang_code, lang_name in settings.LANGUAGES:
+#                 with override(lang_code):
+#                     urls.append({
+#                         'location': f"{site.domain}{self.location(item)}",
+#                         'lastmod': self.lastmod(item),
+#                     })
+#         return urls
