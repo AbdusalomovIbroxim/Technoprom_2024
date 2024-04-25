@@ -11,7 +11,8 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect, render
 from django.utils import timezone
 from django.utils.functional import cached_property
-from django.utils.translation import get_language
+from django.utils.translation import get_language, override
+from root import settings
 from django.views import View
 from django.views.generic import ListView, CreateView, DetailView, UpdateView
 from fuzzywuzzy import fuzz
@@ -603,25 +604,50 @@ class RobotsTxtView(TemplateView):
 
 # sitemap.py
 
+# class CustomSitemap(Sitemap):
+#     changefreq = "daily"
+#     priority = 0.5
+#
+#     def items(self):
+#         urls = ['index', 'product-list', 'about_us_page', 'register']
+#         products = Products.objects.all()
+#         return urls + list(products)
+#
+#     def location(self, item):
+#         # Если элемент является строкой (URL-адресом), преобразуйте его в URL-адрес с помощью reverse
+#         if isinstance(item, str):
+#             return reverse(item)
+#         # Если элемент является объектом модели, верните его абсолютный URL
+#         return item.get_absolute_url()
+#
+#     def lastmod(self, obj):
+#         # Если объект модели имеет атрибут update_date, возвращаем его значение
+#         if hasattr(obj, 'update_date'):
+#             return obj.update_date
+#         # В противном случае возвращаем None
+#         return None
+
+
 class CustomSitemap(Sitemap):
     changefreq = "daily"
     priority = 0.5
 
     def items(self):
-        urls = ['index', 'product-list', 'about_us_page', 'register']
-        products = Products.objects.all()
-        return urls + list(products)
+        return Products.objects.all()  # Замените на свою модель или список URL
 
     def location(self, item):
-        # Если элемент является строкой (URL-адресом), преобразуйте его в URL-адрес с помощью reverse
-        if isinstance(item, str):
-            return reverse(item)
-        # Если элемент является объектом модели, верните его абсолютный URL
-        return item.get_absolute_url()
+        return item.get_absolute_url()  # Замените на ваш метод получения абсолютного URL
 
-    def lastmod(self, obj):
-        # Если объект модели имеет атрибут update_date, возвращаем его значение
-        if hasattr(obj, 'update_date'):
-            return obj.update_date
-        # В противном случае возвращаем None
-        return None
+    def lastmod(self, item):
+        return item.update_date  # Замените на ваш атрибут даты модификации
+
+    def get_urls(self, page=1, site=None, protocol=None):
+        urls = []
+        for item in self.paginator.page(page):
+            for lang_code, lang_name in settings.LANGUAGES:
+                with override(lang_code):
+                    urls.append({
+                        'location': self.location(item),
+                        'lastmod': self.lastmod(item),
+                    })
+        return urls
