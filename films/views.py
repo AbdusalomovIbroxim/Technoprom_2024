@@ -599,19 +599,14 @@ class RobotsTxtView(TemplateView):
 
 # sitemap.py
 
-class Sitemap(Sitemap):
-    changefreq = 'always'
-    priority = 0.7
-
-    @cached_property
-    def products(self):
-        return Products.objects.all()
+class CustomSitemap(Sitemap):
+    changefreq = "daily"
+    priority = 0.5
 
     def items(self):
-        return self.products
+        # Возвращаем список URL-адресов, которые мы хотим включить в sitemap.
+        return ['about_us', 'contact_us', 'privacy_policy']  # Пример URL-адресов, которые вы хотите включить
 
-    def location(self, obj):
-        return obj.get_absolute_url()
-
-    def lastmod(self, obj):
-        return obj.update_date
+    def location(self, item):
+        # Возвращаем полный URL-адрес для каждого элемента.
+        return reverse(item)

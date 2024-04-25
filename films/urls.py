@@ -15,8 +15,12 @@ from .views import (
     AdditionalServicesView,
     about_us_page,
     RobotsTxtView,
-    Sitemap
+    CustomSitemap
 )
+
+sitemaps = {
+    'custom': CustomSitemap,
+}
 
 urlpatterns = [
     path("", IndexView.as_view(), name="index"),
@@ -36,6 +40,5 @@ urlpatterns = [
 
     path("about-us/", about_us_page, name="about_us_page"),
     path("robots.txt", RobotsTxtView.as_view(content_type="text/plain"), name="robots"),
-    path('sitemap.xml/', sitemap, {'sitemaps': {'sitemaps': Sitemap}}),
-
+    path('sitemap.xml/', sitemap, {'sitemaps': sitemaps}),
 ]
