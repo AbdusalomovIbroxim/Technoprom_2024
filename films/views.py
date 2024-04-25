@@ -1,5 +1,6 @@
 import emoji
 import asyncio
+from django.urls import reverse
 from cyrtranslit import to_cyrillic, to_latin
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
