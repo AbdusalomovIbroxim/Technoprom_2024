@@ -608,14 +608,16 @@ class CustomSitemap(Sitemap):
     def products(self):
         return Products.objects.all()
 
-    def location(self, obj):
-        return obj.get_absolute_url()
-    
+    # def location(self, obj):
+    #     return obj.get_absolute_url()
+
     def items(self):
         # Возвращаем список URL-адресов, которые мы хотим включить в sitemap.
         return ['index', 'product-list', 'about_us_page',
-                'register', ]  # Пример URL-адресов, которые вы хотите включить
+                'register', self.products]  # Пример URL-адресов, которые вы хотите включить
 
     def location(self, item):
-        # Возвращаем полный URL-адрес для каждого элемента.
         return reverse(item)
+
+    def lastmod(self, obj):
+        return obj.update_date
