@@ -5,7 +5,7 @@ from .models import User, Complaint
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['pk', 'username']
 
 
 @admin.register(Complaint)
