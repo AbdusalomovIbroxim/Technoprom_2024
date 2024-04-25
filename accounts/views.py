@@ -9,6 +9,7 @@ import logging
 from django.views import View
 from django.db.models import Q
 from django.conf import settings
+from films.forms import FilmsForm
 from django.utils import timezone
 from django.db import transaction
 from django.contrib import messages
@@ -17,24 +18,24 @@ from django.http import JsonResponse
 from django.urls import reverse_lazy
 from django.db.models import Avg, Sum
 from django.core.mail import send_mail
+from support.models import SupportTicket
 from datetime import datetime, timedelta
 from django.views.generic import ListView
+from films.models import Products, Favorite
+from django.http import HttpResponseNotFound
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from django.views.generic.detail import DetailView
-from django.contrib.auth import login, get_user_model, logout
+from django.utils.decorators import method_decorator
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import user_passes_test
 from django.views.generic.edit import CreateView, UpdateView
-from django.utils.decorators import method_decorator
-from support.models import SupportTicket
-from films.forms import FilmsForm
-from films.models import Products, Favorite
+from django.contrib.auth import login, get_user_model, logout
 from .forms import (
     UserLoginForm,
     UserRegisterForm,
@@ -733,7 +734,8 @@ def product_phone_view_count(request):
         # Product has already been viewed, return an error
         return JsonResponse({"status": "error", "message": "Product already viewed"})
 
-    return JsonResponse({"status": "error", "message": "Invalid request method"})
+    # If the request method is not POST or the user is not an admin, return 404
+    return HttpResponseNotFound()
 
 
 class SendUserDataView(View):
