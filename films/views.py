@@ -152,7 +152,10 @@ class ProductDetailView(DetailView):
         product_category = product.category
         product_subcategories = product.subcategories.values_list('name_ru', flat=True)
         context["product_subcategories"] = list(product_subcategories)
-
+        product_title_latin = to_latin(product.title)
+        product_title_cyrillic = to_cyrillic(product.title)
+        context['product_title_latin'] = product_title_latin
+        context['product_title_cyrillic'] = product_title_cyrillic
         if not user.is_anonymous:
             context["is_favorite"] = Favorite.objects.filter(
                 user=user, product_id=product
