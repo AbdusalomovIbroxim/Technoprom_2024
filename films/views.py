@@ -1,6 +1,6 @@
 import emoji
 import asyncio
-from django.urls import reverse, NoReverseMatch
+from django.urls import reverse
 from cyrtranslit import to_cyrillic, to_latin
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -11,7 +11,7 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect, render
 from django.utils import timezone
 from django.utils.functional import cached_property
-from django.utils.translation import get_language, override, activate
+from django.utils.translation import get_language, override
 from root import settings
 from django.views import View
 from django.views.generic import ListView, CreateView, DetailView, UpdateView
@@ -616,18 +616,7 @@ class CustomSitemap(Sitemap):
     def location(self, item):
         if isinstance(item, str):
             return reverse(item)
-
-        lang_codes = ['en', 'ru', 'uz']  # Список языковых кодов
-        urls = {}
-        for lang_code in lang_codes:
-            activate(lang_code)  # Установка временного языка
-            try:
-                url = item.get_absolute_url()
-                urls[lang_code] = url
-            except NoReverseMatch:
-                urls[lang_code] = None
-        activate(None)  # Сброс временного языка
-        return urls
+        return item.get_absolute_url()
 
     def lastmod(self, obj):
         if hasattr(obj, 'update_date'):
