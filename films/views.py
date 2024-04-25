@@ -616,7 +616,8 @@ class CustomSitemap(Sitemap):
     def location(self, item):
         if isinstance(item, str):
             return reverse(item)
-        return item.get_absolute_url()
+        absolute_url = item.get_absolute_url()
+        return absolute_url
 
     def lastmod(self, obj):
         if hasattr(obj, 'update_date'):
