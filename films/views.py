@@ -633,13 +633,13 @@ class CustomSitemap(Sitemap):
     priority = 0.5
 
     def items(self):
-        return Products.objects.all()
+        return Products.objects.all()  # Замените на свою модель или список URL
 
     def location(self, item):
-        return item.get_absolute_url()
+        return item.get_absolute_url()  # Замените на ваш метод получения абсолютного URL
 
     def lastmod(self, item):
-        return item.update_date
+        return item.update_date  # Замените на ваш атрибут даты модификации
 
     def get_urls(self, page=1, site=None, protocol=None):
         urls = []
