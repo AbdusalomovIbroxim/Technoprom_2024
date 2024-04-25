@@ -606,7 +606,7 @@ class CustomSitemap(Sitemap):
 
     def items(self):
         # Возвращаем список URL-адресов, которые мы хотим включить в sitemap.
-        return ['index', 'product-list', 'product-detail', 'about_us_page',
+        return ['index', 'product-list', 'about_us_page',
                 'register', ]  # Пример URL-адресов, которые вы хотите включить
 
     def location(self, item):
