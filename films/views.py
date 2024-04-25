@@ -11,7 +11,7 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect, render
 from django.utils import timezone
 from django.utils.functional import cached_property
-from django.utils.translation import get_language, override
+from django.utils.translation import get_language, override, activate
 from root import settings
 from django.views import View
 from django.views.generic import ListView, CreateView, DetailView, UpdateView
@@ -616,11 +616,13 @@ class CustomSitemap(Sitemap):
     def location(self, item):
         if isinstance(item, str):
             return reverse(item)
-            # Предполагается, что ваша модель имеет метод get_absolute_url(), который поддерживает передачу языка
+
         lang_codes = ['en', 'ru', 'uz']  # Список языковых кодов
         urls = {}
         for lang_code in lang_codes:
-            urls[lang_code] = item.get_absolute_url(lang=lang_code)
+            activate(lang_code)  # Установка временного языка
+            urls[lang_code] = reverse(item.get_absolute_url())
+        activate(None)  # Сброс временного языка
         return urls
 
     def lastmod(self, obj):
