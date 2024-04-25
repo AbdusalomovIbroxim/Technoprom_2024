@@ -622,7 +622,8 @@ class CustomSitemap(Sitemap):
         for lang_code in lang_codes:
             activate(lang_code)  # Установка временного языка
             try:
-                urls[lang_code] = item.get_absolute_url()
+                url = item.get_absolute_url()
+                urls[lang_code] = url
             except NoReverseMatch:
                 urls[lang_code] = None
         activate(None)  # Сброс временного языка
