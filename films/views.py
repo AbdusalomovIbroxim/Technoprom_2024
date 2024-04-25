@@ -633,13 +633,13 @@ class CustomSitemap(Sitemap):
     priority = 0.5
 
     def items(self):
-        return Products.objects.all()  # Замените на свою модель или список URL
+        return Products.objects.all()
 
     def location(self, item):
-        return item.get_absolute_url()  # Замените на ваш метод получения абсолютного URL
+        return item.get_absolute_url()
 
     def lastmod(self, item):
-        return item.update_date  # Замените на ваш атрибут даты модификации
+        return item.update_date
 
     def get_urls(self, page=1, site=None, protocol=None):
         urls = []
@@ -647,7 +647,7 @@ class CustomSitemap(Sitemap):
             for lang_code, lang_name in settings.LANGUAGES:
                 with override(lang_code):
                     urls.append({
-                        'location': self.location(item),
+                        'location': f"{site.domain}{self.location(item)}",
                         'lastmod': self.lastmod(item),
                     })
         return urls
