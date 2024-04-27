@@ -1,5 +1,37 @@
 User-agent: *
-Disallow:
 
-Host: tecnoprom.uz
+Disallow: /related_to_it/
+Disallow: /update-film/
+Disallow: /add/
+Disallow: /favorite_list/
+Disallow: /send-message/
+Disallow: /get_suggestions/
+Disallow: /access-denied/
+Disallow: /product-status/
+Disallow: /verify-code/
+Disallow: /profile/
+Disallow: /update-profile/
+Disallow: /create-company/
+Disallow: /product-edit/
+Disallow: /rate/
+Disallow: /notification/
+Disallow: /send-message/
+Disallow: /product_phone_view_count/
+Disallow: /forgot-password/
+Disallow: /update-password/
+Disallow: /subscribe/
+Disallow: /complaint_view/
+Disallow: /admin/dashboard/
+Disallow: /admin/dashboard/user-list/
+Disallow: /admin/dashboard/user-verify/
+Disallow: /admin/dashboard/user-deleted/
+Disallow: /admin/dashboard/products-active/
+Disallow: /admin/dashboard/products-moderation/
+Disallow: /admin/dashboard/support/
+Disallow: /admin/dashboard/statistics/
+Disallow: /admin/logs/
+Disallow: /add-ball/
+Disallow: /top-up-your-account/
+
+Host: http://tecnoprom.uz
 Sitemap: http://tecnoprom.uz/sitemap.xml
