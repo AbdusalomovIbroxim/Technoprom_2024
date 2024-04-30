@@ -213,7 +213,8 @@ class ProductSaveView(CreateView):
         for field_name, field_value in form.cleaned_data.items():
             message[field_name] = field_value
         film.save()
-        message += film.slug
+
+        message['slug'] = film.slug
         for image in images:
             Image.objects.create(image=image, product=film)
 
