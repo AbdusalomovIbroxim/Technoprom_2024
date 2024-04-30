@@ -33,21 +33,21 @@ async def process_start_command(call: types.CallbackQuery):
 
 
 @sync_to_async
-def activate(id):
-    text = Products.objects.get(pk=id)
+def activate(slug):
+    text = Products.objects.get(slug=slug)
     text.is_active = True
     text.save()
-    return f'Success {id}'
+    return f'Success {slug}'
 
 
 @sync_to_async
-def dis_activate(id):
-    product = Products.objects.get(pk=id)
+def dis_activate(slug):
+    product = Products.objects.get(slug=slug)
     user = Message.objects.create(sender_id=1, message=f"Ваш продукт не прошёл модерацию.  пост -> {product.title}")
     user.recipients.add(product.author_id)
     user.save()
 
-    return f'Deleted {id}'
+    return f'Deleted {slug}'
 
 
 @sync_to_async

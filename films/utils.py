@@ -17,7 +17,7 @@ api_url = f"https://api.telegram.org/bot{TOKEN}/"
 async def send_message_to_channel(message, images=None):
     tags = message.get('tags', [])
     subcategories = message.get("subcategories", [])
-    film_id = message['film_id']
+    slug = message['slug']
     subcategory_names = [str(subcategory) for subcategory in subcategories]
     tag_names = [str(tag) for tag in tags]
 
@@ -33,9 +33,9 @@ async def send_message_to_channel(message, images=None):
         f"📞 *Телефон*: {message['telephone']}\n"
         f"📞 *Телеграм*: {message['telegram']}\n"
         f"📋 *Тип*: {message['тип']}\n\n"
-        f"http://192.168.100.3:8000/product/{film_id}/ \n"
-        f"http://localhost:8000/product/{film_id}/ \n"
-        f"http://tecnoprom.uz/product/{film_id}/ \n\n"
+        f"http://192.168.100.3:8000/product/{slug}/ \n"
+        f"http://localhost:8000/product/{slug}/ \n"
+        f"http://tecnoprom.uz/product/{slug}/ \n\n"
     )
 
     if message['is_price_negotiable']:
@@ -45,8 +45,8 @@ async def send_message_to_channel(message, images=None):
 
     inline_kb = json.dumps({
         "inline_keyboard": [
-            [{"text": "Активировать", "callback_data": "button1_{}".format(film_id)},
-             {"text": "Деактивировать", "callback_data": "button2_{}".format(film_id)}]
+            [{"text": "Активировать", "callback_data": "button1_{}".format(slug)},
+             {"text": "Деактивировать", "callback_data": "button2_{}".format(slug)}]
         ]
     })
 
