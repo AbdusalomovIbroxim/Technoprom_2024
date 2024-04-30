@@ -100,7 +100,7 @@ class IndexView(ListView):
             film.save()
             film.subcategories.set(selected_subcategories)
             film.tags.set(selected_tags)
-            message["film_id"] = film.id
+            message["slug"] = film.slug
             asyncio.run(send_message_to_channel(message))
             # send_message_to_channel(message)
             messages.success(request, "Отправлено на модерацию")
