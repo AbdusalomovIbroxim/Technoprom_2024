@@ -222,7 +222,12 @@
                             <p>{% translate "ПОЛЬЗОВАТЕЛЬ" %}</p>
                             <div class="author-row">
                                 <div class="author-foto">
-                                    <img src="{% static 'product/images/avatar.png' %}" alt="author avatar">
+                                    {% if author.is_business_account %}
+                                        <img src="{% static author.logo.url %}" alt="author avatar">
+                                    {% else %}
+                                        <img src="{% static 'product/images/avatar.png' %}" alt="author avatar">
+                                    {% endif %}
+
                                 </div>
                                 <div class="author-data">
                                     <a href="{% url 'profile' product.author_id %}"

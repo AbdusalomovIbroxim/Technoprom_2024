@@ -1,5 +1,7 @@
 import emoji
 import asyncio
+
+from django.contrib.auth import get_user_model
 from django.urls import reverse
 from cyrtranslit import to_cyrillic, to_latin
 from django.contrib import messages
@@ -157,6 +159,7 @@ class ProductDetailView(DetailView):
         product_title_cyrillic = to_cyrillic(product.title)
         context['product_title_latin'] = product_title_latin
         context['product_title_cyrillic'] = product_title_cyrillic
+        context['author'] = get_user_model().objects.get(pk=product_author.pk)
         if not user.is_anonymous:
             context["is_favorite"] = Favorite.objects.filter(
                 user=user, product_id=product
