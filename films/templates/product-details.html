@@ -223,7 +223,7 @@
                             <div class="author-row">
                                 <div class="author-foto">
                                     {% if author.is_business_account %}
-                                        <img src="{% static author.logo.url %}" alt="author avatar">
+                                        <img src="{{ author.logo.url }}" alt="author avatar">
                                     {% else %}
                                         <img src="{% static 'product/images/avatar.png' %}" alt="author avatar">
                                     {% endif %}
