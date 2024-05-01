@@ -202,7 +202,7 @@
                                 <div class="card__sell card-color">
                                     <div class="card__buy-content">
                                         <div class="card__sell-image">
-                                            <img src="{{ product.image.url }}" alt="Product Image">
+                                            <img src="{{ product.image_set.first.image.url }}" alt="Product Image">
                                         </div>
                                         <a href="{% url 'product-detail' product.slug %}"
                                            class="title">{{ product.title }}</a>
