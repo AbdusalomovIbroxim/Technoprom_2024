@@ -1,4 +1,5 @@
 .company-cards {
+    max-width: 245px;
     display: flex;
     flex-direction: column;
     gap: 20px;
