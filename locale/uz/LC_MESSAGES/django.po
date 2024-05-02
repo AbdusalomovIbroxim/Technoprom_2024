@@ -337,14 +337,10 @@ msgid "или предложите его на переработку!"
 msgstr "yoki ularni qayta ishlashga taklif qiling!"
 
 #: films/templates/base.html:103
-#, fuzzy
-#| msgid "Мгновенно"
 msgid "Мгновенно"
 msgstr "Bir zumda o'zingizga"
 
 #: films/templates/base.html:103
-#, fuzzy
-#| msgid "найдите"
 msgid "найдите"
 msgstr "kerakli"
 
