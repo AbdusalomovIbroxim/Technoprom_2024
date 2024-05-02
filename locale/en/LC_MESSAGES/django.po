@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-02 18:23+0500\n"
+"POT-Creation-Date: 2024-05-02 19:19+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -165,7 +165,7 @@ msgid "Создать компанию"
 msgstr "Create a business account"
 
 #: accounts/templates/user/profile.html:184 films/templates/index.html:78
-#: films/templates/index.html:170 films/templates/index.html:254
+#: films/templates/index.html:182 films/templates/index.html:266
 #: films/templates/nav_bar.html:107 films/templates/nav_bar.html:235
 msgid "размещение заказа"
 msgstr "placing an order"
@@ -235,7 +235,7 @@ msgstr "Yes"
 msgid "Нет"
 msgstr "No"
 
-#: accounts/templates/user/profile.html:337 films/templates/index.html:141
+#: accounts/templates/user/profile.html:337 films/templates/index.html:153
 #: films/templates/product-list.html:196
 msgid "сум"
 msgstr "sum"
@@ -492,8 +492,8 @@ msgstr "(Choose the most optimal product image)"
 msgid "Цена"
 msgstr "Price"
 
-#: films/templates/form.html:510 films/templates/index.html:145
-#: films/templates/index.html:229
+#: films/templates/form.html:510 films/templates/index.html:157
+#: films/templates/index.html:241
 msgid "Договорная"
 msgstr "Negotiable"
 
@@ -501,13 +501,13 @@ msgstr "Negotiable"
 msgid "Покупка"
 msgstr "Purchase"
 
-#: films/templates/index.html:46 films/templates/index.html:122
-#: films/templates/index.html:206 films/templates/product-list.html:177
+#: films/templates/index.html:46 films/templates/index.html:134
+#: films/templates/index.html:218 films/templates/product-list.html:177
 msgid "топ"
 msgstr "top"
 
-#: films/templates/index.html:75 films/templates/index.html:167
-#: films/templates/index.html:251
+#: films/templates/index.html:75 films/templates/index.html:179
+#: films/templates/index.html:263
 msgid "Все объявлении"
 msgstr "All advertisements"
 
@@ -515,9 +515,13 @@ msgstr "All advertisements"
 msgid "Продажа"
 msgstr "Sale"
 
-#: films/templates/index.html:180 films/templates/index.html:264
+#: films/templates/index.html:192
 msgid "Вакансии"
 msgstr "Vacancies"
+
+#: films/templates/index.html:277
+msgid "Партнёры"
+msgstr "Partners"
 
 #: films/templates/nav_bar.html:30
 msgid "промышленность"
