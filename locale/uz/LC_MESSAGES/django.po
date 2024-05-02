@@ -323,15 +323,12 @@ msgstr "Xizmat ko'rsatish"
 msgid "Технолог"
 msgstr "Texnolog"
 
+
 #: films/templates/base.html:102
-#, fuzzy
-#| msgid "Быстро найти необходимое"
 msgid "Найдите необходимое вам"
 msgstr "Ishlab chiqarishingiz uchun zarur"
 
 #: films/templates/base.html:102 films/templates/base.html:105
-#, fuzzy
-#| msgid "сырье"
 msgid "сырье"
 msgstr "xom ashyo"
 
