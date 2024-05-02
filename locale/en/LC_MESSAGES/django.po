@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-23 19:58+0500\n"
+"POT-Creation-Date: 2024-05-02 18:23+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,10 +50,10 @@ msgstr ""
 #: accounts/templates/user/profile.html:293
 #: accounts/templates/user/profile.html:395
 #: accounts/templates/user/profile.html:428 films/templates/index.html:56
-#: films/templates/product-details.html:293
-#: films/templates/product-details.html:332
-#: films/templates/product-details.html:397
-#: films/templates/product-details.html:437
+#: films/templates/product-details.html:301
+#: films/templates/product-details.html:340
+#: films/templates/product-details.html:405
+#: films/templates/product-details.html:445
 #: films/templates/product-list.html:149 films/templates/product-list.html:238
 msgid "Подробнее"
 msgstr "Detail"
@@ -71,7 +71,7 @@ msgid "Веб сайт"
 msgstr "Web site"
 
 #: accounts/templates/user/company-profile.html:119
-#: films/templates/base.html:434
+#: films/templates/base.html:422
 msgid "Телеграм"
 msgstr "Telegram"
 
@@ -85,19 +85,19 @@ msgid "рейтинг"
 msgstr "Raiting"
 
 #: accounts/templates/user/company-profile.html:281
-#: films/templates/product-details.html:351
-#: films/templates/product-details.html:456
+#: films/templates/product-details.html:359
+#: films/templates/product-details.html:464
 #: films/templates/product-list.html:252
 msgid "Пока что нет объявлений."
 msgstr "There are no announcements yet."
 
-#: accounts/templates/user/create_company.html:94 films/templates/base.html:151
+#: accounts/templates/user/create_company.html:94 films/templates/base.html:139
 #: films/templates/form.html:161 films/templates/product-list.html:73
 msgid "Субкатегория"
 msgstr "Subcategory"
 
 #: accounts/templates/user/create_company.html:103
-#: films/templates/base.html:158 films/templates/form.html:168
+#: films/templates/base.html:146 films/templates/form.html:168
 msgid "Теги"
 msgstr "Tags"
 
@@ -244,7 +244,7 @@ msgstr "sum"
 #: accounts/templates/user/profile.html:525
 #: accounts/templates/user/profile.html:585
 #: accounts/templates/user/profile.html:607
-#: films/templates/product-details.html:176
+#: films/templates/product-details.html:179
 msgid "Опубликовано"
 msgstr "Published"
 
@@ -281,6 +281,10 @@ msgstr "Verification code"
 #: accounts/templates/user/verify_code.html:48
 msgid "Подтвердить"
 msgstr "Confirm"
+
+#: films/templates/about_us/about_us.html:8 films/templates/footer.html:38
+msgid "О нас"
+msgstr "About us"
 
 #: films/templates/base.html:60
 msgid "Всё для производства"
@@ -320,113 +324,103 @@ msgid "Технолог"
 msgstr "Technologist"
 
 #: films/templates/base.html:102
-#, fuzzy
-#| msgid "Найдите необходимое вам"
 msgid "Найдите необходимое вам"
 msgstr "Find the"
 
-#: films/templates/base.html:103 films/templates/base.html:112
-#, fuzzy
-#| msgid "сырье"
+#: films/templates/base.html:102 films/templates/base.html:105
 msgid "сырье"
 msgstr "raw materials"
 
-#: films/templates/base.html:104
+#: films/templates/base.html:102
 msgid "или предложите его на переработку!"
 msgstr "you need or offer them for processing!"
 
-#: films/templates/base.html:105
-#, fuzzy
-#| msgid "Мгновенно"
+#: films/templates/base.html:103
 msgid "Мгновенно"
 msgstr "Instantly"
 
-#: films/templates/base.html:106
-#, fuzzy
-#| msgid "найдите"
+#: films/templates/base.html:103
 msgid "найдите"
 msgstr "find"
 
-#: films/templates/base.html:107
+#: films/templates/base.html:103
 msgid "нужного вам поставщика оборудования"
 msgstr "the equipment supplier you need"
 
-#: films/templates/base.html:108 films/templates/base.html:117
+#: films/templates/base.html:104 films/templates/base.html:107
 msgid "Здесь вы найдете"
 msgstr "Here you will find"
 
-#: films/templates/base.html:109
-#, fuzzy
-#| msgid "б/у технику"
+#: films/templates/base.html:104
 msgid "б/у технику"
 msgstr "used equipment"
 
-#: films/templates/base.html:110
+#: films/templates/base.html:104
 msgid "ожидающую нового владельца."
 msgstr "awaiting a new owner."
 
-#: films/templates/base.html:111
+#: films/templates/base.html:105
 #, fuzzy
 #| msgid "Быстро найти необходимое"
 msgid "Быстро найти необходимое"
 msgstr "Quickly find what you need"
 
-#: films/templates/base.html:113
+#: films/templates/base.html:105
 msgid "для вашего производства"
 msgstr "for your production"
 
-#: films/templates/base.html:114
+#: films/templates/base.html:106
 #, fuzzy
 #| msgid "Найдите проверенных"
 msgid "Найдите проверенных"
 msgstr "Find trusted"
 
-#: films/templates/base.html:115
+#: films/templates/base.html:106
 #, fuzzy
 #| msgid "производителей"
 msgid "производителей"
 msgstr "manufacturers"
 
-#: films/templates/base.html:116
+#: films/templates/base.html:106
 msgid "для вашего продукта"
 msgstr "for your product"
 
-#: films/templates/base.html:118
+#: films/templates/base.html:107
 #, fuzzy
 #| msgid "технологов, инженеров,"
 msgid "технологов, инженеров,"
 msgstr "technologists, engineers,"
 
-#: films/templates/base.html:119
+#: films/templates/base.html:107
 msgid "операторов и мастеров."
 msgstr " operators and craftsmen."
 
-#: films/templates/base.html:128
+#: films/templates/base.html:116
 msgid "Заголовок"
 msgstr "Title"
 
-#: films/templates/base.html:136 films/templates/form.html:145
+#: films/templates/base.html:124 films/templates/form.html:145
 msgid "Описание"
 msgstr "Description"
 
-#: films/templates/base.html:144 films/templates/form.html:154
+#: films/templates/base.html:132 films/templates/form.html:154
 msgid "Категория"
 msgstr "Category"
 
-#: films/templates/base.html:165
+#: films/templates/base.html:153
 msgid "Телефон"
 msgstr "Telephone"
 
-#: films/templates/base.html:442 films/templates/form.html:464
+#: films/templates/base.html:430 films/templates/form.html:464
 msgid "Страна"
 msgstr "Country"
 
-#: films/templates/base.html:448 films/templates/form.html:472
+#: films/templates/base.html:436 films/templates/form.html:472
 #: films/templates/product-list.html:95
 msgid "Город"
 msgstr "City"
 
-#: films/templates/base.html:454 films/templates/form.html:513
+#: films/templates/base.html:442 films/templates/form.html:513
 msgid "Отправить"
 msgstr "Send"
 
@@ -451,10 +445,6 @@ msgstr ""
 #: films/templates/footer.html:35
 msgid "Телеграм каналы"
 msgstr "Telegram channels"
-
-#: films/templates/footer.html:38
-msgid "О нас"
-msgstr "About us"
 
 #: films/templates/footer.html:40
 msgid "LeMachine.uz"
@@ -597,41 +587,41 @@ msgstr "Update profile"
 msgid "Барахолка"
 msgstr "Flea market"
 
-#: films/templates/product-details.html:123
+#: films/templates/product-details.html:126
 msgid "Описание товара"
 msgstr "Product description"
 
-#: films/templates/product-details.html:128
+#: films/templates/product-details.html:131
 msgid "ID"
 msgstr ""
 
-#: films/templates/product-details.html:129
+#: films/templates/product-details.html:132
 msgid "Просмотров"
 msgstr "Views"
 
-#: films/templates/product-details.html:155
-#: films/templates/product-details.html:205
+#: films/templates/product-details.html:158
+#: films/templates/product-details.html:208
 msgid "телеграм"
 msgstr "Telegram"
 
-#: films/templates/product-details.html:159
-#: films/templates/product-details.html:209
+#: films/templates/product-details.html:162
+#: films/templates/product-details.html:212
 msgid "Посмотреть телефон номер"
 msgstr "View phone number"
 
-#: films/templates/product-details.html:219
+#: films/templates/product-details.html:222
 msgid "ПОЛЬЗОВАТЕЛЬ"
 msgstr "USER"
 
-#: films/templates/product-details.html:227
+#: films/templates/product-details.html:235
 msgid "в TECNOPROM с"
 msgstr "to TECNOPROM with"
 
-#: films/templates/product-details.html:233
+#: films/templates/product-details.html:241
 msgid "Все объявления автора"
 msgstr "All author's advertisements"
 
-#: films/templates/product-details.html:238
+#: films/templates/product-details.html:246
 msgid "МЕСТОПОЛОЖЕНИЕ"
 msgstr "LOCATION"
 
@@ -670,6 +660,11 @@ msgstr "Russian"
 #: root/urls.py:10
 msgid "admin/"
 msgstr ""
+
+#, fuzzy
+#~| msgid "сырье"
+#~ msgid "сырье "
+#~ msgstr "raw materials"
 
 #~ msgid "Здесь вы найдете "
 #~ msgstr "Here you will find"

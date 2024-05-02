@@ -1,6 +1,6 @@
 import emoji
 import asyncio
-
+from django.utils.translation import activate
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from cyrtranslit import to_cyrillic, to_latin
@@ -44,6 +44,7 @@ class IndexView(ListView):
         ).order_by("-create_date")[:8]
 
     def get_context_data(self, **kwargs):
+        # activate('uz')
         context = super().get_context_data(**kwargs)
         context["films_sell"] = Products.objects.filter(
             type="sell", is_active=True, is_published=True
