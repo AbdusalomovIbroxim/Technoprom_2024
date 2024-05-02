@@ -353,8 +353,6 @@ msgid "Здесь вы найдете"
 msgstr "Foydalainib bo'lingan, yangi egasini kutayotgan"
 
 #: films/templates/base.html:104
-#, fuzzy
-#| msgid "б/у технику"
 msgid "б/у технику"
 msgstr "uskuna-qurilmalarni"
 
@@ -363,8 +361,6 @@ msgid "ожидающую нового владельца."
 msgstr "shuyerdan topasiz"
 
 #: films/templates/base.html:105
-#, fuzzy
-#| msgid "Быстро найти необходимое"
 msgid "Быстро найти необходимое"
 msgstr "Ishlab chiqarishingiz uchun zarur"
 
@@ -373,14 +369,10 @@ msgid "для вашего производства"
 msgstr "tezda toping"
 
 #: films/templates/base.html:106
-#, fuzzy
-#| msgid "Найдите проверенных"
 msgid "Найдите проверенных"
 msgstr "Mahsulotingiz uchun sinovdan o'tgan"
 
 #: films/templates/base.html:106
-#, fuzzy
-#| msgid "производителей"
 msgid "производителей"
 msgstr "ishlab chiqaruvchilarni"
 
@@ -389,8 +381,6 @@ msgid "для вашего продукта"
 msgstr "toping"
 
 #: films/templates/base.html:107
-#, fuzzy
-#| msgid "технологов, инженеров,"
 msgid "технологов, инженеров,"
 msgstr "operator va masterlarni"
 

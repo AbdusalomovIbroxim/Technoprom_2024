@@ -360,8 +360,6 @@ msgid "ожидающую нового владельца."
 msgstr "awaiting a new owner."
 
 #: films/templates/base.html:105
-#, fuzzy
-#| msgid "Быстро найти необходимое"
 msgid "Быстро найти необходимое"
 msgstr "Quickly find what you need"
 
@@ -370,14 +368,10 @@ msgid "для вашего производства"
 msgstr "for your production"
 
 #: films/templates/base.html:106
-#, fuzzy
-#| msgid "Найдите проверенных"
 msgid "Найдите проверенных"
 msgstr "Find trusted"
 
 #: films/templates/base.html:106
-#, fuzzy
-#| msgid "производителей"
 msgid "производителей"
 msgstr "manufacturers"
 
@@ -386,8 +380,6 @@ msgid "для вашего продукта"
 msgstr "for your product"
 
 #: films/templates/base.html:107
-#, fuzzy
-#| msgid "технологов, инженеров,"
 msgid "технологов, инженеров,"
 msgstr "technologists, engineers,"
 

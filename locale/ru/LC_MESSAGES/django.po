@@ -338,14 +338,10 @@ msgid "или предложите его на переработку!"
 msgstr "или предложите его на переработку!"
 
 #: films/templates/base.html:103
-#, fuzzy
-#| msgid "Мгновенно"
 msgid "Мгновенно"
 msgstr "Мгновенно"
 
 #: films/templates/base.html:103
-#, fuzzy
-#| msgid "найдите"
 msgid "найдите"
 msgstr "найдите"
 
@@ -358,8 +354,6 @@ msgid "Здесь вы найдете"
 msgstr "Здесь вы найдете"
 
 #: films/templates/base.html:104
-#, fuzzy
-#| msgid "б/у технику"
 msgid "б/у технику"
 msgstr "б/у технику"
 
@@ -368,8 +362,6 @@ msgid "ожидающую нового владельца."
 msgstr "ожидающую нового владельца."
 
 #: films/templates/base.html:105
-#, fuzzy
-#| msgid "Быстро найти необходимое"
 msgid "Быстро найти необходимое"
 msgstr "Быстро найти необходимое"
 
@@ -378,14 +370,10 @@ msgid "для вашего производства"
 msgstr "для вашего производства"
 
 #: films/templates/base.html:106
-#, fuzzy
-#| msgid "Найдите проверенных"
 msgid "Найдите проверенных"
 msgstr "Найдите проверенных"
 
 #: films/templates/base.html:106
-#, fuzzy
-#| msgid "производителей"
 msgid "производителей"
 msgstr "производителей"
 
@@ -394,8 +382,6 @@ msgid "для вашего продукта"
 msgstr "для вашего продукта"
 
 #: films/templates/base.html:107
-#, fuzzy
-#| msgid "технологов, инженеров,"
 msgid "технологов, инженеров,"
 msgstr "технологов, инженеров,"
 
