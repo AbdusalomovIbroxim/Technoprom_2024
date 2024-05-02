@@ -326,14 +326,10 @@ msgid "Технолог"
 msgstr "Технолог"
 
 #: films/templates/base.html:102
-#, fuzzy
-#| msgid "Найдите необходимое вам"
 msgid "Найдите необходимое вам"
 msgstr "Найдите необходимое вам"
 
 #: films/templates/base.html:102 films/templates/base.html:105
-#, fuzzy
-#| msgid "сырье"
 msgid "сырье"
 msgstr "сырье"
 
