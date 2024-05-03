@@ -318,6 +318,31 @@
     </div>
     <!-- /Cards sell section -->
 
+    {#    <script>#}
+    {#        document.addEventListener('DOMContentLoaded', function () {#}
+    {#            let slides = document.querySelectorAll('.slide');#}
+    {#            let index = 0;#}
+    {##}
+    {#            function showSlide() {#}
+    {#                slides.forEach((slide, i) => {#}
+    {#                    if (i === index) {#}
+    {#                        slide.style.transform = 'translateX(0)';#}
+    {#                    } else {#}
+    {#                        slide.style.transform = 'translateX(-100%)';#}
+    {#                    }#}
+    {#                });#}
+    {#            }#}
+    {##}
+    {#            function nextSlide() {#}
+    {#                index = (index + 1) % slides.length;#}
+    {#                showSlide();#}
+    {#            }#}
+    {##}
+    {#            setInterval(nextSlide, 5000); // Каждые 5 секунд переключаем слайд#}
+    {#        });#}
+    {##}
+    {#    </script>#}
+
     <script>
         // Ensure DOM content is loaded before accessing elements
         document.addEventListener("DOMContentLoaded", function () {

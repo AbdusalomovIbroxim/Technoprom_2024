@@ -709,19 +709,15 @@ body {
 
 .logo-list {
     display: flex;
+    overflow: hidden;
     justify-content: center;
     gap: 30px;
 }
-
 
 .logo-item {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-#fallmin img {
-    width: 70px;
 }
 
 .logo-item img {
@@ -731,9 +727,8 @@ body {
 }
 
 .logo-item img:hover {
-    filter: grayscale(0%)
+    filter: grayscale(0%);
 }
-
 
 @media only screen and (max-width: 480px) {
     .container {
@@ -864,5 +859,22 @@ body {
 
     .column-1, .column-2, .column-3, .column-4 {
         width: 100%;
+    }
+
+    .logo-list {
+        justify-content: flex-start;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(-1000%);
+        }
+    }
+
+    .logo-item {
+        animation: scroll 20s linear infinite;
     }
 }
