@@ -314,7 +314,7 @@
                                                        value="{{ product.pk }}">
                                             </label>
                                             <div class="card__sell-image">
-                                                <img src="{{ product.image.url }}" alt="Product Image">
+                                                <img src="{{ product.image_set.first.image.url }}" alt="Product Image">
                                             </div>
                                             <h2 class="title">{{ product.title }}</h2>
                                             <div class="product-data">
@@ -332,10 +332,16 @@
                                                 {#                                                    {% endif %}#}
                                                 {#                                                </div>#}
                                                 <div class="like-and-more">
-                                                    <a href="{% url 'product-detail' product.slug %}">
-                                                        {{ product.price|floatformat:0|intcomma }}
-                                                        {% translate "сум" %}
-                                                    </a>
+                                                    {% if not product.is_price_negotiable %}
+                                                        <a href="{% url 'product-detail' product.slug %}">
+                                                            {{ product.price|floatformat:0|intcomma }}
+                                                            {% translate "сум" %}
+                                                        </a>
+                                                    {% else %}
+                                                        <a href="{% url 'product-detail' product.slug %}">
+                                                            {% translate "Договорная" %}
+                                                        </a>
+                                                    {% endif %}
                                                     <div class="svg-icon-container">
                                                         {% if user.is_authenticated %}
                                                             <span class="add-to-favorites"

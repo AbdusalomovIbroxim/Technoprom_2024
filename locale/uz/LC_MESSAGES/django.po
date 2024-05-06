@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-02 19:29+0500\n"
+"POT-Creation-Date: 2024-05-06 16:13+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,8 +48,8 @@ msgstr ""
 #: accounts/templates/user/company-profile.html:263
 #: accounts/templates/user/company-profile.html:329
 #: accounts/templates/user/profile.html:293
-#: accounts/templates/user/profile.html:395
-#: accounts/templates/user/profile.html:428 films/templates/index.html:56
+#: accounts/templates/user/profile.html:401
+#: accounts/templates/user/profile.html:434 films/templates/index.html:56
 #: films/templates/product-details.html:301
 #: films/templates/product-details.html:340
 #: films/templates/product-details.html:405
@@ -110,11 +110,11 @@ msgstr "Kirish"
 msgid "Забыли пароль?"
 msgstr "Parolni unutdingizmi?"
 
-#: accounts/templates/user/login.html:73
+#: accounts/templates/user/login.html:74
 msgid "Don't have an account"
 msgstr ""
 
-#: accounts/templates/user/login.html:74
+#: accounts/templates/user/login.html:75
 msgid "Signup"
 msgstr "Ro'yxatdan o'tish"
 
@@ -187,13 +187,13 @@ msgid "Избранные"
 msgstr "Sevimlilar"
 
 #: accounts/templates/user/profile.html:203
-#: accounts/templates/user/profile.html:451
-#: accounts/templates/user/profile.html:539
+#: accounts/templates/user/profile.html:457
+#: accounts/templates/user/profile.html:545
 msgid "Удалить"
 msgstr "O'chirish"
 
 #: accounts/templates/user/profile.html:206
-#: accounts/templates/user/profile.html:454
+#: accounts/templates/user/profile.html:460
 msgid "Изменить"
 msgstr "O'zgartirish"
 
@@ -226,42 +226,47 @@ msgid "Вы уверены, что хотите выполнить это дей
 msgstr "Haqiqatan ham bu amalni bajarmoqchimisiz?"
 
 #: accounts/templates/user/profile.html:247
-#: accounts/templates/user/profile.html:548
+#: accounts/templates/user/profile.html:554
 msgid "Да"
 msgstr "Ha"
 
 #: accounts/templates/user/profile.html:248
-#: accounts/templates/user/profile.html:551
+#: accounts/templates/user/profile.html:557
 msgid "Нет"
 msgstr "Yo'q"
 
-#: accounts/templates/user/profile.html:337 films/templates/index.html:153
+#: accounts/templates/user/profile.html:338 films/templates/index.html:153
 #: films/templates/product-list.html:196
 msgid "сум"
 msgstr "so'm"
 
-#: accounts/templates/user/profile.html:391
-#: accounts/templates/user/profile.html:525
-#: accounts/templates/user/profile.html:585
-#: accounts/templates/user/profile.html:607
+#: accounts/templates/user/profile.html:342 films/templates/form.html:510
+#: films/templates/index.html:157 films/templates/index.html:241
+msgid "Договорная"
+msgstr "Kelishiladi"
+
+#: accounts/templates/user/profile.html:397
+#: accounts/templates/user/profile.html:531
+#: accounts/templates/user/profile.html:591
+#: accounts/templates/user/profile.html:613
 #: films/templates/product-details.html:179
 msgid "Опубликовано"
 msgstr "Chop etilgan"
 
-#: accounts/templates/user/profile.html:457
+#: accounts/templates/user/profile.html:463
 msgid "Активировать"
 msgstr "Faollashtirish"
 
-#: accounts/templates/user/profile.html:463
-#: accounts/templates/user/profile.html:545
+#: accounts/templates/user/profile.html:469
+#: accounts/templates/user/profile.html:551
 msgid "Are you sure you want to perform this action?"
 msgstr "Haqiqatan ham bu amalni bajarmoqchimisiz?"
 
-#: accounts/templates/user/profile.html:465
+#: accounts/templates/user/profile.html:471
 msgid "Yes"
 msgstr "Ha"
 
-#: accounts/templates/user/profile.html:466
+#: accounts/templates/user/profile.html:472
 msgid "No"
 msgstr "Yo'q"
 
@@ -491,11 +496,6 @@ msgstr ""
 #: films/templates/form.html:506
 msgid "Цена"
 msgstr "Narxi"
-
-#: films/templates/form.html:510 films/templates/index.html:157
-#: films/templates/index.html:241
-msgid "Договорная"
-msgstr "Kelishiladi"
 
 #: films/templates/index.html:12
 msgid "Покупка"
