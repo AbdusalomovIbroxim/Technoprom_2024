@@ -417,7 +417,7 @@
                                 <div class="card__sell card-color">
                                     <div class="card__buy-content" product-id="{{ product.pk }}">
                                         <div class="card__sell-image">
-                                            <img src="{{ product.image.url }}" alt="Product Image">
+                                            <img src="{{ product.image_set.first.image.url }}" alt="Product Image">
                                         </div>
                                         <a href="{% url 'product-detail' product.slug %}"
                                            class="title">{{ product.title }}</a>
@@ -520,7 +520,7 @@
                                                        value="{{ product.pk }}">
                                             </label>
                                             <div class="card__sell-image">
-                                                <img src="{{ product.image.url }}" alt="Product Image">
+                                                <img src="{{ product.image_set.first.image.url }}" alt="Product Image">
                                             </div>
                                             <h2 class="title">{{ product.title }}</h2>
                                             <div class="product-data">
@@ -602,7 +602,7 @@
                                                        value="{{ product.pk }}">
                                             </label>
                                             <div class="card__sell-image">
-                                                <img src="{{ product.image.url }}" alt="Product Image">
+                                                <img src="{{ product.image_set.first.image.url }}" alt="Product Image">
                                             </div>
                                             <h2 class="title">{{ product.title }}</h2>
                                             <div class="product-data">
