@@ -205,6 +205,10 @@
     color: rgb(105, 109, 140);
 }
 
+.main-banner_info {
+    display: flex;
+}
+
 .main-button {
     margin-bottom: 10px;
 }
