@@ -5,7 +5,7 @@ from .models import User, Complaint
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['pk', 'username', ]
+    list_display = ['pk', 'username', 'is_business_account', ]
 
 
 @admin.register(Complaint)
