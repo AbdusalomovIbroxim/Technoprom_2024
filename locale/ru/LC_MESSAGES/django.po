@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-06 16:13+0500\n"
+"POT-Creation-Date: 2024-05-07 18:42+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,12 +94,12 @@ msgid "Пока что нет объявлений."
 msgstr "Пока что нет объявлений."
 
 #: accounts/templates/user/create_company.html:94 films/templates/base.html:139
-#: films/templates/form.html:161 films/templates/product-list.html:73
+#: films/templates/form.html:158 films/templates/product-list.html:73
 msgid "Субкатегория"
 msgstr "Субкатегория"
 
 #: accounts/templates/user/create_company.html:103
-#: films/templates/base.html:146 films/templates/form.html:168
+#: films/templates/base.html:146 films/templates/form.html:165
 msgid "Теги"
 msgstr "Теги"
 
@@ -112,13 +112,15 @@ msgstr "Войти"
 msgid "Забыли пароль?"
 msgstr "Забыли пароль?"
 
-#: accounts/templates/user/login.html:74
-msgid "Don't have an account"
-msgstr "У вас нет учетной записи"
+#: accounts/templates/user/login.html:73
+msgid "У вас нет учетной записи?"
+msgstr "You do not have an account?"
 
-#: accounts/templates/user/login.html:75
-msgid "Signup"
-msgstr "Зарегистрироваться"
+#: accounts/templates/user/login.html:74
+#, fuzzy
+#| msgid "Деактивировать"
+msgid "Зарегистрироваться"
+msgstr "Деактивировать"
 
 #: accounts/templates/user/notification.html:33
 #: accounts/templates/user/update-profile.html:21
@@ -135,18 +137,22 @@ msgstr "Связаться с нами"
 
 #: accounts/templates/user/profile.html:89
 #: accounts/templates/user/profile.html:142
-msgid "seen"
-msgstr "Просмотры"
+#, fuzzy
+#| msgid "Просмотров"
+msgid "Просмотры"
+msgstr "Просмотров"
 
 #: accounts/templates/user/profile.html:92
 #: accounts/templates/user/profile.html:145
-msgid "open number"
-msgstr "показать номер"
+msgid "Количевство просмотров номера"
+msgstr "Number of number views"
 
 #: accounts/templates/user/profile.html:95
 #: accounts/templates/user/profile.html:148
-msgid "like"
-msgstr "нравиться"
+#, fuzzy
+#| msgid "отправить"
+msgid "Нравиться"
+msgstr "отправить"
 
 #: accounts/templates/user/profile.html:165
 msgid "Ваши объявления"
@@ -242,7 +248,7 @@ msgstr "Нет"
 msgid "сум"
 msgstr "сум"
 
-#: accounts/templates/user/profile.html:342 films/templates/form.html:510
+#: accounts/templates/user/profile.html:342 films/templates/form.html:507
 #: films/templates/index.html:157 films/templates/index.html:241
 msgid "Договорная"
 msgstr "Договорная"
@@ -398,11 +404,11 @@ msgstr "операторов и мастеров."
 msgid "Заголовок"
 msgstr "Заголовок"
 
-#: films/templates/base.html:124 films/templates/form.html:145
+#: films/templates/base.html:124 films/templates/form.html:142
 msgid "Описание"
 msgstr "Описание"
 
-#: films/templates/base.html:132 films/templates/form.html:154
+#: films/templates/base.html:132 films/templates/form.html:151
 msgid "Категория"
 msgstr "Категория"
 
@@ -410,16 +416,16 @@ msgstr "Категория"
 msgid "Телефон"
 msgstr "Телефон"
 
-#: films/templates/base.html:430 films/templates/form.html:464
+#: films/templates/base.html:430 films/templates/form.html:461
 msgid "Страна"
 msgstr "Страна"
 
-#: films/templates/base.html:436 films/templates/form.html:472
+#: films/templates/base.html:436 films/templates/form.html:469
 #: films/templates/product-list.html:95
 msgid "Город"
 msgstr "Город"
 
-#: films/templates/base.html:442 films/templates/form.html:513
+#: films/templates/base.html:442 films/templates/form.html:510
 msgid "Отправить"
 msgstr "Отправить"
 
@@ -463,39 +469,39 @@ msgstr "Б/у оборудование"
 msgid "Социальные сети"
 msgstr "Социальные сети"
 
-#: films/templates/form.html:119
+#: films/templates/form.html:116
 msgid "Выберите действие:"
 msgstr "Выберите действие:"
 
-#: films/templates/form.html:123
+#: films/templates/form.html:120
 msgid "Купить"
 msgstr "Купить"
 
-#: films/templates/form.html:127
+#: films/templates/form.html:124
 msgid "Продать"
 msgstr "Продать"
 
-#: films/templates/form.html:137
+#: films/templates/form.html:134
 msgid "Название"
 msgstr "Название"
 
-#: films/templates/form.html:174
+#: films/templates/form.html:171
 msgid "Телефон номер"
 msgstr "Телефон номер"
 
-#: films/templates/form.html:445
+#: films/templates/form.html:442
 msgid "Телеграмм"
 msgstr "Телеграмм"
 
-#: films/templates/form.html:480
+#: films/templates/form.html:477
 msgid "Фотографии"
 msgstr "Фотографии"
 
-#: films/templates/form.html:482
+#: films/templates/form.html:479
 msgid " (Eng optimal product rasmini tanlang)"
 msgstr ""
 
-#: films/templates/form.html:506
+#: films/templates/form.html:503
 msgid "Цена"
 msgstr "Цена"
 
@@ -531,7 +537,7 @@ msgstr "промышленность"
 
 #: films/templates/nav_bar.html:37
 msgid "Мебель"
-msgstr ""
+msgstr "Furniture"
 
 #: films/templates/nav_bar.html:39
 msgid "Еда"
@@ -555,7 +561,7 @@ msgstr "Металл"
 
 #: films/templates/nav_bar.html:49
 msgid "Строительство"
-msgstr ""
+msgstr "Construction"
 
 #: films/templates/nav_bar.html:51
 msgid "Текстиль"
@@ -658,6 +664,21 @@ msgstr "Русскои"
 #: root/urls.py:10
 msgid "admin/"
 msgstr ""
+
+#~ msgid "Don't have an account"
+#~ msgstr "У вас нет учетной записи"
+
+#~ msgid "Signup"
+#~ msgstr "Зарегистрироваться"
+
+#~ msgid "seen"
+#~ msgstr "Просмотры"
+
+#~ msgid "open number"
+#~ msgstr "показать номер"
+
+#~ msgid "like"
+#~ msgstr "нравиться"
 
 #, fuzzy
 #~| msgid "сырье"
