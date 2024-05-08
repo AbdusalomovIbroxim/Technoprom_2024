@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-07 18:42+0500\n"
+"POT-Creation-Date: 2024-05-07 20:03+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -330,7 +330,7 @@ msgid "Услуга"
 msgstr "Xizmat ko'rsatish"
 
 #: films/templates/base.html:87 films/templates/footer.html:25
-#: films/templates/footer.html:53 films/templates/nav_bar.html:86
+#: films/templates/footer.html:56 films/templates/nav_bar.html:86
 msgid "Технолог"
 msgstr "Texnolog"
 
@@ -436,7 +436,7 @@ msgid "© 2023 Технопром. Все права защищены."
 msgstr "© 2023 Technoprom. Barcha huquqlar himoyalangan."
 
 #: films/templates/footer.html:21 films/templates/footer.html:42
-#: films/templates/footer.html:52 films/templates/nav_bar.html:79
+#: films/templates/footer.html:54 films/templates/nav_bar.html:79
 #: films/templates/nav_bar.html:154
 msgid "Сырье"
 msgstr "Xomashyo"
@@ -457,13 +457,13 @@ msgstr ""
 msgid "Телеграм группы"
 msgstr "Telegram guruhlari"
 
-#: films/templates/footer.html:51
+#: films/templates/footer.html:52
 #, fuzzy
 #| msgid "Б/у оборудование"
 msgid "Б/У оборудование"
 msgstr "Ishlatilgan uskunalar"
 
-#: films/templates/footer.html:58
+#: films/templates/footer.html:62
 msgid "Социальные сети"
 msgstr "Ijtimoiy tarmoqlar"
 

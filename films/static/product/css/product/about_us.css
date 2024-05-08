@@ -5,7 +5,7 @@
 
 
 .container {
-    max-width: 1300px;
+    max-width: 1190px;
     margin-top: 90px;
 
 }
@@ -147,13 +147,13 @@
 .main-navbar {
     display: block;
     max-height: 40px;
-    min-width: 1200px;
+    min-width: 1190px;
 }
 
 .main-banner__info__2 {
     border-radius: 10px;
     height: 610px;
-    width: 1050px;
+    /*width: 1050px;*/
     background: #FFFFFF;
     padding-left: 60px;
     padding-top: 60px;
@@ -163,8 +163,8 @@
 
 .main-banner__info__3 {
     border-radius: 10px;
-    height: 510px;
-    width: 1220px;
+    height: 550px;
+    /*width: 1220px;*/
     background: #FFFFFF;
     padding-left: 60px;
     padding-top: 60px;
@@ -197,7 +197,7 @@
     line-height: 36px;
     color: #000000;
     display: inline-block;
-    margin-top: 32px;
+    margin-top: 30px;
 }
 
 .main-buttons {
@@ -207,6 +207,7 @@
 
 .main-banner_info {
     display: flex;
+    gap: 20px;
 }
 
 .main-button {
@@ -217,9 +218,11 @@
     color: #0C29D0;
 }
 
-.buttons {
-    display: flex;
 
+.buttons,
+.buttons-2 {
+    display: flex;
+    gap: 10px;
 }
 
 .buttons-2 {
@@ -236,7 +239,6 @@
     padding: 16px;
     border: 1px solid rgb(209, 209, 227);
     border-radius: 8px;
-    margin-right: 15px;
     display: flex;
     align-items: center;
 
@@ -264,7 +266,6 @@
     padding: 16px;
     border: 1px solid rgb(209, 209, 227);
     border-radius: 8px;
-    margin-right: 15px;
     display: flex;
     align-items: center;
 }
@@ -283,7 +284,7 @@
 }
 
 .buttons-section {
-    margin-top: 132px;
+    margin-top: 25%;
     display: flex;
     flex-direction: column;
 }
@@ -370,46 +371,18 @@
     display: inline-block;
 }
 
-.main-info__test__2 {
+.main-info {
     overflow: hidden;
     border-radius: 15px;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 500px;
+    width: 450px;
     float: right;
     border: 1px solid #D1D1E3;
     margin-right: 60px;
     height: 560px;
-}
-
-.main-info__test__3 {
-    overflow: hidden;
-    border-radius: 15px;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 500px;
-    float: right;
-    border: 1px solid #D1D1E3;
-    margin-right: 60px;
-    height: 500px;
-}
-
-.main-info__test__4 {
-    overflow: hidden;
-    border-radius: 15px;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 500px;
-    float: right;
-    border: 1px solid #D1D1E3;
-    margin-right: 60px;
-    height: 515px;
 }
 
 .course-title {
@@ -460,7 +433,7 @@
 .main-banner-info_2 {
     border-radius: 10px;
     height: 530px;
-    width: 1220px;
+    /*width: 1220px;*/
     background: #FFFFFF;
     padding-left: 60px;
     padding-top: 60px;
@@ -470,7 +443,7 @@
 .main-banner__info__4 {
     border-radius: 10px;
     height: 600px;
-    width: 1220px;
+    /*width: 1220px;*/
     background: #FFFFFF;
     padding-left: 60px;
     padding-top: 60px;
@@ -635,7 +608,7 @@
     .main-banner__info__3 {
         height: 1000px;
         display: flex;
-        width: 680px;
+        /*width: 680px;*/
         flex-direction: column;
     }
 
@@ -654,7 +627,7 @@
 
     /* End of 3 banner */
     .main-banner__info__4 {
-        height: 1035px;
+        /*height: 1035px;*/
         display: flex;
         width: 680px;
         flex-direction: column;
