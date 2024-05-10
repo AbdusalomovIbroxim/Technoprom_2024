@@ -155,8 +155,9 @@
     height: 610px;
     /*width: 1050px;*/
     background: #FFFFFF;
-    padding-left: 60px;
-    padding-top: 60px;
+    padding: 60px;
+    /*padding-left: 60px;*/
+    /*padding-top: 60px;*/
     margin-top: 80px;
 
 }
@@ -385,12 +386,11 @@
     float: right;
     border: 1px solid #D1D1E3;
     margin-right: 60px;
-    height: 560px;
+    /*height: 560px;*/
 }
 
 .course-title {
-    margin-left: 36px;
-    margin-top: 20px;
+    padding: 36px;
 }
 
 .text-info_3 {
